@@ -1,0 +1,8 @@
+<h1> Vehicle <%= @vehicle.license_plate %></h1>
+
+<%= render @vehicle %>
+
+<div>
+  <%= link_to "Edit this vehicle", edit_vehicle_path(@vehicle) %> |
+  <%= link_to "Back to vehicles", vehicles_path %>
+</div>

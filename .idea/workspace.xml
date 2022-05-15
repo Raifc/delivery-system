@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a62657e3-6a98-4203-8fce-c34f3fbc4ae1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/concerns/vehicles_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/vehicles/_vehicle.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/vehicles/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/vehicles/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/vehicles/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/companies_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/companies_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/concerns/vehicles_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/vehicles_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/companies/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/companies/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vehicles/_vehicle.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/_vehicle.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vehicles/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vehicles/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/show.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +31,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="MTCustomThemeConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/controllers/" />
+    </key>
   </component>
   <component name="RunManager" selected="Rails.Development: delivery-system">
     <configuration name="Development: delivery-system" type="RailsRunConfigurationType" factoryName="Rails">
@@ -146,7 +150,7 @@
       <option name="presentableId" value="Default" />
       <updated>1652482128882</updated>
       <workItem from="1652482130706" duration="621000" />
-      <workItem from="1652562670926" duration="14743000" />
+      <workItem from="1652562670926" duration="15084000" />
     </task>
     <servers />
   </component>

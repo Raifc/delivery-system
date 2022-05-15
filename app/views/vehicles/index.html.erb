@@ -1,0 +1,14 @@
+<h1>Vehicles</h1>
+
+<div>
+  <% @vehicles.each do |vehicle| %>
+    <%= render vehicle %>
+    <p>
+      <%= link_to "Show this vehicle", vehicle %>
+    </p>
+  <% end %>
+</div>
+
+<% if @vehicles.empty? %>
+  <p>No vehicles yet!</p>
+<% end %>
