@@ -1,0 +1,14 @@
+<h1>Companies</h1>
+
+<div>
+  <% @companies.each do |company| %>
+    <%= render company %>
+    <p>
+      <%= link_to "Show this companies", company %>
+    </p>
+  <% end %>
+</div>
+
+<% if @companies.empty? %>
+  <p>No companies yet!</p>
+<% end %>

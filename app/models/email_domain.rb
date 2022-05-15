@@ -1,0 +1,2 @@
+class EmailDomain < ApplicationRecord
+end

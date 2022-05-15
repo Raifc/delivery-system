@@ -1,0 +1,8 @@
+<h1> Company <%= @company.trading_name %></h1>
+
+<%= render @company %>
+
+<div>
+  <%= link_to "Edit this company", edit_company_path(@company) %> |
+  <%= link_to "Back to companies", companies_path %>
+</div>

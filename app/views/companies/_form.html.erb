@@ -1,0 +1,26 @@
+<%= form_with(model: @company) do |f| %>
+
+  <div>
+    <%= f.label :corporate_name %>
+    <%= f.text_field :corporate_name %>
+  </div>
+
+  <div>
+    <%= f.label :trading_name %>
+    <%= f.text_field :trading_name %>
+  </div>
+
+  <div>
+    <%= f.label :registration_number %>
+    <%= f.text_field :registration_number %>
+  </div>
+
+  <div>
+    <%= f.label :email_domain_id %>
+    <%= f.collection_select :email_domain_id, EmailDomain.all, :id, :trading_name %>
+  </div>
+
+
+  <%= f.submit 'Submit' %>
+
+<% end %>
