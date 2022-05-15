@@ -31,11 +31,6 @@ class CompaniesController < ApplicationController
     end
   end
 
-  def destroy
-    @company.destroy
-    redirect_to root_path, notice: 'Company successfully deleted'
-  end
-
   private
 
   def set_company
@@ -43,7 +38,7 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:corporate_name, :registration_number, :trading_name, :email_domain_id)
+    params.require(:company).permit(:corporate_name, :registration_number, :trading_name, :email_domain_id, :address_id)
   end
 
 end

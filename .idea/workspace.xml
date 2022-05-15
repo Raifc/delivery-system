@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a62657e3-6a98-4203-8fce-c34f3fbc4ae1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/companies_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/companies/_company.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/companies/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/companies/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/companies/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/companies/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/companies/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/company/admin_creates_company_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/concerns/vehicles_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/vehicles/_vehicle.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/vehicles/index.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/vehicles/new.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/vehicles/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/companies_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/companies_controller.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +146,7 @@
       <option name="presentableId" value="Default" />
       <updated>1652482128882</updated>
       <workItem from="1652482130706" duration="621000" />
-      <workItem from="1652562670926" duration="14154000" />
+      <workItem from="1652562670926" duration="14743000" />
     </task>
     <servers />
   </component>
