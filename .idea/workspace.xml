@@ -2,10 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a62657e3-6a98-4203-8fce-c34f3fbc4ae1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/controllers/address_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/email_domain_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/companies_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/companies_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/address.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/address.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/company.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/company.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/email_domain.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/email_domain.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/companies/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/companies/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/vehicles/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/vehicles/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/companies/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/companies/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/seeds.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/seeds.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/models/address_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/address_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/models/adress_spec.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/models/company_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/company_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/models/email_domain_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/email_domain_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +161,9 @@
       <workItem from="1652482130706" duration="621000" />
       <workItem from="1652562670926" duration="15488000" />
       <workItem from="1652670301981" duration="652000" />
-      <workItem from="1652670988962" duration="990000" />
+      <workItem from="1652670988962" duration="4314000" />
+      <workItem from="1652675429369" duration="81000" />
+      <workItem from="1652675519309" duration="11199000" />
     </task>
     <servers />
   </component>

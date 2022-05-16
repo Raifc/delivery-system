@@ -15,16 +15,35 @@
     <%= f.text_field :registration_number %>
   </div>
 
-  <div>
-    <%= f.label :email_domain_id %>
-    <%= f.collection_select :email_domain_id, EmailDomain.all, :id, :trading_name %>
-  </div>
+  <%= fields_for :address, @company.address do |address_form| %>
+    <div>
+      <%= address_form.label :full_address %>
+      <%= address_form.text_field :full_address %>
+    </div>
+
+    <div>
+      <%= address_form.label :city %>
+      <%= address_form.text_field :city %>
+    </div>
+
+    <div>
+      <%= address_form.label :state %>
+      <%= address_form.text_field :state %>
+    </div>
+  <% end %>
+
+  <%= fields_for :email_domain, @company.email_domain do |email_domain| %>
+    <div>
+      <%= email_domain.label :domain %>
+      <%= email_domain.text_field :domain %>
+    </div>
+  <% end %>
+
 
   <div>
-    <%= f.label :address_id %>
-    <%= f.collection_select :address_id, Address.all, :id, :trading_name %>
+    <%= f.label :status %>
+    <%= f.select(:status, Company.statuses.keys) %>
   </div>
-
 
   <%= f.submit 'Submit' %>
 
