@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a62657e3-6a98-4203-8fce-c34f3fbc4ae1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/controllers/concerns/vehicles_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/vehicles_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/companies/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/companies/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/vehicles/_vehicle.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/_vehicle.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/vehicles/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/vehicles/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/companies/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/companies/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vehicles/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vehicles/edit.html.erb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +41,7 @@
       <module name="delivery-system" />
       <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -67,7 +66,7 @@
       <module name="delivery-system" />
       <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -91,7 +90,7 @@
     <configuration name="spec: delivery-system" type="RakeRunConfigurationType" factoryName="Rake">
       <module name="delivery-system" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -115,7 +114,7 @@
     <configuration name="test: delivery-system" type="RakeRunConfigurationType" factoryName="Rake">
       <module name="delivery-system" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -150,7 +149,9 @@
       <option name="presentableId" value="Default" />
       <updated>1652482128882</updated>
       <workItem from="1652482130706" duration="621000" />
-      <workItem from="1652562670926" duration="15084000" />
+      <workItem from="1652562670926" duration="15488000" />
+      <workItem from="1652670301981" duration="652000" />
+      <workItem from="1652670988962" duration="990000" />
     </task>
     <servers />
   </component>

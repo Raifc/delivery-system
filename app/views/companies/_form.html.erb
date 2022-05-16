@@ -20,6 +20,11 @@
     <%= f.collection_select :email_domain_id, EmailDomain.all, :id, :trading_name %>
   </div>
 
+  <div>
+    <%= f.label :address_id %>
+    <%= f.collection_select :address_id, Address.all, :id, :trading_name %>
+  </div>
+
 
   <%= f.submit 'Submit' %>
 

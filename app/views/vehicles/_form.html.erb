@@ -1,0 +1,25 @@
+<%= form_with(model: @vehicle) do |f| %>
+
+  <div>
+    <%= f.label :license_plate %>
+    <%= f.text_field :license_plate %>
+  </div>
+
+  <div>
+    <%= f.label :brand %>
+    <%= f.text_field :brand %>
+  </div>
+
+  <div>
+    <%= f.label :year %>
+    <%= f.text_field :year %>
+  </div>
+
+  <div>
+    <%= f.label :load_capacity %>
+    <%= f.text_field :load_capacity %>
+  </div>
+
+  <%= f.submit 'Submit' %>
+
+<% end %>
