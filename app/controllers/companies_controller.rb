@@ -14,8 +14,10 @@ class CompaniesController < ApplicationController
   def create
 
     @company = Company.new(company_params.fetch('company'))
-    @address = Address.create!(company_params.fetch('address'))
-    @email_domain = EmailDomain.create!(company_params.fetch('email_domain'))
+    @address = Address.new(company_params.fetch('address'))
+    @address.save
+    @email_domain = EmailDomain.new(company_params.fetch('email_domain'))
+    @email_domain.save
     @company.address = @address
     @company.email_domain = @email_domain
 
@@ -49,7 +51,6 @@ class CompaniesController < ApplicationController
 
   def company_params
     params.permit(company: [:corporate_name, :registration_number, :trading_name], email_domain: [:domain], address: [:full_address, :city, :state])
-    #params.require('company').permit(:corporate_name, :registration_number, :trading_name, email_domain: [:domain], address: [:full_address, :city, :state])
   end
 
 end

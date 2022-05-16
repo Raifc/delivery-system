@@ -1,13 +1,3 @@
 <h1> New Company </h1>
-<% if (@company.errors.any?) %>
-  <p>Please check the errors below</p>
-  <ul>
-    <% @company.errors.full_messages.each do |msg| %>
-      <li id='new_errors'><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-
 
 <%= render 'form' %>

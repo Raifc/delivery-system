@@ -1,3 +1,18 @@
+<% if (@company.errors.any?) %>
+  <p>Please check the errors below</p>
+  <ul>
+    <% @company.errors.full_messages.each do |msg| %>
+      <li id='new_errors'><%= msg %></li>
+    <% end %>
+    <% @address.errors.full_messages.each do |msg| %>
+      <li id='new_errors'><%= msg %></li>
+    <% end %>
+    <% @email_domain.errors.full_messages.each do |msg| %>
+      <li id='new_errors'><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with(model: @company) do |f| %>
 
   <div>

@@ -10,8 +10,12 @@ RSpec.describe Vehicle, type: :model do
       vehicle = Vehicle.new(license_plate: 'ABF123', brand: 'Volkswagen', model: 'Van', year: '1992', load_capacity:'200', company: company)
 
       expect(vehicle).to be_valid
+    end
 
+    it 'false when company is empty' do
+      vehicle = Vehicle.new(license_plate: 'ABF123', brand: 'Volkswagen', model: 'Van', year: '1992', load_capacity:'200')
 
+      expect(vehicle).not_to be_valid
     end
   end
 end
