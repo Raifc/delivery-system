@@ -12,16 +12,7 @@ class CompaniesController < ApplicationController
   end
 
   def create
-
-    @company = Company.new(company_params.fetch('company'))
-    @address = Address.new(company_params.fetch('address'))
-    @address.save
-    @email_domain = EmailDomain.new(company_params.fetch('email_domain'))
-    @email_domain.save
-    @company.address = @address
-    @company.email_domain = @email_domain
-
-
+    @company = Company.new(company_params)
     if @company.save
       redirect_to @company, notice: 'Company successfully created'
     else
@@ -36,7 +27,7 @@ class CompaniesController < ApplicationController
 
   def update
     if @company.update(company_params)
-      redirect_to company_path(company.id), notice: 'Company successfully updated'
+      redirect_to company_path(@company.id), notice: 'Company successfully updated'
     else
       flash.now[:notice] = 'Company not updated'
       render 'edit'
@@ -50,7 +41,8 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.permit(company: [:corporate_name, :registration_number, :trading_name], email_domain: [:domain], address: [:full_address, :city, :state])
+    params.require(:company).permit(:corporate_name, :registration_number, :trading_name, :status,
+                                    email_domain_attributes: [:id, :domain], address_attributes: [:id, :full_address, :city, :state])
   end
 
 end

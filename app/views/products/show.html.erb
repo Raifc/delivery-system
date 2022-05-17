@@ -1,0 +1,8 @@
+<h1> Product <%= @product.code %></h1>
+
+<%= render @product %>
+
+<div>
+  <%= link_to "Edit this product", edit_product_path(@product) %> |
+  <%= link_to "Back to products", products_path %>
+</div>

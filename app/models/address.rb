@@ -1,4 +1,4 @@
 class Address < ApplicationRecord
-  has_one :company
+  belongs_to :addressable, polymorphic: true, optional: true
   validates :full_address, :city, :state, presence: true
 end

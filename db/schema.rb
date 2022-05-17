@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_15_090127) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_17_034748) do
+  create_table "add_addressable_to_addresses", force: :cascade do |t|
+    t.string "addressable_type", null: false
+    t.integer "addressable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["addressable_type", "addressable_id"], name: "index_add_addressable_to_addresses_on_addressable"
+  end
+
   create_table "addresses", force: :cascade do |t|
     t.string "full_address"
     t.string "city"
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "addressable_type"
+    t.integer "addressable_id"
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -25,15 +36,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_090127) do
     t.string "registration_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "address_id", null: false
-    t.integer "email_domain_id", null: false
     t.integer "status", default: 1
-    t.index ["address_id"], name: "index_companies_on_address_id"
-    t.index ["email_domain_id"], name: "index_companies_on_email_domain_id"
   end
 
   create_table "email_domains", force: :cascade do |t|
     t.string "domain"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "domainable_type"
+    t.integer "domainable_id"
+    t.index ["domainable_type", "domainable_id"], name: "index_email_domains_on_domainable"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "code"
+    t.decimal "height"
+    t.decimal "width"
+    t.decimal "depth"
+    t.decimal "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,7 +70,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_090127) do
     t.index ["company_id"], name: "index_vehicles_on_company_id"
   end
 
-  add_foreign_key "companies", "addresses"
-  add_foreign_key "companies", "email_domains"
   add_foreign_key "vehicles", "companies"
 end

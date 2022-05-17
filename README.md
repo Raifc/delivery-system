@@ -1,24 +1,16 @@
-# README
+Delivery System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Delivery System é um projeto desenvolido para gerenciamento de transportadoras.
 
-Things you may want to cover:
 
-* Ruby version
+Para executar esse projeto você deve ter um computador, preferencialmente com Linux, com a linguagem de programação Ruby na versão 3.0.0.
 
-* System dependencies
+Abra o diretório do projeto no console. Você deve instalar as dependências definidas no arquivo Gemfile com utilizando bundle install.
 
-* Configuration
+Com todas dependências instaladas, execute rails server e em seu navegador digite localhost:3000.
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Versões
+Foram utilizadas as seguintes versões neste sistema
+* Ruby 3.0.0
+* Rails 7.0.3

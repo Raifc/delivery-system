@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :vehicles, only: [:index, :show, :new, :create, :edit, :update]
   resources :addresses, only: [:index, :show, :new, :create, :edit, :update]
   resources :email_domains, only: [:index, :show, :new, :create, :edit, :update]
+  resources :products, only: [:index, :show, :new, :create, :edit, :update]
 end

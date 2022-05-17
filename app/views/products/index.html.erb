@@ -1,0 +1,14 @@
+<h1>Products</h1>
+
+<div>
+  <% @products.each do |product| %>
+    <%= render product %>
+    <p>
+      <%= link_to "Show this product", product %>
+    </p>
+  <% end %>
+</div>
+
+<% if @products.empty? %>
+  <p>No products yet!</p>
+<% end %>

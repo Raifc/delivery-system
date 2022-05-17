@@ -4,58 +4,52 @@
     <% @company.errors.full_messages.each do |msg| %>
       <li id='new_errors'><%= msg %></li>
     <% end %>
-    <% @address.errors.full_messages.each do |msg| %>
-      <li id='new_errors'><%= msg %></li>
-    <% end %>
-    <% @email_domain.errors.full_messages.each do |msg| %>
-      <li id='new_errors'><%= msg %></li>
-    <% end %>
   </ul>
 <% end %>
 
-<%= form_with(model: @company) do |f| %>
+<%= form_with model: @company do |f| %>
 
-  <div>
+  <div class="form-group">
     <%= f.label :corporate_name %>
     <%= f.text_field :corporate_name %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :trading_name %>
     <%= f.text_field :trading_name %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :registration_number %>
     <%= f.text_field :registration_number %>
   </div>
 
-  <%= fields_for :address, @company.address do |address_form| %>
-    <div>
+  <%= f.fields_for :address do |address_form| %>
+    <div class="form-group">
       <%= address_form.label :full_address %>
       <%= address_form.text_field :full_address %>
     </div>
 
-    <div>
+    <div class="form-group">
       <%= address_form.label :city %>
       <%= address_form.text_field :city %>
     </div>
 
-    <div>
+    <div class="form-group">
       <%= address_form.label :state %>
       <%= address_form.text_field :state %>
     </div>
   <% end %>
 
-  <%= fields_for :email_domain, @company.email_domain do |email_domain| %>
-    <div>
+  <%= f.fields_for :email_domain do |email_domain| %>
+    <div class="form-group">
       <%= email_domain.label :domain %>
       <%= email_domain.text_field :domain %>
     </div>
   <% end %>
 
 
-  <div>
+  <div class="form-group">
     <%= f.label :status %>
     <%= f.select(:status, Company.statuses.keys) %>
   </div>

@@ -1,4 +1,4 @@
 class EmailDomain < ApplicationRecord
   validates :domain, presence: true
-  has_one :company
+  belongs_to :domainable, polymorphic: true, optional: true
 end

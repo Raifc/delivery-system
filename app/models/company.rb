@@ -1,6 +1,6 @@
 class Company < ApplicationRecord
-  belongs_to :address
-  belongs_to :email_domain
+  has_one :email_domain, as: :domainable
+  has_one :address, as: :addressable
   validates :corporate_name, :trading_name, :registration_number, presence: true
   validates :corporate_name, :trading_name, :registration_number, uniqueness: true
   accepts_nested_attributes_for :address
