@@ -1,4 +1,4 @@
-class EmailDomainController < ApplicationController
+class EmailDomainsController < ApplicationController
   before_action :set_email_domain, only: [:show, :edit, :update, :destroy]
 
   def index; end

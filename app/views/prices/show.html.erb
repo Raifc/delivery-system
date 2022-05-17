@@ -1,0 +1,8 @@
+<h1> Price for volume range:  <%= @price.min_volume %> to <%= @price.max_volume %></h1>
+
+<%= render @price %>
+
+<div>
+  <%= link_to "Edit this price", edit_price_path(@price) %> |
+  <%= link_to "Back to prices", prices_path %>
+</div>

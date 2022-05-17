@@ -1,0 +1,39 @@
+<% if (@price.errors.any?) %>
+  <p>Please check the errors below</p>
+  <ul>
+    <% @price.errors.full_messages.each do |msg| %>
+      <li id='new_errors'><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @price do |f| %>
+
+  <div class="form-group">
+    <%= f.label :min_volume %>
+    <%= f.text_field :min_volume %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :max_volume %>
+    <%= f.text_field :max_volume %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :min_weight %>
+    <%= f.text_field :min_weight %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :max_weight %>
+    <%= f.text_field :max_weight %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :km_value %>
+    <%= f.text_field :km_value %>
+  </div>
+
+  <%= f.submit 'Submit' %>
+
+<% end %>

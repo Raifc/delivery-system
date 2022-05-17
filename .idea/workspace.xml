@@ -2,24 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a54ceac-e8cd-4f74-9d91-b2b28fb28c0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/delivery-system.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/products_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/products/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/products/_product.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/products/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/products/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/products/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/products/show.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/prices_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/prices/_form.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/prices/_price.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/prices/edit.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/prices/index.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/prices/new.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/prices/show.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/companies_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/companies_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/address.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/address.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/company.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/company.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/email_domain.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/email_domain.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/companies/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/companies/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/address_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/addresses_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/email_domain_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/email_domains_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
@@ -169,7 +161,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1652752177744</updated>
-      <workItem from="1652752178441" duration="5210000" />
+      <workItem from="1652752178441" duration="9105000" />
     </task>
     <servers />
   </component>

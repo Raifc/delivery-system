@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_17_034748) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_17_043815) do
   create_table "add_addressable_to_addresses", force: :cascade do |t|
     t.string "addressable_type", null: false
     t.integer "addressable_id", null: false
@@ -48,6 +48,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_17_034748) do
     t.index ["domainable_type", "domainable_id"], name: "index_email_domains_on_domainable"
   end
 
+  create_table "prices", force: :cascade do |t|
+    t.decimal "min_volume"
+    t.decimal "max_volume"
+    t.decimal "min_weight"
+    t.decimal "max_weight"
+    t.decimal "km_value"
+    t.integer "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_prices_on_company_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "code"
     t.decimal "height"
@@ -70,5 +82,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_17_034748) do
     t.index ["company_id"], name: "index_vehicles_on_company_id"
   end
 
+  add_foreign_key "prices", "companies"
   add_foreign_key "vehicles", "companies"
 end

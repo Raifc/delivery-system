@@ -1,0 +1,14 @@
+<h1>Prices</h1>
+
+<div>
+  <% @prices.each do |price| %>
+    <%= render price %>
+    <p>
+      <%= link_to "Show this price", price %>
+    </p>
+  <% end %>
+</div>
+
+<% if @prices.empty? %>
+  <p>No prices yet!</p>
+<% end %>
