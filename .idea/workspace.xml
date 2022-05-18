@@ -2,40 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a54ceac-e8cd-4f74-9d91-b2b28fb28c0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/delivery_times_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/delivery_times/_delivery_time.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/delivery_times/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/delivery_times/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/delivery_times/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/delivery_times/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/delivery_times/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/company/admin_edits_company_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/company/admin_views_company_page_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/prices/user_creates_new_price_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/prices/user_edit_price_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/vehicles/user_creates_vehicle_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/vehicles/user_edit_vehicle_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/delivery-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/delivery-system.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/delivery_time/user_creates_delivery_time_spec.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/delivery_time/user_edits_delivery_time_spec.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/delivery_time/user_views_delivery_times.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/prices_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/prices_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/vehicles_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/vehicles_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/company.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/company.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/vehicle.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/vehicle.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/companies/_company.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/companies/_company.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/companies/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/companies/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/prices/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/prices/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/prices/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/prices/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/prices/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/prices/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/vehicles/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/vehicles/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/edit.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/vehicles/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/vehicles/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/new.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/vehicles/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/initializers/devise.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/devise.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/company/admin_creates_company_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/company/admin_creates_company_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/rails_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/rails_helper.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/prices/user_edit_price_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/prices/user_edit_price_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/vehicles/user_edit_vehicle_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/vehicles/user_edit_vehicle_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +156,8 @@
       <option name="presentableId" value="Default" />
       <updated>1652752177744</updated>
       <workItem from="1652752178441" duration="16662000" />
-      <workItem from="1652814891645" duration="24123000" />
+      <workItem from="1652814891645" duration="24473000" />
+      <workItem from="1652900990089" duration="5062000" />
     </task>
     <servers />
   </component>
