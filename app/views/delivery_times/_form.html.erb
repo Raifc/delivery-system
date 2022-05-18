@@ -1,0 +1,29 @@
+<% if (@delivery_time.errors.any?) %>
+  <p>Please check the errors below</p>
+  <ul>
+    <% @delivery_time.errors.full_messages.each do |msg| %>
+      <li id='new_errors'><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: [:company, @delivery_time] do |f| %>
+
+  <div class="form-group">
+    <%= f.label :min_distance %>
+    <%= f.text_field :min_distance %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :max_distance %>
+    <%= f.text_field :max_distance %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :business_days %>
+    <%= f.text_field :business_days %>
+  </div>
+
+  <%= f.submit 'Submit' %>
+
+<% end %>

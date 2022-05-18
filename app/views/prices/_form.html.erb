@@ -7,7 +7,7 @@
   </ul>
 <% end %>
 
-<%= form_with model: @price do |f| %>
+<%= form_with model: [:company, @price] do |f| %>
 
   <div class="form-group">
     <%= f.label :min_volume %>

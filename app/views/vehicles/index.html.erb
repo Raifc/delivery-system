@@ -4,7 +4,7 @@
   <% @vehicles.each do |vehicle| %>
     <%= render vehicle %>
     <p>
-      <%= link_to "Show this vehicle", vehicle %>
+      <%= link_to "Show this vehicle", company_vehicle_path(@company, vehicle) %>
     </p>
   <% end %>
 </div>
@@ -12,3 +12,5 @@
 <% if @vehicles.empty? %>
   <p>No vehicles yet!</p>
 <% end %>
+
+<%= link_to "New Vehicle", new_company_vehicle_path %>

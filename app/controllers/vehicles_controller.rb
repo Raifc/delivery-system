@@ -1,17 +1,23 @@
 class VehiclesController < ApplicationController
+  before_action :set_vehicle, only: %i[show edit update destroy]
+
   def index
+    @company = Company.find(params[:company_id])
     @vehicles = Vehicle.all
   end
 
   def new
-    @vehicle = Vehicle.new
-    @companies = Company.all
+    @company = Company.find(params[:company_id])
+    @vehicle = @company.vehicles.new
   end
 
   def create
+    @company = Company.find(params[:company_id])
     @vehicle = Vehicle.new(vehicle_params)
+    @vehicle.company = @company
+
     if @vehicle.save
-      redirect_to @vehicle, notice: 'Vehicle successfully created'
+      redirect_to company_vehicles_path, notice: 'Vehicle successfully created'
     else
       flash.now[:notice] = 'Vehicle not created'
       render 'new'
@@ -24,7 +30,7 @@ class VehiclesController < ApplicationController
 
   def update
     if @vehicle.update(vehicle_params)
-      redirect_to vehicle_path(vehicle.id), notice: 'Vehicle successfully updated'
+      redirect_to company_vehicles_path, notice: 'Vehicle successfully updated'
     else
       flash.now[:notice] = 'Vehicle not updated'
       render 'edit'

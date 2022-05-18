@@ -1,4 +1,13 @@
-<%= form_with(model: @vehicle) do |f| %>
+<% if (@vehicle.errors.any?) %>
+  <p>Please check the errors below</p>
+  <ul>
+    <% @vehicle.errors.full_messages.each do |msg| %>
+      <li id='new_errors'><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: [:company, @vehicle] do |f| %>
 
   <div>
     <%= f.label :license_plate %>
@@ -8,6 +17,11 @@
   <div>
     <%= f.label :brand %>
     <%= f.text_field :brand %>
+  </div>
+
+  <div>
+    <%= f.label :model %>
+    <%= f.text_field :model %>
   </div>
 
   <div>

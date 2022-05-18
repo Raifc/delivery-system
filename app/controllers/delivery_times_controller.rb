@@ -1,0 +1,50 @@
+class DeliveryTimesController < ApplicationController
+  before_action :set_delivery_time, only: %i[show edit update destroy]
+
+  def index
+    @company = Company.find(params[:company_id])
+    @delivery_times = DeliveryTime.all
+  end
+
+  def new
+    @company = Company.find(params[:company_id])
+    @delivery_time = DeliveryTime.new
+  end
+
+  def create
+    @company = Company.find(params[:company_id])
+    @delivery_time = DeliveryTime.new(delivery_time_params)
+    @delivery_time.company = @company
+
+    if @delivery_time.save
+      redirect_to company_delivery_times_path, notice: 'Delivery Time successfully created'
+    else
+      flash.now[:notice] = 'Delivery Time not created'
+      render 'new'
+    end
+  end
+
+  def update
+    if @delivery_time.update(delivery_time_params)
+      redirect_to company_delivery_times_path, notice: 'Delivery time successfully updated'
+    else
+      flash.now[:notice] = 'Delivery time not updated'
+      render 'edit'
+    end
+  end
+
+  def show; end
+
+  def edit; end
+
+  private
+
+  def set_delivery_time
+    @delivery_time = DeliveryTime.find(params[:id])
+  end
+
+  def delivery_time_params
+    params.require(:delivery_time).permit(:min_distance, :max_distance, :business_days, :company_id)
+  end
+
+end

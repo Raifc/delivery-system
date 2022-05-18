@@ -1,0 +1,8 @@
+<h1> Delivery time for distance:  <%= @delivery_time.min_distance %> to <%= @delivery_time.max_distance %></h1>
+
+<%= render @delivery_time %>
+
+<div>
+  <%= link_to "Edit this delivery time", edit_company_delivery_time_path(@delivery_time) %> |
+  <%= link_to "Back to delivery times", company_delivery_times_path %>
+</div>

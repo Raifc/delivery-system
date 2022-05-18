@@ -1,0 +1,16 @@
+<h1>Delivery Times</h1>
+
+<div>
+  <% @delivery_times.each do |delivery_time| %>
+    <%= render delivery_time %>
+    <p>
+      <%= link_to "Show this delivery time", company_delivery_time_path(@company, delivery_time) %>
+    </p>
+  <% end %>
+</div>
+
+<% if @delivery_times.empty? %>
+  <p>No delivery times yet!</p>
+<% end %>
+
+<%= link_to "New Delivery Time", new_company_delivery_time_path %>
