@@ -8,32 +8,33 @@
 <% end %>
 
 <%= form_with model: [:company, @price] do |f| %>
+  <div class="form w-50 p-3">
 
-  <div class="form-group">
-    <%= f.label :min_volume %>
-    <%= f.text_field :min_volume %>
+    <div class="row">
+      <%= f.label :min_volume %>
+      <%= f.number_field :min_volume, :step => "0.01" %>
+    </div>
+
+    <div class="row">
+      <%= f.label :max_volume %>
+      <%= f.number_field :max_volume, :step => "0.01" %>
+    </div>
+
+    <div class="row">
+      <%= f.label :min_weight %>
+      <%= f.number_field :min_weight, :step => "0.1" %>
+    </div>
+
+    <div class="row">
+      <%= f.label :max_weight %>
+      <%= f.number_field :max_weight, :step => "0.1" %>
+    </div>
+
+    <div class="row">
+      <%= f.label :km_value %>
+      <%= f.number_field :km_value %>
+    </div>
   </div>
-
-  <div class="form-group">
-    <%= f.label :max_volume %>
-    <%= f.text_field :max_volume %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :min_weight %>
-    <%= f.text_field :min_weight %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :max_weight %>
-    <%= f.text_field :max_weight %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :km_value %>
-    <%= f.text_field :km_value %>
-  </div>
-
   <%= f.submit 'Submit' %>
 
 <% end %>

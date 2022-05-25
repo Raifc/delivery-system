@@ -1,0 +1,2 @@
+module AdminsSpace::HomeHelper
+end

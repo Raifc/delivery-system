@@ -1,14 +1,15 @@
 class DeliveryTimesController < ApplicationController
   before_action :set_delivery_time, only: %i[show edit update destroy]
+  #before_action :set_company, only: %i[show edit update destroy]
 
   def index
     @company = Company.find(params[:company_id])
-    @delivery_times = DeliveryTime.all
+    @delivery_times = @company.delivery_times.all
   end
 
   def new
     @company = Company.find(params[:company_id])
-    @delivery_time = DeliveryTime.new
+    @delivery_time = @company.delivery_times.new #@delivery_time = DeliveryTime.new
   end
 
   def create
@@ -41,6 +42,10 @@ class DeliveryTimesController < ApplicationController
 
   def set_delivery_time
     @delivery_time = DeliveryTime.find(params[:id])
+  end
+
+  def set_company
+    @company = Company.find(params[:company_id])
   end
 
   def delivery_time_params

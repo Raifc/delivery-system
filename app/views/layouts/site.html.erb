@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delivery System</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application" %>
+</head>
+
+<body>
+<div>
+  <%= alert %>
+  <%= notice %>
+</div>
+
+<%= yield %>
+<br>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<div class="form">
+<%= form_with url: search_service_orders_path, method: :get do |f| %>
+  <%= f.label :query, 'Search Order' %>
+  <%= f.text_field :query %>
+  <%= f.submit 'Search' %>
+<% end %>
+</div>
+</nav>
+<br>
+
+<h3>Consulta de preços</h3>
+
+<div class="form w-50 p-3">
+  <%= form_with url: price_queries_path, method: :get do |f| %>
+    <div class="row">
+      <%= f.label :height, 'Package Height' %>
+      <%= f.number_field :height, :step => "0.01" %>
+    </div>
+    <div class="row">
+      <%= f.label :width, 'Package Width' %>
+      <%= f.number_field :width, :step => "0.01"  %>
+    </div>
+    <div class="row">
+      <%= f.label :depth, 'Package Depth' %>
+      <%= f.number_field :depth, :step => "0.01"  %>
+    </div>
+    <div class="row">
+      <%= f.label :weight, 'Package Weight' %>
+      <%= f.number_field :weight, :step => "0.01"  %>
+    </div>
+    <div class="row">
+      <%= f.label :distance, 'Distance' %>
+      <%= f.number_field :distance, :step => "0.01"  %>
+    </div>
+    <%= f.submit 'Consult Prices' %>
+  <% end %>
+</div>
+
+
+
+</body>
+</html>

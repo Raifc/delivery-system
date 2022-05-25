@@ -3,7 +3,8 @@ class PricesController < ApplicationController
 
   def index
     @company = Company.find(params[:company_id])
-    @prices = Price.all
+    @prices = @company.prices.all
+
   end
 
   def new

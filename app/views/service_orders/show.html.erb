@@ -1,0 +1,32 @@
+<h1> Service Order - <%= @service_order.code %>  </h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Code</th>
+    <th>Status</th>
+    <th>Origin Address</th>
+    <th>Origin City</th>
+    <th>Destination Address</th>
+    <th>Destination City</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @service_order.code %></td>
+      <td><%= @service_order.status %></td>
+      <td><%= @origin_address.full_address %></td>
+      <td><%= @origin_address.city %></td>
+      <td><%= @destination_address.full_address %></td>
+      <td><%= @destination_address.city %></td>
+      <td>Change Status</td>
+    </tr>
+
+  </tbody>
+</table>
+
+<div>
+  <p> <%= link_to "Back to Service Orders", company_service_orders_path %> </p>
+  <p> <%= link_to "New Route Update", new_company_service_order_route_update_path(@service_order.company_id, @service_order.id) %> </p>
+ </div>

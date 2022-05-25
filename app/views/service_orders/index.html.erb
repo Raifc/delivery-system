@@ -1,0 +1,27 @@
+<h1>Service Orders</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Code</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @service_orders.each do |service_order| %>
+    <tr>
+      <td><%= service_order.code %></td>
+      <td><%= service_order.status %></td>
+      <td><%= link_to "Show this Service Order", company_service_order_path(@company, service_order) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+  <% if @service_orders.empty? %>
+    <p>No Service Orders yet!</p>
+  <% end %>
+
+<%= link_to "New Service Order", new_company_service_order_path %>

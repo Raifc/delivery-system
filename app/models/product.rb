@@ -1,4 +1,13 @@
 class Product < ApplicationRecord
-  validates :code, :width, :height, :weight, :depth, presence: true
+  has_many :service_orders
+  validates :code, :height, :width, :weight, :depth, presence: true
   validates :code, uniqueness: true
+  before_save :calculate_volume
+
+  private
+
+  def calculate_volume
+    self.volume = height * width * depth
+  end
+
 end

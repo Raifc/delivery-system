@@ -24,7 +24,7 @@ class EmailDomainsController < ApplicationController
     @email_domain = EmailDomain.find(params[:id])
   end
 
-  def address_params
+  def email_domain_params
     params.require(:email_domain).permit(:domain)
   end
 

@@ -1,13 +1,30 @@
 <h1>Vehicles</h1>
 
-<div>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Model</th>
+    <th>Brand</th>
+    <th>Year</th>
+    <th>Load Capacity</th>
+    <th>License Plate</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+
+  <tbody>
   <% @vehicles.each do |vehicle| %>
-    <%= render vehicle %>
-    <p>
-      <%= link_to "Show this vehicle", company_vehicle_path(@company, vehicle) %>
-    </p>
+    <tr>
+      <td><%= vehicle.model %></td>
+      <td><%= vehicle.brand %></td>
+      <td><%= vehicle.year %></td>
+      <td><%= vehicle.load_capacity %></td>
+      <td><%= vehicle.license_plate %></td>
+      <td><%= link_to "Show this vehicle", company_vehicle_path(@company, vehicle) %></td>
+    </tr>
   <% end %>
-</div>
+  </tbody>
+</table>
 
 <% if @vehicles.empty? %>
   <p>No vehicles yet!</p>

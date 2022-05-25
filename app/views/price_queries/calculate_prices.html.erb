@@ -1,0 +1,22 @@
+<h1>Prices for the package</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Company Name</th>
+    <th>Price for shipping</th>
+    <th>Days to Delivery</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @result.each do |result| %>
+  <tr>
+    <td><%= result[0] %></td>
+    <td><%= result[1] %></td>
+    <td><%= result[2] %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+

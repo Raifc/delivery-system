@@ -1,13 +1,29 @@
 <h1>Prices</h1>
 
-<div>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Min Volume</th>
+    <th>Max Volume</th>
+    <th>Min Weight</th>
+    <th>Max Weight</th>
+    <th>Value for km</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
   <% @prices.each do |price| %>
-    <%= render price %>
-    <p>
-      <%= link_to "Show this price", company_price_path(@company, price) %>
-    </p>
+  <tr>
+    <td><%= price.min_volume %></td>
+    <td><%= price.max_volume %></td>
+    <td><%= price.min_weight %></td>
+    <td><%= price.max_weight %></td>
+    <td><%= price.km_value %></td>
+    <td> <%= link_to "Show this price", company_price_path(@company, price) %> </td>
+  </tr>
   <% end %>
-</div>
+  </tbody>
+</table>
 
 <% if @prices.empty? %>
   <p>No prices yet!</p>

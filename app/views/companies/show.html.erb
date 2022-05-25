@@ -3,6 +3,10 @@
 <%= render @company %>
 
 <div>
+  <%= link_to "Back to companies", companies_path %> |
   <%= link_to "Edit this company", edit_company_path(@company) %> |
-  <%= link_to "Back to companies", companies_path %>
+  <%= link_to "Vehicles", company_vehicles_path(@company) %> |
+  <%= link_to "Service Orders", company_service_orders_path(@company) %> |
+  <%= link_to "Prices", company_prices_path(@company) %> |
+  <%= link_to "Delivery Time", company_delivery_times_path(@company) %>
 </div>

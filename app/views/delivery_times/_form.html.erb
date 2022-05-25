@@ -7,23 +7,24 @@
   </ul>
 <% end %>
 
-<%= form_with model: [:company, @delivery_time] do |f| %>
+<div class="form w-50 p-3">
+  <%= form_with model: [:company, @delivery_time] do |f| %>
 
-  <div class="form-group">
-    <%= f.label :min_distance %>
-    <%= f.text_field :min_distance %>
-  </div>
+    <div class="row">
+      <%= f.label :min_distance %>
+      <%= f.text_field :min_distance %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :max_distance %>
-    <%= f.text_field :max_distance %>
-  </div>
+    <div class="row">
+      <%= f.label :max_distance %>
+      <%= f.text_field :max_distance %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :business_days %>
-    <%= f.text_field :business_days %>
-  </div>
+    <div class="row">
+      <%= f.label :business_days %>
+      <%= f.text_field :business_days %>
+    </div>
+    </div>
+    <%= f.submit 'Submit' %>
 
-  <%= f.submit 'Submit' %>
-
-<% end %>
+  <% end %>

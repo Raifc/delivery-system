@@ -1,0 +1,25 @@
+<% if (@route_update.errors.any?) %>
+  <p>Please check the errors below</p>
+  <ul>
+    <% @route_update.errors.full_messages.each do |msg| %>
+      <li id='new_errors'><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: [:company, :service_order, @route_update] do |f| %>
+  <div class="form w-50 p-3">
+
+    <div class="row">
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+
+    <div class="row">
+    <%= f.label :time %>
+    <%= f.datetime_field :time %>
+  </div>
+
+  <%= f.submit 'Submit' %>
+  </div>
+<% end %>

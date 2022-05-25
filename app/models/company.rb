@@ -4,6 +4,7 @@ class Company < ApplicationRecord
   has_many :prices
   has_many :delivery_times
   has_many :vehicles
+  has_many :service_orders
   validates :corporate_name, :trading_name, :registration_number, presence: true
   validates :corporate_name, :trading_name, :registration_number, uniqueness: true
   accepts_nested_attributes_for :address

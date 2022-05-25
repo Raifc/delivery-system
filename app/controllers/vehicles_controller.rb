@@ -3,12 +3,12 @@ class VehiclesController < ApplicationController
 
   def index
     @company = Company.find(params[:company_id])
-    @vehicles = Vehicle.all
+    @vehicles = @company.vehicles.all
   end
 
   def new
     @company = Company.find(params[:company_id])
-    @vehicle = @company.vehicles.new
+    @vehicle = @company.vehicles.new #@vehicle = Vehicle.new
   end
 
   def create

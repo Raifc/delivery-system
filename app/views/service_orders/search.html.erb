@@ -1,0 +1,24 @@
+<h1>Tracking Results for: <%= @code %></h1>
+
+<% if @service_order.present? %>
+  <h3> Origin City: <%= @origin_address.city %> | Destination City: <%= @destination_address.city %> </h3>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>City</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @service_order.route_updates.each do |route_update| %>
+      <tr>
+        <td><%= route_update.time %></td>
+        <td><%= route_update.city %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <p>Not found</p>
+<% end %>

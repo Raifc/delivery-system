@@ -1,0 +1,54 @@
+<% if @service_order.errors.any? %>
+  <p>Please check the errors below</p>
+  <ul>
+    <% @service_order.errors.full_messages.each do |msg| %>
+      <li id='new_errors'><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: [:company, @service_order] do |f| %>
+  <div class="form w-50 p-3">
+
+    <%= f.fields_for :origin_address do |origin_address_form| %>
+      <div class="row">
+        <%= origin_address_form.label :full_address, 'Endereço de origem' %>
+        <%= origin_address_form.text_field :full_address %>
+      </div>
+
+      <div class="row">
+        <%= origin_address_form.label :city, 'Cidade de Origem' %>
+        <%= origin_address_form.text_field :city %>
+      </div>
+
+      <div class="row">
+        <%= origin_address_form.label :state, 'Estado de Origem' %>
+        <%= origin_address_form.text_field :state %>
+      </div>
+    <% end %>
+
+    <%= f.fields_for :destination_address do |destination_address_form| %>
+      <div class="row">
+        <%= destination_address_form.label :full_address, 'Endereço de Destino' %>
+        <%= destination_address_form.text_field :full_address %>
+      </div>
+
+      <div class="row">
+        <%= destination_address_form.label :city, 'Cidade de Destino' %>
+        <%= destination_address_form.text_field :city %>
+      </div>
+
+      <div class="row">
+        <%= destination_address_form.label :state, 'Estado de Destino' %>
+        <%= destination_address_form.text_field :state %>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <%= f.label :product_id, 'Product Code' %>
+      <%= f.collection_select :product_id, @products, :id, :code %>
+    </div>
+  </div>
+  <%= f.submit 'Submit' %>
+
+<% end %>
