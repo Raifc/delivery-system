@@ -26,7 +26,7 @@ class ServiceOrdersController < ApplicationController
     @service_order.company = @company
 
     if @service_order.save
-      redirect_to company_service_orders_path, notice: 'Service Order successfully created'
+      redirect_to company_service_orders_path(@service_order.company_id), notice: 'Service Order successfully created'
     else
       flash.now[:notice] = 'Service Order not created'
       render 'new'
@@ -51,7 +51,7 @@ class ServiceOrdersController < ApplicationController
 
   def update
     if @service_order.update(service_order_params)
-      redirect_to service_order_path(@service_order.id), notice: 'service_order successfully updated'
+      redirect_to company_service_orders_path(@service_order.company_id), notice: 'service_order successfully updated'
     else
       flash.now[:notice] = 'service_order not updated'
       @products = Product.all

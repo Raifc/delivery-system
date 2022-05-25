@@ -1,13 +1,28 @@
 <h1>Companies</h1>
 
-<div>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Corporate Name</th>
+    <th>Trading Name</th>
+    <th>Registration Number</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
   <% @companies.each do |company| %>
-    <%= render company %>
-    <p>
-      <%= link_to "Show this company", company %>
-    </p>
+    <tr>
+      <td><%= company.corporate_name %></td>
+      <td><%= company.trading_name %></td>
+      <td><%= company.registration_number %></td>
+      <td><%= company.status %></td>
+      <td> <%= link_to "Show this company", company %></td>
+    </tr>
   <% end %>
-</div>
+  </tbody>
+</table>
 
 <% if @companies.empty? %>
   <p>No companies yet!</p>

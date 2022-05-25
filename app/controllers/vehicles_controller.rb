@@ -17,7 +17,7 @@ class VehiclesController < ApplicationController
     @vehicle.company = @company
 
     if @vehicle.save
-      redirect_to company_vehicles_path, notice: 'Vehicle successfully created'
+      redirect_to company_vehicles_path(@vehicle.company_id), notice: 'Vehicle successfully created'
     else
       flash.now[:notice] = 'Vehicle not created'
       render 'new'
@@ -30,7 +30,7 @@ class VehiclesController < ApplicationController
 
   def update
     if @vehicle.update(vehicle_params)
-      redirect_to company_vehicles_path, notice: 'Vehicle successfully updated'
+      redirect_to company_vehicles_path(@vehicle.company_id), notice: 'Vehicle successfully updated'
     else
       flash.now[:notice] = 'Vehicle not updated'
       render 'edit'
@@ -46,6 +46,8 @@ class VehiclesController < ApplicationController
 
   def set_vehicle
     @vehicle = Vehicle.find(params[:id])
+    #@company = Company.find(params[:company_id])
+    #@vehicle = @company.vehicles.find(params[:id])
   end
 
   def vehicle_params

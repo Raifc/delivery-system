@@ -18,7 +18,7 @@ class DeliveryTimesController < ApplicationController
     @delivery_time.company = @company
 
     if @delivery_time.save
-      redirect_to company_delivery_times_path, notice: 'Delivery Time successfully created'
+      redirect_to company_delivery_times_path(@delivery_time.company_id), notice: 'Delivery Time successfully created'
     else
       flash.now[:notice] = 'Delivery Time not created'
       render 'new'
@@ -27,7 +27,7 @@ class DeliveryTimesController < ApplicationController
 
   def update
     if @delivery_time.update(delivery_time_params)
-      redirect_to company_delivery_times_path, notice: 'Delivery time successfully updated'
+      redirect_to company_delivery_times_path(@delivery_time.company_id), notice: 'Delivery time successfully updated'
     else
       flash.now[:notice] = 'Delivery time not updated'
       render 'edit'
@@ -49,7 +49,7 @@ class DeliveryTimesController < ApplicationController
   end
 
   def delivery_time_params
-    params.require(:delivery_time).permit(:min_distance, :max_distance, :business_days, :company_id)
+    params.require(:delivery_time).permit(:company_id, :min_distance, :max_distance, :business_days)
   end
 
 end

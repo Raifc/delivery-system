@@ -18,7 +18,7 @@ class PricesController < ApplicationController
     @price.company = @company
 
     if @price.save
-      redirect_to company_prices_path, notice: 'Price successfully created'
+      redirect_to company_prices_path(@price.company_id), notice: 'Price successfully created'
     else
       flash.now[:notice] = 'Price not created'
       render 'new'
@@ -27,7 +27,7 @@ class PricesController < ApplicationController
 
   def update
     if @price.update(price_params)
-      redirect_to company_prices_path, notice: 'Price successfully updated'
+      redirect_to company_prices_path(@price.company_id), notice: 'Price successfully updated'
     else
       flash.now[:notice] = 'Price not updated'
       render 'edit'
