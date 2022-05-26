@@ -1,5 +1,6 @@
 class ServiceOrdersController < ApplicationController
-  before_action :set_service_order, only: %i[edit update destroy]
+  before_action :set_service_order, only: %i[edit update]
+  before_action :authenticate_admin!, only: [:new]
 
   def index
     @company = Company.find(params[:company_id])

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_25_232033) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_26_035740) do
   create_table "addresses", force: :cascade do |t|
     t.string "full_address"
     t.string "city"
@@ -38,6 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_232033) do
     t.string "corporate_name"
     t.string "trading_name"
     t.string "registration_number"
+    t.string "email_domain"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 1
@@ -51,15 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_232033) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_delivery_times_on_company_id"
-  end
-
-  create_table "email_domains", force: :cascade do |t|
-    t.string "domain"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "domainable_type"
-    t.integer "domainable_id"
-    t.index ["domainable_type", "domainable_id"], name: "index_email_domains_on_domainable"
   end
 
   create_table "prices", force: :cascade do |t|
@@ -106,6 +98,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_232033) do
     t.integer "vehicle_id"
     t.index ["company_id"], name: "index_service_orders_on_company_id"
     t.index ["product_id"], name: "index_service_orders_on_product_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_users_on_company_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "vehicles", force: :cascade do |t|

@@ -21,7 +21,7 @@
       <td><%= @origin_address.city %></td>
       <td><%= @destination_address.full_address %></td>
       <td><%= @destination_address.city %></td>
-      <td> <%= @vehicle.model %> | <%= @vehicle.license_plate %></td>
+      <td> <%if @vehicle.present? %> <%= @vehicle.model %> | <%= @vehicle.license_plate %> <% end %></td>
       <td> <%= link_to 'Review', edit_company_service_order_path %></td>
     </tr>
 

@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>DeliverySystem</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>DeliverySystem</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application" %>
-  </head>
+  <%= stylesheet_link_tag "application" %>
+</head>
 
-  <body>
-    <div>
-      <%= alert %>
-      <%= notice %>
-    </div>
-    <%= yield %>
-  </body>
+<body>
+<h1 align="center">Delivery System</h1>
+<strong><%= link_to 'Home', root_path %></strong>
+
+<p>
+  <% if admin_signed_in? %>
+    <strong><%= link_to 'Companies', companies_path %></strong> |
+    <%= current_admin.email %> |
+    <%= button_to 'Logout', destroy_admin_session_path, method: :delete %>
+
+  <% elsif user_signed_in? %>
+    <p><strong> User </strong> - <%= current_user.email %>
+    <%= button_to 'Logout', destroy_user_session_path, method: :delete %> </p>
+  <% end %>
+
+<div>
+  <%= alert %>
+  <%= notice %>
+</div>
+
+<%= yield %>
+</body>
 </html>

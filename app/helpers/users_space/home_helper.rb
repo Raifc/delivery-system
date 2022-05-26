@@ -1,2 +1,0 @@
-module UsersSpace::HomeHelper
-end

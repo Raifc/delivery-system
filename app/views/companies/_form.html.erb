@@ -20,6 +20,11 @@
     <%= f.text_field :trading_name %>
   </div>
 
+   <div class="row">
+    <%= f.label :email_domain %>
+    <%= f.text_field :email_domain %>
+  </div>
+
     <div class="row">
     <%= f.label :registration_number %>
     <%= f.text_field :registration_number %>
@@ -39,13 +44,6 @@
       <div class="row">
       <%= address_form.label :state %>
       <%= address_form.text_field :state %>
-    </div>
-  <% end %>
-
-  <%= f.fields_for :email_domain do |email_domain| %>
-      <div class="row">
-      <%= email_domain.label :domain %>
-      <%= email_domain.text_field :domain %>
     </div>
   <% end %>
 

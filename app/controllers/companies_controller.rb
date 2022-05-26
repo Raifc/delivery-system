@@ -1,5 +1,8 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update]
+
+  before_action :authenticate_user_or_admin, only: [:show]
+  before_action :authenticate_admin!, only: %i[index new edit update]
+  before_action :set_company, only: %i[show edit update]
 
   def index
     @companies = Company.all
@@ -8,12 +11,10 @@ class CompaniesController < ApplicationController
   def new
     @company = Company.new
     @company.build_address
-    @company.build_email_domain
   end
 
   def create
     @company = Company.new(company_params)
-
     if @company.save
       redirect_to @company, notice: 'Company successfully created'
     else
@@ -42,8 +43,8 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:corporate_name, :registration_number, :trading_name, :status,
-                                    email_domain_attributes: [:id, :domain], address_attributes: [:id, :full_address, :city, :state])
+    params.require(:company).permit(:corporate_name, :registration_number, :trading_name, :status, :email_domain,
+                                    address_attributes: %i[id full_address city state])
   end
 
 end

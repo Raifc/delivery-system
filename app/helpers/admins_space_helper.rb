@@ -1,2 +1,0 @@
-module AdminsSpaceHelper
-end
