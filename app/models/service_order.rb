@@ -6,7 +6,7 @@ class ServiceOrder < ApplicationRecord
   belongs_to :company
   belongs_to :origin_address, class_name: :Address, foreign_key: :origin_address_id, optional: true
   belongs_to :destination_address, class_name: :Address, foreign_key: :destination_address_id, optional: true
-  enum status: { Pending: 0, Accepted: 5, Finished: 10 }
+  enum status: { Pending: 0, Accepted: 5, Rejected: 10, Finished: 15 }
   before_create :generate_code
   has_many :addresses
   has_many :route_updates

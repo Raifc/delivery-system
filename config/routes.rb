@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :vehicles
     resources :delivery_times
     resources :service_orders do
+      #get 'service_order_review', to: 'service_orders#service_order_review'
       resources :route_updates
     end
   end

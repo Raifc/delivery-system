@@ -16,14 +16,24 @@ describe 'Admin visits companies page' do
     Company.create!(corporate_name: 'Chicago', trading_name: 'Chicago Cargo', registration_number: '245798000155', address: second_address, email_domain: second_email_domain, status: 'Active')
 
     visit('companies')
-    expect(page).to have_content 'Beta'
-    expect(page).to have_content 'Alfa'
-    expect(page).to have_content 'Registration Number 1234567'
-    expect(page).to have_content 'Status Active'
-    expect(page).to have_content 'Corporate Name Chicago'
-    expect(page).to have_content 'Trading Name Chicago Cargo'
-    expect(page).to have_content 'Registration Number 245798000155'
-    expect(page).to have_content 'Status Active'
+    within 'table' do
+      expect(page).to have_content 'Corporate Name'
+      expect(page).to have_content 'Beta'
+      expect(page).to have_content 'Trading Name'
+      expect(page).to have_content 'Alfa'
+      expect(page).to have_content 'Registration Number'
+      expect(page).to have_content '1234567'
+      expect(page).to have_content 'Status'
+      expect(page).to have_content 'Active'
+      expect(page).to have_content 'Corporate Name'
+      expect(page).to have_content 'Chicago'
+      expect(page).to have_content 'Trading Name'
+      expect(page).to have_content 'Chicago Cargo'
+      expect(page).to have_content 'Registration Number'
+      expect(page).to have_content '245798000155'
+      expect(page).to have_content 'Status'
+      expect(page).to have_content 'Active'
+    end
   end
 
   it 'and there are no companies created' do

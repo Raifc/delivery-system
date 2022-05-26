@@ -20,7 +20,7 @@ class PriceQueriesController < ApplicationController
     weight = params.fetch(:weight).to_i
     distance = params.fetch(:distance).to_i
     volume = height * width * depth
-    @result = [] #transformar result em algo melhor, talvez criar um objeto
+    @result = [] #transformar result em hash
     @companies = Company.all.where("status = 1")
 
     @companies.each do |company|

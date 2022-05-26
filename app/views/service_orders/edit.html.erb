@@ -1,0 +1,24 @@
+<% if @service_order.errors.any? %>
+  <p>Please check the errors below</p>
+  <ul>
+    <% @service_order.errors.full_messages.each do |msg| %>
+      <li id='new_errors'><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: [:company, @service_order] do |f| %>
+  <div class="form w-50 p-3">
+    <div class="row">
+      <%= f.label :status %>
+      <%= f.select(:status, ServiceOrder.statuses.keys) %>
+    </div>
+
+    <div class="row">
+      <%= f.label :vehicle_id, 'Vehicle' %>
+      <%= f.collection_select :vehicle_id, @vehicles, :id, :license_plate %> <%#PRECISA DE MELHORA URGENTE - TERMINAR DEVISE E MELHORAR %>
+    </div>
+
+<%= f.submit 'Submit' %>
+  </div>
+<% end %>

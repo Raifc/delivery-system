@@ -38,9 +38,13 @@ class ServiceOrdersController < ApplicationController
     @service_order = ServiceOrder.find(params[:id])
     @origin_address = Address.find_by(id: @service_order.origin_address_id)
     @destination_address = Address.find_by(id: @service_order.destination_address_id)
+    @vehicle = Vehicle.find_by(id: @service_order.vehicle_id)
   end
 
-  def edit; end
+  def edit
+    @company = Company.find(params[:company_id])
+    @vehicles = @company.vehicles.all
+  end
 
   def search
     @code = params[:query]
@@ -51,13 +55,26 @@ class ServiceOrdersController < ApplicationController
 
   def update
     if @service_order.update(service_order_params)
-      redirect_to company_service_orders_path(@service_order.company_id), notice: 'service_order successfully updated'
+      redirect_to company_service_orders_path(@service_order.company_id), notice: 'Service Order Sucessfully Updated'
     else
-      flash.now[:notice] = 'service_order not updated'
+      flash.now[:notice] = 'Service Order not updated'
       @products = Product.all
+      @company = Company.find(params[:company_id])
+      @vehicles = @company.vehicles.all
       render 'edit'
     end
   end
+
+=begin
+  def service_order_review
+    @company = Company.find(params[:company_id])
+    @service_order = @company.service_orders.find(params[:service_order_id])
+    @vehicles = @company.vehicles.all
+    @service_order.vehicle_id = params[:vehicle_id]
+    @service_order.status = params[:status]
+    @service_order.save
+  end
+=end
 
   private
 
@@ -66,7 +83,7 @@ class ServiceOrdersController < ApplicationController
   end
 
   def service_order_params
-    params.require(:service_order).permit(:company_id, :code, :status, :product_id,
+    params.require(:service_order).permit(:company_id, :code, :status, :product_id, :vehicle_id,
                                           origin_address: [:id, :full_address, :city, :state, :addressable_type],
                                           destination_address: [:id, :full_address, :city, :state, :addressable_type])
   end

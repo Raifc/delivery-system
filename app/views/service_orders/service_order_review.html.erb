@@ -1,0 +1,16 @@
+<h1>Service Order <%= @service_order.code %> Review</h1>
+
+<%= form_with model: @service_order do |f| %>
+  <div class="row">
+    <%= f.label :status %>
+    <%= f.select(:status, ServiceOrder.statuses.keys) %>
+  </div>
+
+  <div class="row">
+    <%= f.label :vehicle_id, 'Vehicle' %>
+    <%= f.collection_select :vehicle_id, @vehicles, :id, :license_plate %> <%#fazer um método para mostrar a marca, modelo e placa do carro %>
+  </div>
+
+  <%= f.submit 'Submit' %>
+<% end %>
+

@@ -29,3 +29,32 @@
 <% end %>
 
 <%= link_to "New Company", new_company_path %>
+<br>
+<br>
+
+<h3>Consulta de preços</h3>
+<div class="form w-50 p-3">
+  <%= form_with url: price_queries_path, method: :get do |f| %>
+    <div class="row">
+      <%= f.label :height, 'Package Height' %>
+      <%= f.number_field :height, :step => "0.01" %>
+    </div>
+    <div class="row">
+      <%= f.label :width, 'Package Width' %>
+      <%= f.number_field :width, :step => "0.01"  %>
+    </div>
+    <div class="row">
+      <%= f.label :depth, 'Package Depth' %>
+      <%= f.number_field :depth, :step => "0.01"  %>
+    </div>
+    <div class="row">
+      <%= f.label :weight, 'Package Weight' %>
+      <%= f.number_field :weight, :step => "0.01"  %>
+    </div>
+    <div class="row">
+      <%= f.label :distance, 'Distance' %>
+      <%= f.number_field :distance, :step => "0.01"  %>
+    </div>
+    <%= f.submit 'Consult Prices' %>
+  <% end %>
+</div>

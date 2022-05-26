@@ -9,7 +9,8 @@
     <th>Origin City</th>
     <th>Destination Address</th>
     <th>Destination City</th>
-    <th>Action</th>
+    <th>Responsible Vehicle</th>
+    <th>Review</th>
   </tr>
   </thead>
   <tbody>
@@ -20,7 +21,8 @@
       <td><%= @origin_address.city %></td>
       <td><%= @destination_address.full_address %></td>
       <td><%= @destination_address.city %></td>
-      <td>Change Status</td>
+      <td> <%= @vehicle.model %> | <%= @vehicle.license_plate %></td>
+      <td> <%= link_to 'Review', edit_company_service_order_path %></td>
     </tr>
 
   </tbody>
