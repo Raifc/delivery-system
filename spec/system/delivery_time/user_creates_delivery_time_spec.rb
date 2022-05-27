@@ -1,14 +1,21 @@
 require 'rails_helper'
 
 describe 'User creates delivery times' do
-  it 'should create a new delivery time' do
-    address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
-    email_domain = EmailDomain.new(domain: 'alfa@alfa.com')
-    Company.create!(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: address, email_domain: email_domain, status: 'Active')
 
-    visit('companies')
-    click_on 'Show this company'
-    click_on 'Delivery Time'
+  let!(:company) {
+    @address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
+    Company.create!(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: @address, email_domain: 'alfa.com')
+  }
+  let!(:user) { User.create!(email: 'user@alfa.com', password: '123456') }
+
+  before(:each) do
+    login_as user, scope: :user
+  end
+
+  it 'should create a new delivery time' do
+    visit company_path(user.company)
+
+    click_on 'Delivery Times'
     click_on 'New Delivery Time'
     expect(current_path).to eq '/companies/1/delivery_times/new'
     fill_in 'Min distance', with: '30'
@@ -29,12 +36,8 @@ describe 'User creates delivery times' do
   end
 
   it 'should not create a new delivery time with empty business days' do
-    address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
-    email_domain = EmailDomain.new(domain: 'alfa@alfa.com')
-    Company.create!(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: address, email_domain: email_domain, status: 'Active')
+    visit company_path(user.company)
 
-    visit('companies')
-    click_on 'Show this company'
     click_on 'Delivery Time'
     click_on 'New Delivery Time'
     expect(current_path).to eq '/companies/1/delivery_times/new'
@@ -48,3 +51,4 @@ describe 'User creates delivery times' do
   end
 
 end
+

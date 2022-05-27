@@ -1,5 +1,6 @@
 class RouteUpdatesController < ApplicationController
   before_action :set_route_update, only: [:show]
+  before_action :authenticate_user!
 
   def index
     @company = Company.find(params[:company_id])

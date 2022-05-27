@@ -1,5 +1,6 @@
 class PricesController < ApplicationController
   before_action :set_price, only: %i[show edit update destroy]
+  before_action :authenticate_user!
 
   def index
     @company = Company.find(params[:company_id])

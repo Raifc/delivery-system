@@ -1,14 +1,19 @@
 require 'rails_helper'
 
 describe 'User edits a vehicle - ' do
+  let!(:company) {
+    @address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
+    Company.create!(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: @address, email_domain: 'alfa.com')
+  }
+  let!(:user) { User.create!(email: 'user@alfa.com', password: '123456') }
+
+  before(:each) do
+    login_as user, scope: :user
+  end
   it 'should edit a vehicle successfully' do
-    address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
-    email_domain = EmailDomain.new(domain: 'alfa@alfa.com')
-    company = Company.create!(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: address, email_domain: email_domain, status: 'Active')
     Vehicle.create!(license_plate: 'EJK2098', brand: 'Volkswagen', model: 'Cargo', year: '2022', load_capacity: '2000', company: company)
 
-    visit('companies')
-    click_on 'Show this company'
+    visit company_path(user.company)
     click_on 'Vehicles'
     click_on 'Show this vehicle'
     click_on 'Edit this vehicle'
@@ -40,13 +45,9 @@ describe 'User edits a vehicle - ' do
   end
 
   it 'should not update vehicle with an empty license plate' do
-    address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
-    email_domain = EmailDomain.new(domain: 'alfa@alfa.com')
-    company = Company.create!(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: address, email_domain: email_domain, status: 'Active')
     Vehicle.create!(license_plate: 'EJK2098', brand: 'Volkswagen', model: 'Cargo', year: '2022', load_capacity: '2000', company: company)
 
-    visit('companies')
-    click_on 'Show this company'
+    visit company_path(user.company)
     click_on 'Vehicles'
     click_on 'Show this vehicle'
     click_on 'Edit this vehicle'

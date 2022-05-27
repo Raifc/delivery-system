@@ -20,11 +20,11 @@
   </tbody>
 </table>
 
-  <% if @service_orders.empty? %>
-    <p>No Service Orders yet!</p>
-  <% end %>
+<% if @service_orders.empty? %>
+  <p>No Service Orders yet!</p>
+<% end %>
 
 <% if admin_signed_in? %>
-<%= link_to "New Service Order", new_company_service_order_path %>
+  <%= link_to "New Service Order", new_company_service_order_path %>
 <% end %>
 <%= link_to "Back to Companies", company_path(@company) %>

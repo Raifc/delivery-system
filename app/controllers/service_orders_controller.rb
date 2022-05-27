@@ -1,6 +1,7 @@
 class ServiceOrdersController < ApplicationController
   before_action :set_service_order, only: %i[edit update]
   before_action :authenticate_admin!, only: [:new]
+  before_action :authenticate_user_or_admin, only: %i[show edit update index]
 
   def index
     @company = Company.find(params[:company_id])
@@ -50,8 +51,12 @@ class ServiceOrdersController < ApplicationController
   def search
     @code = params[:query]
     @service_order = ServiceOrder.find_by(code: @code)
-    @origin_address = Address.find_by(id: @service_order.origin_address_id)
-    @destination_address = Address.find_by(id: @service_order.destination_address_id)
+    if @service_order.present?
+      @origin_address = Address.find_by(id: @service_order.origin_address_id)
+      @destination_address = Address.find_by(id: @service_order.destination_address_id)
+    else
+      redirect_to root_path, notice: 'Not found'
+    end
   end
 
   def update
@@ -85,8 +90,8 @@ class ServiceOrdersController < ApplicationController
 
   def service_order_params
     params.require(:service_order).permit(:company_id, :code, :status, :product_id, :vehicle_id,
-                                          origin_address: [:id, :full_address, :city, :state, :addressable_type],
-                                          destination_address: [:id, :full_address, :city, :state, :addressable_type])
+                                          origin_address: %i[id full_address city state addressable_type],
+                                          destination_address: %i[id full_address city state addressable_type])
   end
 
 end

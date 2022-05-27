@@ -1,10 +1,18 @@
 require 'rails_helper'
 
 describe 'admin creates a new service order' do
+
+  let!(:company) {
+    @address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
+    Company.create!(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: @address, email_domain: 'alfa.com')
+  }
+  let!(:admin) { Admin.create!(email: 'admin@sistemadefrete.com.br', password: '123456') }
+
+  before(:each) do
+    login_as admin, scope: :admin
+  end
+
   it 'successfully' do
-    address = Address.new(full_address: 'Rua São Paulo', city: 'São Paulo', state: 'SP')
-    email_domain = EmailDomain.new(domain: '@rodotransportes.com.br')
-    Company.create!(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: address, email_domain: email_domain, status: 'Active')
     Product.create!(code: 'SKAUV15', height: 3, width: 55, depth: 12, weight: 24)
 
     visit('companies')

@@ -7,7 +7,7 @@ class Company < ApplicationRecord
   has_many :users
 
   validates :email_domain, format: { with: /\A[a-z0-9]+\.[a-z]+(.[a-z]+)?\z/i }
-  validates :corporate_name, :trading_name, :registration_number, presence: true
+  validates :corporate_name, :trading_name, :registration_number, :address, presence: true
   validates :corporate_name, :registration_number, uniqueness: true
   accepts_nested_attributes_for :address
 

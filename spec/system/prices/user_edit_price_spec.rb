@@ -1,14 +1,20 @@
 require 'rails_helper'
 
 describe 'User edits prices - ' do
-  it 'should edit a price successfully' do
-    address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
-    email_domain = EmailDomain.new(domain: 'alfa@alfa.com')
-    company = Company.new(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: address, email_domain: email_domain, status: 'Active')
-    Price.create!(min_volume: 1, max_volume: 3, min_weight: 1, max_weight: 10, km_value: 1, company: company)
+  let!(:company) {
+    @address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
+    Company.create!(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: @address, email_domain: 'alfa.com')
+  }
+  let!(:user) { User.create!(email: 'user@alfa.com', password: '123456') }
 
-    visit('companies')
-    click_on 'Show this company'
+  before(:each) do
+    login_as user, scope: :user
+  end
+
+  it 'should edit a price successfully' do
+    Price.create!(min_volume: 1, max_volume: 3, min_weight: 1, max_weight: 10, km_value: 1, company: company)
+    visit company_path(user.company)
+
     click_on 'Prices'
     click_on 'Show this price'
     click_on 'Edit this price'
@@ -38,13 +44,9 @@ describe 'User edits prices - ' do
   end
 
   it 'should not update price with empty maximum weight' do
-    address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
-    email_domain = EmailDomain.new(domain: 'alfa@alfa.com')
-    company = Company.new(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: address, email_domain: email_domain, status: 'Active')
     Price.create!(min_volume: 1, max_volume: 3, min_weight: 1, max_weight: 10, km_value: 1, company: company)
 
-    visit('companies')
-    click_on 'Show this company'
+    visit company_path(user.company)
     click_on 'Prices'
     click_on 'Show this price'
     click_on 'Edit this price'

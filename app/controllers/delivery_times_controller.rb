@@ -1,6 +1,6 @@
 class DeliveryTimesController < ApplicationController
   before_action :set_delivery_time, only: %i[show edit update destroy]
-  #before_action :set_company, only: %i[show edit update destroy]
+  before_action :authenticate_user!
 
   def index
     @company = Company.find(params[:company_id])
@@ -42,10 +42,6 @@ class DeliveryTimesController < ApplicationController
 
   def set_delivery_time
     @delivery_time = DeliveryTime.find(params[:id])
-  end
-
-  def set_company
-    @company = Company.find(params[:company_id])
   end
 
   def delivery_time_params

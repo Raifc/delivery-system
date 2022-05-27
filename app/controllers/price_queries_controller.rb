@@ -1,4 +1,5 @@
 class PriceQueriesController < ApplicationController
+  before_action :authenticate_admin!
 
 =begin
   def set_values

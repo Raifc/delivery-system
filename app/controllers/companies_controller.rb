@@ -1,5 +1,4 @@
 class CompaniesController < ApplicationController
-
   before_action :authenticate_user_or_admin, only: [:show]
   before_action :authenticate_admin!, only: %i[index new edit update]
   before_action :set_company, only: %i[show edit update]

@@ -1,14 +1,21 @@
 require 'rails_helper'
 
 describe 'User edits delivery time - ' do
+
+  let!(:company) {
+    @address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
+    Company.create!(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: @address, email_domain: 'alfa.com')
+  }
+  let!(:user) { User.create!(email: 'user@alfa.com', password: '123456') }
+
+  before(:each) do
+    login_as user, scope: :user
+  end
+
   it 'should update delivery time' do
-    address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
-    email_domain = EmailDomain.new(domain: 'alfa@alfa.com')
-    company = Company.new(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: address, email_domain: email_domain, status: 'Active')
     DeliveryTime.create!(min_distance: '30', max_distance: '50', business_days: '4', company: company)
 
-    visit('companies')
-    click_on 'Show this company'
+    visit company_path(user.company)
     click_on 'Delivery Time'
     click_on 'Show this delivery time'
     click_on 'Edit this delivery time'
@@ -30,13 +37,9 @@ describe 'User edits delivery time - ' do
   end
 
   it 'should update delivery time with empty maximum distance' do
-    address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
-    email_domain = EmailDomain.new(domain: 'alfa@alfa.com')
-    company = Company.new(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: address, email_domain: email_domain, status: 'Active')
     DeliveryTime.create!(min_distance: '30', max_distance: '50', business_days: '4', company: company)
 
-    visit('companies')
-    click_on 'Show this company'
+    visit company_path(user.company)
     click_on 'Delivery Time'
     click_on 'Show this delivery time'
     click_on 'Edit this delivery time'

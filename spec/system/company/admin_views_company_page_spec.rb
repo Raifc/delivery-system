@@ -1,19 +1,29 @@
 require 'rails_helper'
 
 describe 'Admin visits companies page' do
+
+  it 'without login' do
+    visit new_company_path
+    expect(current_path).to eq new_admin_session_path
+    expect(page).to have_content 'You need to sign in or sign up before continuing.'
+  end
+
   it 'and see Companies header' do
+    admin = Admin.create!(email: 'admin@sistemadefrete.com.br', password: '123456')
+    login_as admin, scope: :admin
     visit('companies')
     expect(page).to have_content('Companies')
   end
 
   it 'and see created companies' do
-    first_address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
-    first_email_domain = EmailDomain.new(domain: 'alfa@alfa.com')
-    Company.create!(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: first_address, email_domain: first_email_domain, status: 'Active')
+    first_address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'NY')
+    Company.create!(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: first_address, email_domain: 'betatransp.com', status: 'Active')
 
     second_address = Address.new(full_address: '230, 2nd street', city: 'Chicago', state: 'IL')
-    second_email_domain = EmailDomain.new(domain: '@chicago_shipping.com')
-    Company.create!(corporate_name: 'Chicago', trading_name: 'Chicago Cargo', registration_number: '245798000155', address: second_address, email_domain: second_email_domain, status: 'Active')
+    Company.create!(corporate_name: 'Chicago', trading_name: 'Chicago Cargo', registration_number: '245798000155', address: second_address, email_domain: 'chicagotransp.com', status: 'Active')
+
+    admin = Admin.create!(email: 'admin@sistemadefrete.com.br', password: '123456')
+    login_as admin, scope: :admin
 
     visit('companies')
     within 'table' do
@@ -37,6 +47,9 @@ describe 'Admin visits companies page' do
   end
 
   it 'and there are no companies created' do
+    admin = Admin.create!(email: 'admin@sistemadefrete.com.br', password: '123456')
+    login_as admin, scope: :admin
+
     visit('companies')
     expect(page).to have_content('No companies yet!')
   end
