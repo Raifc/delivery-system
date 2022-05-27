@@ -15,11 +15,11 @@
     </div>
 
     <div class="row">
-      <%= f.label :vehicle_id, 'Vehicle' %>
-      <%= f.collection_select :vehicle_id, @vehicles, :id, :license_plate %> <%#PRECISA DE MELHORA URGENTE - TERMINAR DEVISE E MELHORAR %>
+      <%= f.label :vehicle_id, Vehicle.model_name.human %>
+      <%= f.collection_select :vehicle_id, @vehicles, :id, :license_plate %> <%#PRECISA DE MELHORA URGENTE - TERMINAR i18n E MELHORAR %>
     </div>
 
-<%= f.submit 'Submit' %>
+<%= f.submit 'Atualizar' %>
   </div>
 <% end %>
-<p> <%= link_to "Back to Service Orders", company_service_orders_path %> </p>
+<p> <%= link_to "Voltar", company_service_orders_path %> </p>

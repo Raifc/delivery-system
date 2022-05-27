@@ -1,37 +1,33 @@
-<div>
+<div class="d-flex justify-content-center">
+
   <p>
-    <strong>Product Code</strong>
-    <%= product.code %>
+    <strong><%= Product.human_attribute_name(:code) %>: </strong>
+    <%= product.code %> ||
   </p>
 
   <p>
-    <strong>Product Code</strong>
-    <%= product.code %>
+    <strong><%= Product.human_attribute_name(:height) %>: </strong>
+    <%= product.height %> cm ||
   </p>
 
   <p>
-    <strong>Height</strong>
-    <%= product.height %>
+    <strong><%= Product.human_attribute_name(:width) %>: </strong>
+    <%= product.width %> cm ||
   </p>
 
   <p>
-    <strong>Width</strong>
-    <%= product.width %>
+    <strong><%= Product.human_attribute_name(:depth) %>: </strong>
+    <%= product.depth %> cm ||
   </p>
 
   <p>
-    <strong>Depth</strong>
-    <%= product.depth %>
+    <strong><%= Product.human_attribute_name(:weight) %>: </strong>
+    <%= product.weight %> g ||
   </p>
 
   <p>
-    <strong>Weight</strong>
-    <%= product.weight %>
-  </p>
-
-  <p>
-    <strong>Volume</strong>
-    <%= product.volume %>
+    <strong><%= Product.human_attribute_name(:volume) %>: </strong>
+    <%= product.volume %> cm³
   </p>
 
 </div>

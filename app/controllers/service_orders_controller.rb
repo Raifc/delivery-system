@@ -28,9 +28,9 @@ class ServiceOrdersController < ApplicationController
     @service_order.company = @company
 
     if @service_order.save
-      redirect_to company_service_orders_path(@service_order.company_id), notice: 'Service Order successfully created'
+      redirect_to company_service_orders_path(@service_order.company_id), notice: 'Ordem de serviço criada com sucesso!'
     else
-      flash.now[:notice] = 'Service Order not created'
+      flash.now[:notice] = 'Falha ao criar ordem de serviço'
       render 'new'
     end
 
@@ -55,32 +55,21 @@ class ServiceOrdersController < ApplicationController
       @origin_address = Address.find_by(id: @service_order.origin_address_id)
       @destination_address = Address.find_by(id: @service_order.destination_address_id)
     else
-      redirect_to root_path, notice: 'Not found'
+      redirect_to root_path, notice: 'Não encontrado'
     end
   end
 
   def update
     if @service_order.update(service_order_params)
-      redirect_to company_service_orders_path(@service_order.company_id), notice: 'Service Order Sucessfully Updated'
+      redirect_to company_service_orders_path(@service_order.company_id), notice: 'Ordem de serviço atualizada com sucesso!'
     else
-      flash.now[:notice] = 'Service Order not updated'
+      flash.now[:notice] = 'Falha ao atualizar ordem de serviço'
       @products = Product.all
       @company = Company.find(params[:company_id])
       @vehicles = @company.vehicles.all
       render 'edit'
     end
   end
-
-=begin
-  def service_order_review
-    @company = Company.find(params[:company_id])
-    @service_order = @company.service_orders.find(params[:service_order_id])
-    @vehicles = @company.vehicles.all
-    @service_order.vehicle_id = params[:vehicle_id]
-    @service_order.status = params[:status]
-    @service_order.save
-  end
-=end
 
   private
 

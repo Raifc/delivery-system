@@ -1,18 +1,6 @@
 class PriceQueriesController < ApplicationController
   before_action :authenticate_admin!
 
-=begin
-  def set_values
-    params = calculate_prices_params
-    height = params.fetch('height')
-    width = params.fetch('width')
-    depth = params.fetch('depth')
-    @weight = params.fetch('weight')
-    @distance = params.fetch('distance')
-    @volume = height * width * depth
-  end
-=end
-
   def calculate_prices
 
     height = params.fetch(:height).to_i

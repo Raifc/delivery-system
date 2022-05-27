@@ -18,18 +18,18 @@ class DeliveryTimesController < ApplicationController
     @delivery_time.company = @company
 
     if @delivery_time.save
-      redirect_to company_delivery_times_path(@delivery_time.company_id), notice: 'Delivery Time successfully created'
+      redirect_to company_delivery_times_path(@delivery_time.company_id), notice: 'Tempo de entrega criado!'
     else
-      flash.now[:notice] = 'Delivery Time not created'
+      flash.now[:notice] = 'Falha ao criar novo tempo de entrega'
       render 'new'
     end
   end
 
   def update
     if @delivery_time.update(delivery_time_params)
-      redirect_to company_delivery_times_path(@delivery_time.company_id), notice: 'Delivery time successfully updated'
+      redirect_to company_delivery_times_path(@delivery_time.company_id), notice: 'Tempo de entrega atualizado!'
     else
-      flash.now[:notice] = 'Delivery time not updated'
+      flash.now[:notice] = 'Falha ao atualizar tempo de entrega!'
       render 'edit'
     end
   end

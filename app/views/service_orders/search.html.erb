@@ -1,12 +1,12 @@
-<h1>Tracking Results for: <%= @code %></h1>
+<h1>Resultados para: <%= @code %></h1>
 
 <% if @service_order.present? %>
-  <h3> Origin City: <%= @origin_address.city %> | Destination City: <%= @destination_address.city %> </h3>
+  <h3> Cidade de origem: <%= @origin_address.city %> | Cidade de destino: <%= @destination_address.city %> </h3>
   <table class="table">
     <thead>
     <tr>
-      <th>Date</th>
-      <th>City</th>
+      <th>Data</th>
+      <th>Cidade</th>
     </tr>
     </thead>
     <tbody>
@@ -20,5 +20,5 @@
   </table>
 
 <% else %>
-  <p>Not found</p>
+  <p>Não encontrado!</p>
 <% end %>

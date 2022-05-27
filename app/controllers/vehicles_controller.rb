@@ -18,9 +18,9 @@ class VehiclesController < ApplicationController
     @vehicle.company = @company
 
     if @vehicle.save
-      redirect_to company_vehicles_path(@vehicle.company_id), notice: 'Vehicle successfully created'
+      redirect_to company_vehicles_path(@vehicle.company_id), notice: 'Veículo criado com sucesso!'
     else
-      flash.now[:notice] = 'Vehicle not created'
+      flash.now[:notice] = 'Falha ao criar veículo!'
       render 'new'
     end
   end
@@ -31,16 +31,16 @@ class VehiclesController < ApplicationController
 
   def update
     if @vehicle.update(vehicle_params)
-      redirect_to company_vehicles_path(@vehicle.company_id), notice: 'Vehicle successfully updated'
+      redirect_to company_vehicles_path(@vehicle.company_id), notice: 'Veículo atualizado com sucesso!'
     else
-      flash.now[:notice] = 'Vehicle not updated'
+      flash.now[:notice] = 'Falha ao atualizar veículo!'
       render 'edit'
     end
   end
 
   def destroy
     @vehicle.destroy
-    redirect_to root_path, notice: 'Vehicle successfully deleted'
+    redirect_to root_path, notice: 'Veículo excluído com sucesso!'
   end
 
   private

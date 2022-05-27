@@ -1,0 +1,64 @@
+pt-BR:
+  activerecord:
+    models:
+      address: 'Endereço'
+      company:
+        one: "Transportadora"
+        other: "Transportadoras"
+      delivery_time: 'Tempo de Entrega'
+      price: 'Preço'
+      product: 'Produto'
+      route_update: 'Atualização de rota'
+      service_order: 'Ordem de serviço'
+      vehicle:
+        one: "Veículo"
+        other: "Veículos"
+    attributes:
+      address:
+        full_address: "Endereço completo"
+        city: "Cidade"
+        state: "Estado"
+      company:
+        corporate_name: "Razão Social"
+        trading_name: "Nome Fantasia"
+        registration_number: "CNPJ"
+        email_domain: "Domínio de E-mail"
+      delivery_time:
+        min_distance: "Distância mínima"
+        max_distance: "Distância máxima"
+        business_days: "Dias úteis"
+      price:
+        min_volume: "Volume mínimo"
+        max_volume: "Volume máximo"
+        min_weight: "Peso mínimo"
+        max_weight: "Peso máximo"
+        km_value: "Valor por km"
+      product:
+        code: "Código"
+        height: "Altura"
+        width: "Largura"
+        depth: "Profundidade"
+        weight: "Peso"
+      route_update:
+        city: "Cidade"
+        time: "Data e Hora"
+      service_order:
+        code: "Código"
+        status: "Status"
+        city: "Cidade"
+        product_id: "Código do produto"
+        state: "Estado"
+      vehicle:
+        license_plate: "Placa"
+        brand: "Fabricante"
+        model: "Modelo"
+        year: "Ano"
+        load_capacity: "Capacidade de carga"
+      service_order/origin_address:
+        origin_address: "Endereço de origem"
+        origin_city: "Cidade de origem"
+        origin_state: "Estado de origem"
+      service_order/destination_address:
+        destination_address: "Endereço de destino"
+        destination_city: "Cidade de destino"
+        destination_state: "Estado de destino"

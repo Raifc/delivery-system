@@ -1,21 +1,17 @@
-<div>
+<div class="d-flex justify-content-center">
   <p>
-    <strong>Corporate Name</strong>
-    <%= company.corporate_name %>
-  </p>
+    <strong><%= Company.human_attribute_name(:corporate_name) %>: </strong>
+    <%= company.corporate_name %> ||
 
-  <p>
-    <strong>Trading Name</strong>
-    <%= company.trading_name %>
-  </p>
+    <strong><%= Company.human_attribute_name(:trading_name) %> - </strong>
+    <%= company.trading_name %>  ||
 
-  <p>
-    <strong>Registration Number</strong>
-    <%= company.registration_number %>
-  </p>
 
-  <p>
-    <strong>Status</strong>
+    <strong><%= Company.human_attribute_name(:registration_number) %> - </strong>
+    <%= company.registration_number %>  ||
+
+
+    <strong><%= Company.human_attribute_name(:status) %></strong>
     <%= company.status %>
   </p>
 

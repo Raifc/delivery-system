@@ -15,9 +15,9 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if @company.save
-      redirect_to @company, notice: 'Company successfully created'
+      redirect_to @company, notice: 'Transportadora criada com sucesso!'
     else
-      flash.now[:notice] = 'Company not created'
+      flash.now[:notice] = 'Falha ao criar transportadora'
       render 'new'
     end
   end
@@ -28,9 +28,9 @@ class CompaniesController < ApplicationController
 
   def update
     if @company.update(company_params)
-      redirect_to company_path(@company.id), notice: 'Company successfully updated'
+      redirect_to company_path(@company.id), notice: 'Transportadora atualizada com sucesso!'
     else
-      flash.now[:notice] = 'Company not updated'
+      flash.now[:notice] = 'Falha ao atualizar transportadora'
       render 'edit'
     end
   end

@@ -1,56 +1,50 @@
-<% if @service_order.errors.any? %>
-  <p>Please check the errors below</p>
-  <ul>
-    <% @service_order.errors.full_messages.each do |msg| %>
-      <li id='new_errors'><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
-
 <%= form_with model: [:company, @service_order] do |f| %>
   <div class="form w-50 p-3">
 
     <%= f.fields_for :origin_address do |origin_address_form| %>
       <div class="row">
-        <%= origin_address_form.label :full_address, 'Endereço de origem' %>
+        <p><%= @service_order.errors.full_messages_for(:full_address).to_sentence if @service_order.errors %></p>
+        <%= origin_address_form.label :full_address, ServiceOrder.human_attribute_name("origin_address.origin_address") %>
         <%= origin_address_form.text_field :full_address %>
       </div>
 
       <div class="row">
-        <%= origin_address_form.label :city, 'Cidade de Origem' %>
+        <p><%= @service_order.errors.full_messages_for(:city).to_sentence if @service_order.errors %></p>
+        <%= origin_address_form.label :city, ServiceOrder.human_attribute_name("origin_address.origin_city") %>
         <%= origin_address_form.text_field :city %>
       </div>
 
       <div class="row">
-        <%= origin_address_form.label :state, 'Estado de Origem' %>
+        <p><%= @service_order.errors.full_messages_for(:state).to_sentence if @service_order.errors %></p>
+        <%= origin_address_form.label :state, ServiceOrder.human_attribute_name("origin_address.origin_state") %>
         <%= origin_address_form.text_field :state %>
       </div>
     <% end %>
 
     <%= f.fields_for :destination_address do |destination_address_form| %>
       <div class="row">
-        <%= destination_address_form.label :full_address, 'Endereço de Destino' %>
+        <%= destination_address_form.label :full_address, ServiceOrder.human_attribute_name("destination_address.destination_address") %>
         <%= destination_address_form.text_field :full_address %>
       </div>
 
       <div class="row">
-        <%= destination_address_form.label :city, 'Cidade de Destino' %>
+        <%= destination_address_form.label :city, ServiceOrder.human_attribute_name("destination_address.destination_city") %>
         <%= destination_address_form.text_field :city %>
       </div>
 
       <div class="row">
-        <%= destination_address_form.label :state, 'Estado de Destino' %>
+        <%= destination_address_form.label :state, ServiceOrder.human_attribute_name("destination_address.destination_state") %>
         <%= destination_address_form.text_field :state %>
       </div>
     <% end %>
 
     <div class="row">
-      <%= f.label :product_id, 'Product Code' %>
+      <p><%= @service_order.errors.full_messages_for(:product_id).to_sentence if @service_order.errors %></p>
+      <%= f.label :product_id %>
       <%= f.collection_select :product_id, @products, :id, :code %>
     </div>
   </div>
-  <%= f.submit 'Submit' %>
+  <%= f.submit %>
 
 <% end %>
 
-<p> <%= link_to "Back to Service Orders", company_service_orders_path %> </p>

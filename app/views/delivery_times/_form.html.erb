@@ -1,31 +1,25 @@
-<% if (@delivery_time.errors.any?) %>
-  <p>Please check the errors below</p>
-  <ul>
-    <% @delivery_time.errors.full_messages.each do |msg| %>
-      <li id='new_errors'><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-
 <%= form_with model: [:company, @delivery_time] do |f| %>
   <div class="form w-50 p-3">
 
     <div class="row">
+      <p><%= @delivery_time.errors.full_messages_for(:min_distance).to_sentence if @delivery_time.errors %></p>
       <%= f.label :min_distance %>
       <%= f.text_field :min_distance %>
     </div>
 
     <div class="row">
+      <p><%= @delivery_time.errors.full_messages_for(:max_distance).to_sentence if @delivery_time.errors %></p>
       <%= f.label :max_distance %>
       <%= f.text_field :max_distance %>
     </div>
 
     <div class="row">
+      <p><%= @delivery_time.errors.full_messages_for(:business_days).to_sentence if @delivery_time.errors %></p>
       <%= f.label :business_days %>
       <%= f.text_field :business_days %>
     </div>
+
   </div>
-  <%= f.submit 'Submit' %>
+  <%= f.submit %>
 
 <% end %>

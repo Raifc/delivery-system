@@ -1,11 +1,11 @@
-<h1>Service Orders</h1>
+<h1 class="text-center"> <%= ServiceOrder.model_name.human %> </h1>
 
 <table class="table">
   <thead>
   <tr>
-    <th>Code</th>
-    <th>Status</th>
-    <th>Action</th>
+    <th> <%= ServiceOrder.human_attribute_name(:code) %> </th>
+    <th><%= ServiceOrder.human_attribute_name(:status) %> </th>
+    <th>Ação</th>
   </tr>
   </thead>
 
@@ -14,17 +14,19 @@
     <tr>
       <td><%= service_order.code %></td>
       <td><%= service_order.status %></td>
-      <td><%= link_to "Show this Service Order", company_service_order_path(@company, service_order) %></td>
+      <td><%= link_to "Ver", company_service_order_path(@company, service_order) %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
-<% if @service_orders.empty? %>
-  <p>No Service Orders yet!</p>
-<% end %>
+<div class="d-flex justify-content-center">
+  <% if @service_orders.empty? %>
+    <p>Nenhuma ordem de serviço!</p>
+  <% end %>
 
-<% if admin_signed_in? %>
-  <%= link_to "New Service Order", new_company_service_order_path %>
-<% end %>
-<%= link_to "Back to Companies", company_path(@company) %>
+  <% if admin_signed_in? %>
+    <%= link_to "Nova ordem de serviço", new_company_service_order_path %> ||
+  <% end %>
+  <%= link_to "Voltar", company_path(@company) %>
+</div>

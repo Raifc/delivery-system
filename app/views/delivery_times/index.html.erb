@@ -1,28 +1,29 @@
-<h1>Delivery Times</h1>
+<h1 class="text-center"> <%= DeliveryTime.model_name.human %> </h1>
 
 <table class="table">
   <thead>
   <tr>
-    <th>Min Distance</th>
-    <th>Max Distance</th>
-    <th>Delivery Time - Business Days</th>
-    <th>Action</th>
+    <th> <%= DeliveryTime.human_attribute_name(:min_distance) %> </th>
+    <th> <%= DeliveryTime.human_attribute_name(:max_distance) %> </th>
+    <th> <%= DeliveryTime.human_attribute_name(:business_days) %> </th>
+    <th> Ação </th>
   </tr>
   </thead>
+
   <tbody>
   <% @delivery_times.each do |delivery_time| %>
     <tr>
       <td><%= delivery_time.min_distance %></td>
       <td><%= delivery_time.max_distance %></td>
       <td><%= delivery_time.business_days %></td>
-      <td><%= link_to "Show this delivery time", company_delivery_time_path(@company, delivery_time) %></td>
+      <td><%= link_to "Mostrar", company_delivery_time_path(@company, delivery_time) %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <% if @delivery_times.empty? %>
-  <p>No delivery times yet!</p>
+  <p> Nenhum tempo de entrega cadastrado! </p>
 <% end %>
 
-<%= link_to "New Delivery Time", new_company_delivery_time_path %>
+<%= link_to "Novo Tempo de entrega", new_company_delivery_time_path %>

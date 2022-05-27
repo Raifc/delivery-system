@@ -1,8 +1,8 @@
-<h1> Vehicle <%= @vehicle.license_plate %></h1>
+<h1 class="text-center"> Veículo <%= @vehicle.license_plate %></h1>
 
 <%= render @vehicle %>
 
-<div>
-  <%= link_to "Edit this vehicle", edit_company_vehicle_path(@vehicle) %> |
-  <%= link_to "Back to vehicles", company_vehicles_path %>
+<div class="d-flex justify-content-center">
+  <%= link_to "Editar veículo", edit_company_vehicle_path(@vehicle) %> |
+  <%= link_to "Voltar", company_vehicles_path %>
 </div>

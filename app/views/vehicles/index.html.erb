@@ -1,14 +1,14 @@
-<h1>Vehicles</h1>
+<h1 class="text-center"> <%= Vehicle.model_name.human %> </h1>
 
 <table class="table">
   <thead>
   <tr>
-    <th>Model</th>
-    <th>Brand</th>
-    <th>Year</th>
-    <th>Load Capacity</th>
-    <th>License Plate</th>
-    <th>Action</th>
+    <th><%= Vehicle.human_attribute_name(:model) %></th>
+    <th><%= Vehicle.human_attribute_name(:brand) %></th>
+    <th><%= Vehicle.human_attribute_name(:year) %></th>
+    <th><%= Vehicle.human_attribute_name(:load_capacity) %></th>
+    <th><%= Vehicle.human_attribute_name(:license_plate) %></th>
+    <th>Ação</th>
   </tr>
   </thead>
 
@@ -20,14 +20,14 @@
       <td><%= vehicle.year %></td>
       <td><%= vehicle.load_capacity %></td>
       <td><%= vehicle.license_plate %></td>
-      <td><%= link_to "Show this vehicle", company_vehicle_path(@company, vehicle) %></td>
+      <td><%= link_to "Ver", company_vehicle_path(@company, vehicle) %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <% if @vehicles.empty? %>
-  <p>No vehicles yet!</p>
+  <p>Nenhum veículo cadastrado!</p>
 <% end %>
 
-<%= link_to "New Vehicle", new_company_vehicle_path %>
+<%= link_to "Novo veículo", new_company_vehicle_path %>

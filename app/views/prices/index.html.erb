@@ -1,31 +1,32 @@
-<h1>Prices</h1>
-
+<h1 class="text-center"> <%= Price.model_name.human %> </h1>
 <table class="table">
   <thead>
   <tr>
-    <th>Min Volume</th>
-    <th>Max Volume</th>
-    <th>Min Weight</th>
-    <th>Max Weight</th>
-    <th>Value for km</th>
-    <th>Action</th>
+    <th> <%= Price.human_attribute_name(:min_volume) %> </th>
+    <th> <%= Price.human_attribute_name(:max_volume) %> </th>
+    <th> <%= Price.human_attribute_name(:min_weight) %> </th>
+    <th> <%= Price.human_attribute_name(:max_weight) %> </th>
+    <th> <%= Price.human_attribute_name(:km_value) %> </th>
+    <th>Ação</th>
   </tr>
   </thead>
   <tbody>
   <% @prices.each do |price| %>
-  <tr>
-    <td><%= price.min_volume %></td>
-    <td><%= price.max_volume %></td>
-    <td><%= price.min_weight %></td>
-    <td><%= price.max_weight %></td>
-    <td><%= price.km_value %></td>
-    <td> <%= link_to "Show this price", company_price_path(@company, price) %> </td>
-  </tr>
+    <tr>
+      <td> <%= price.min_volume %>cm³</td>
+      <td> <%= price.max_volume %>cm³</td>
+      <td> <%= price.min_weight %>g</td>
+      <td> <%= price.max_weight %>g</td>
+      <td> R$<%= price.km_value / 100 %> </td>
+      <td> <%= link_to "Ver", company_price_path(@company, price) %> </td>
+    </tr>
   <% end %>
   </tbody>
 </table>
 
 <% if @prices.empty? %>
-  <p>No prices yet!</p>
+  <p>Nenhum preço cadastrado!</p>
 <% end %>
-<%= link_to "New Price", new_company_price_path %>
+<div class="d-flex justify-content-center">
+  <%= link_to "Novo preço", new_company_price_path %>
+</div>

@@ -1,16 +1,18 @@
-<h1>Products</h1>
+<h1 class="text-center"> <%= Product.model_name.human %> </h1>
 
-<div>
+<div class="d-flex justify-content-center">
   <% @products.each do |product| %>
-    <%= render product %>
+    <%= render product %> ||
     <p>
-      <%= link_to "Show this product", product %>
+      <%= link_to "Ver", product %>
     </p>
   <% end %>
 </div>
 
 <% if @products.empty? %>
-  <p>No products yet!</p>
+  <p> Nenhum produto cadastrado! </p>
 <% end %>
 
-<%= link_to "New Product", new_product_path %>
+<div class="d-flex justify-content-center">
+<%= link_to "Novo Produto", new_product_path %>
+</div>

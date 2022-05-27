@@ -1,8 +1,8 @@
-<h1> Delivery time for distance:  <%= @delivery_time.min_distance %> to <%= @delivery_time.max_distance %></h1>
+<h1 class="text-center"> Tempo de entrega para distâncias:  <%= @delivery_time.min_distance %> KM até <%= @delivery_time.max_distance %> KM</h1>
 
 <%= render @delivery_time %>
 
-<div>
-  <%= link_to "Edit this delivery time", edit_company_delivery_time_path(@delivery_time.company_id, @delivery_time.id) %> |
-  <%= link_to "Back to delivery times", company_delivery_times_path %>
+<div class="d-flex justify-content-center">
+  <%= link_to "Editar", edit_company_delivery_time_path(@delivery_time.company_id, @delivery_time.id) %> ||
+  <%= link_to "Voltar", company_delivery_times_path %>
 </div>

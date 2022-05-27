@@ -10,19 +10,38 @@
 </head>
 
 <body>
-<h1 align="center">Delivery System</h1>
-<strong><%= link_to 'Home', root_path %></strong>
+<h1 class="text-center">Delivery System </h1>
+<h2 class="text-center"> Boas Vindas! </h2>
+<p class="text-center"> Don't believe the hype. Just code. </p>
 
-<p>
-  <% if admin_signed_in? %>
-    <strong><%= link_to 'Companies', companies_path %></strong> |
-    <%= current_admin.email %> |
-    <%= button_to 'Logout', destroy_admin_session_path, method: :delete %>
+<br>
+<br>
 
-  <% elsif user_signed_in? %>
-    <p><strong> User </strong> - <%= current_user.email %>
-    <%= button_to 'Logout', destroy_user_session_path, method: :delete %> </p>
-  <% end %>
+<% if admin_signed_in? %>
+  <p class="text-center">
+    <strong><%= link_to 'Início', root_path %></strong> ||
+    <strong><%= link_to 'Transportadoras', companies_path %></strong> ||
+    <strong>Admin: </strong><%= current_admin.email %>
+  </p>
+
+  <div class="d-flex justify-content-center">
+    <%= button_to 'Sair', destroy_admin_session_path, method: :delete %>
+  </div>
+
+<% elsif user_signed_in? %>
+  <p class="text-center">
+    <strong><%= link_to 'Início', root_path %></strong> ||
+    <strong><%= link_to 'Minha transportadora', company_path(current_user.company_id) %></strong>||
+    <strong> User: </strong> - <%= current_user.email %>
+  </p>
+
+  <div class="d-flex justify-content-center">
+    <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
+  </div>
+
+<% end %>
+<br>
+<br>
 
 <div>
   <%= alert %>

@@ -1,18 +1,23 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="d-flex justify-content-center">
   <div>
     <% unless admin_signed_in? || user_signed_in? %>
-      <p><%= link_to 'Entrar (usuário)', new_user_session_path %> | <%= link_to 'Entrar (administrador)', new_admin_session_path %></p>
+      <p><%= link_to 'Login - Usuário', new_user_session_path %>
+        | <%= link_to 'Login - Administrador', new_admin_session_path %></p>
     <% end %>
   </div>
 </nav>
 
 <body>
-<h2>Search for your order!</h2>
-<div class="form">
-  <%= form_with url: search_service_orders_path, method: :get do |f| %>
-    <%= f.label :query, 'Search Order' %>
-    <%= f.text_field :query %>
-    <%= f.submit 'Search' %>
-  <% end %>
+<br>
+<h2 class = "text-center">Rastreie seu pedido!</h2>
+<div class="d-flex justify-content-center">
+  <div class="form">
+    <%= form_with url: search_service_orders_path, method: :get do |f| %>
+      <%= f.label :query, 'Buscar' %>
+      <%= f.text_field :query %>
+      <%= f.submit 'Enviar' %>
+    <% end %>
+  </div>
 </div>
+
 </body>

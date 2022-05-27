@@ -1,4 +1,4 @@
-<h1>Service Order <%= @service_order.code %> Review</h1>
+<h1 class="text-center"> <%= ServiceOrder.model_name.human @service_order.code %> </h1>
 
 <%= form_with model: @service_order do |f| %>
   <div class="row">
@@ -11,6 +11,6 @@
     <%= f.collection_select :vehicle_id, @vehicles, :id, :license_plate %> <%#fazer um método para mostrar a marca, modelo e placa do carro %>
   </div>
 
-  <%= f.submit 'Submit' %>
+  <%= f.submit 'Atualizar' %>
 <% end %>
 

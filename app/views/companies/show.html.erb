@@ -1,21 +1,23 @@
-<h1> Company <%= @company.trading_name %></h1>
+<h1 class="text-center"> <%= Company.model_name.human %> <%= @company.trading_name %></h1>
 
-<%= render @company %>
+<div class="d-flex justify-content-center">
+  <%= render @company %>
+</div>
 
-<div>
+<div class="d-flex justify-content-center">
   <% if admin_signed_in? %>
-    <%= link_to "Back to companies", companies_path %> |
-    <%= link_to "Edit this company", edit_company_path(@company) %> |
+    <%= link_to "Voltar", companies_path %> ||
+    <%= link_to "Editar transportadora", edit_company_path(@company) %> ||
   <% end %>
 
   <% if user_signed_in? %>
-    <%= link_to "Vehicles", company_vehicles_path(@company) %> |
-    <%= link_to "Prices", company_prices_path(@company) %> |
-    <%= link_to "Delivery Times", company_delivery_times_path(@company) %> |
+    <%= link_to "Veículos", company_vehicles_path(@company) %> ||
+    <%= link_to "Preços", company_prices_path(@company) %> ||
+    <%= link_to "Tempo de entrega", company_delivery_times_path(@company) %> ||
   <% end %>
 
   <% if user_signed_in? || admin_signed_in? %>
-    <%= link_to "Service Orders", company_service_orders_path(@company) %>
+    <%= link_to "Ordens de Serviço", company_service_orders_path(@company) %>
   <% end %>
 
 </div>

@@ -1,59 +1,74 @@
-<h1>Companies</h1>
+<h1 class="text-center"> <%= Company.model_name.human %> </h1>
 
 <table class="table">
   <thead>
   <tr>
-    <th>Corporate Name</th>
-    <th>Trading Name</th>
-    <th>Registration Number</th>
-    <th>Status</th>
-    <th>Action</th>
+    <th> <%= Company.human_attribute_name(:corporate_name) %> </th>
+    <th> <%= Company.human_attribute_name(:trading_name) %> </th>
+    <th> <%= Company.human_attribute_name(:registration_number) %> </th>
+    <th> <%= Company.human_attribute_name(:status) %> </th>
+    <th> Ação</th>
   </tr>
   </thead>
   <tbody>
   <% @companies.each do |company| %>
     <tr>
-      <td><%= company.corporate_name %></td>
-      <td><%= company.trading_name %></td>
-      <td><%= company.registration_number %></td>
-      <td><%= company.status %></td>
-      <td> <%= link_to "Show this company", company %></td>
+      <td> <%= company.corporate_name %> </td>
+      <td> <%= company.trading_name %> </td>
+      <td> <%= company.registration_number %> </td>
+      <td> <%= company.status %> </td>
+      <td> <%= link_to "Ver", company %> </td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <% if @companies.empty? %>
-  <p>No companies yet!</p>
+  <p> Nenhuma transportadora cadastrada! </p>
 <% end %>
 
-<%= link_to "New Company", new_company_path %>
-<br>
-<br>
+<p class="text-center">
+  <%= link_to "Nova Transportadora", new_company_path %> |
+  <%= link_to "Novo Produto", new_product_path %> </p>
 
-<h3>Consulta de preços</h3>
-<div class="form w-50 p-3">
-  <%= form_with url: price_queries_path, method: :get do |f| %>
-    <div class="row">
-      <%= f.label :height, 'Package Height' %>
-      <%= f.number_field :height, :step => "0.01" %>
-    </div>
-    <div class="row">
-      <%= f.label :width, 'Package Width' %>
-      <%= f.number_field :width, :step => "0.01"  %>
-    </div>
-    <div class="row">
-      <%= f.label :depth, 'Package Depth' %>
-      <%= f.number_field :depth, :step => "0.01"  %>
-    </div>
-    <div class="row">
-      <%= f.label :weight, 'Package Weight' %>
-      <%= f.number_field :weight, :step => "0.01"  %>
-    </div>
-    <div class="row">
-      <%= f.label :distance, 'Distance' %>
-      <%= f.number_field :distance, :step => "0.01"  %>
-    </div>
-    <%= f.submit 'Consult Prices' %>
-  <% end %>
+<br>
+<br>
+<h3 class="text-center"> Consulta de preços </h3>
+<div class="d-flex justify-content-center">
+  <div class="form w-50 p-3">
+
+    <%= form_with url: price_queries_path, method: :get do |f| %>
+
+      <div class="row">
+        <%= f.label :height, 'Altura do pacote (cm)' %>
+        <%= f.number_field :height, :step => "0.01" %>
+      </div>
+
+      <div class="row">
+        <%= f.label :width, 'Largura do pacote (cm)' %>
+        <%= f.number_field :width, :step => "0.01" %>
+      </div>
+
+      <div class="row">
+        <%= f.label :depth, 'Profundidade do pacote (cm)' %>
+        <%= f.number_field :depth, :step => "0.01" %>
+      </div>
+
+      <div class="row">
+        <%= f.label :weight, 'Peso do pacote (Gramas)' %>
+        <%= f.number_field :weight, :step => "0.01" %>
+      </div>
+
+      <div class="row">
+        <%= f.label :distance, 'Distância (km)' %>
+        <%= f.number_field :distance, :step => "0.01" %>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <%= f.submit 'Consultar Preços' %>
+      </div>
+
+    <% end %>
+
+  </div>
 </div>

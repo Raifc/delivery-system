@@ -1,8 +1,10 @@
-<h1> Price for volume range:  <%= @price.min_volume %> to <%= @price.max_volume %></h1>
+<h1 class="text-center"> <%= Price.model_name.human %> para volumes: De  <%= @price.min_volume %> até <%= @price.max_volume %></h1>
+<h2 class="text-center">Pesos: <%= @price.min_weight %>g até <%= @price.max_weight %>g</h2>
+  <br>
 
 <%= render @price %>
 
-<div>
-  <%= link_to "Edit this price", edit_company_price_path(@price) %> |
-  <%= link_to "Back to prices", company_prices_path %>
+<div class="d-flex justify-content-center">
+  <%= link_to "Editar", edit_company_price_path(@price) %> ||
+  <%= link_to "Voltar", company_prices_path %>
 </div>

@@ -1,40 +1,36 @@
-<% if (@price.errors.any?) %>
-  <p>Please check the errors below</p>
-  <ul>
-    <% @price.errors.full_messages.each do |msg| %>
-      <li id='new_errors'><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
-
 <%= form_with model: [:company, @price] do |f| %>
   <div class="form w-50 p-3">
 
     <div class="row">
+      <p><%= @price.errors.full_messages_for(:min_volume).to_sentence if @price.errors %></p>
       <%= f.label :min_volume %>
       <%= f.number_field :min_volume, :step => "0.01" %>
     </div>
 
     <div class="row">
+      <p><%= @price.errors.full_messages_for(:max_volume).to_sentence if @price.errors %></p>
       <%= f.label :max_volume %>
       <%= f.number_field :max_volume, :step => "0.01" %>
     </div>
 
     <div class="row">
+      <p><%= @price.errors.full_messages_for(:min_weight).to_sentence if @price.errors %></p>
       <%= f.label :min_weight %>
       <%= f.number_field :min_weight, :step => "0.1" %>
     </div>
 
     <div class="row">
+      <p><%= @price.errors.full_messages_for(:max_weight).to_sentence if @price.errors %></p>
       <%= f.label :max_weight %>
       <%= f.number_field :max_weight, :step => "0.1" %>
     </div>
 
     <div class="row">
+      <p><%= @price.errors.full_messages_for(:km_value).to_sentence if @price.errors %></p>
       <%= f.label :km_value %>
       <%= f.number_field :km_value %>
     </div>
   </div>
-  <%= f.submit 'Submit' %>
+  <%= f.submit %>
 
 <% end %>

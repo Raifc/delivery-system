@@ -20,9 +20,9 @@ class RouteUpdatesController < ApplicationController
     @route_update.service_order = @service_order
 
     if @route_update.save
-      redirect_to company_service_order_route_updates_path, notice: 'Route update created successfully'
+      redirect_to company_service_order_route_updates_path, notice: 'Atualização de rota criada com sucesso!'
     else
-      flash.now[:notice] = 'Route update not created'
+      flash.now[:notice] = 'Falha ao criar atualização de rota'
       render 'new'
     end
   end

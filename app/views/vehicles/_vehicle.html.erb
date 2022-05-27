@@ -1,26 +1,26 @@
-<div>
+<div class="d-flex justify-content-center">
   <p>
-    <strong>License Plate</strong>
-    <%= vehicle.license_plate %>
+    <strong><%= Vehicle.human_attribute_name(:license_plate) %> : </strong>
+    <%= vehicle.license_plate %> ||
   </p>
 
   <p>
-    <strong>Brand</strong>
-    <%= vehicle.brand %>
+    <strong><%= Vehicle.human_attribute_name(:brand) %> : </strong>
+    <%= vehicle.brand %> ||
   </p>
 
   <p>
-    <strong>Model</strong>
-    <%= vehicle.model %>
+    <strong><%= Vehicle.human_attribute_name(:model) %> : </strong>
+    <%= vehicle.model %> ||
   </p>
 
   <p>
-    <strong>Year</strong>
-    <%= vehicle.year %>
+    <strong><%= Vehicle.human_attribute_name(:year) %> : </strong>
+    <%= vehicle.year %> ||
   </p>
 
   <p>
-    <strong>Load Capacity</strong>
+    <strong> <%= Vehicle.human_attribute_name(:load_capacity) %> : </strong>
     <%= vehicle.load_capacity %>
   </p>
 

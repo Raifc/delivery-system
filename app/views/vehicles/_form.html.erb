@@ -1,39 +1,36 @@
-<% if (@vehicle.errors.any?) %>
-  <p>Please check the errors below</p>
-  <ul>
-    <% @vehicle.errors.full_messages.each do |msg| %>
-      <li id='new_errors'><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
-
 <%= form_with model: [:company, @vehicle] do |f| %>
+  <div class="form w-50 p-3">
+    <div class="row">
+      <p> <%= @vehicle.errors.full_messages_for(:license_plate).to_sentence if @vehicle.errors %> </p>
+      <%= f.label :license_plate %>
+      <%= f.text_field :license_plate %>
+    </div>
 
-  <div>
-    <%= f.label :license_plate %>
-    <%= f.text_field :license_plate %>
+    <div class="row">
+      <p><%= @vehicle.errors.full_messages_for(:brand).to_sentence if @vehicle.errors %></p>
+      <%= f.label :brand %>
+      <%= f.text_field :brand %>
+    </div>
+
+    <div class="row">
+      <p><%= @vehicle.errors.full_messages_for(:model).to_sentence if @vehicle.errors %></p>
+      <%= f.label :model %>
+      <%= f.text_field :model %>
+    </div>
+
+    <div class="row">
+      <p> <%= @vehicle.errors.full_messages_for(:year).to_sentence if @vehicle.errors %> </p>
+      <%= f.label :year %>
+      <%= f.text_field :year %>
+    </div>
+
+    <div class="row">
+      <p> <%= @vehicle.errors.full_messages_for(:load_capacity).to_sentence if @vehicle.errors %> </p>
+      <%= f.label :load_capacity %>
+      <%= f.text_field :load_capacity %>
+    </div>
+
   </div>
-
-  <div>
-    <%= f.label :brand %>
-    <%= f.text_field :brand %>
-  </div>
-
-  <div>
-    <%= f.label :model %>
-    <%= f.text_field :model %>
-  </div>
-
-  <div>
-    <%= f.label :year %>
-    <%= f.text_field :year %>
-  </div>
-
-  <div>
-    <%= f.label :load_capacity %>
-    <%= f.text_field :load_capacity %>
-  </div>
-
-  <%= f.submit 'Submit' %>
+  <%= f.submit %>
 
 <% end %>

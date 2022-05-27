@@ -1,17 +1,18 @@
-<h1> Service Order - <%= @service_order.code %>  </h1>
+<h1 class="text-center"> <%= ServiceOrder.model_name.human %> : <%= @service_order.code %> </h1>
 
 <table class="table">
   <thead>
   <tr>
-    <th>Code</th>
-    <th>Status</th>
-    <th>Origin Address</th>
-    <th>Origin City</th>
-    <th>Destination Address</th>
-    <th>Destination City</th>
-    <th>Responsible Vehicle</th>
+    <th><%= ServiceOrder.human_attribute_name(:code) %> </th>
+    <th><%= ServiceOrder.human_attribute_name(:status) %></th>
+    <th><%= ServiceOrder.human_attribute_name("origin_address.origin_address") %> </th>
+    <th><%= ServiceOrder.human_attribute_name("origin_address.origin_city") %> </th>
+    <th><%= ServiceOrder.human_attribute_name("destination_address.destination_address") %> </th>
+    <th><%= ServiceOrder.human_attribute_name("destination_address.destination_city") %> </th>
+    <th><%= Vehicle.model_name.human %></th>
+
     <% if user_signed_in? %>
-      <th>Review</th>
+      <th>Ação</th>
     <% end %>
   </tr>
   </thead>
@@ -27,21 +28,21 @@
     <% if @vehicle.present? %>
       <td> <%= @vehicle.model %> | <%= @vehicle.license_plate %> </td>
     <% else %>
-      <td>No vehicle associated yet!</td>
+      <td>Nenhum veículo associado!</td>
     <% end %>
 
     <% if user_signed_in? %>
-      <td> <%= link_to 'Review', edit_company_service_order_path %></td>
+      <td> <%= link_to 'Revisar', edit_company_service_order_path %></td>
     <% end %>
   </tr>
 
   </tbody>
 </table>
-<% if user_signed_in? %>
-  <div>
-    <p> <%= link_to "New Route Update", new_company_service_order_route_update_path(@service_order.company_id, @service_order.id) %> </p>
-  </div>
-<% end %>
-<div>
-  <p> <%= link_to "Back to Service Orders", company_service_orders_path %> </p>
+
+<div class="d-flex justify-content-center">
+  <% if user_signed_in? %>
+    <p> <%= link_to "Nova atualização de rota", new_company_service_order_route_update_path(@service_order.company_id, @service_order.id) %> || </p>
+  <% end %>
+
+  <p> <%= link_to "Voltar", company_service_orders_path %> </p>
 </div>

@@ -1,11 +1,13 @@
-<div>
-  <strong> City </strong>
-  <%= route_update.city %>
-</div>
+<div class="d-flex justify-content-center">
+  <p>
+    <strong> <%= RouteUpdate.human_attribute_name(:city) %> :  </strong>
+    <%= route_update.city %> ||
+  </p>
 
-<div>
-  <strong> Date and Time </strong>
-  <%= route_update.time %>
+  <p>
+    <strong> <%= RouteUpdate.human_attribute_name(:time) %> : </strong>
+    <%= route_update.time %>
+  </p>
 </div>
 
 

@@ -1,27 +1,27 @@
-<div>
+<div class="d-flex justify-content-center">
   <p>
-    <strong> Minimum Volume </strong>
-    <%= price.min_volume %>
+    <strong> <%= Price.human_attribute_name(:min_volume) %> </strong>
+    <%= price.min_volume %> cm³ ||
   </p>
 
   <p>
-    <strong> Maximum Volume </strong>
-    <%= price.max_volume %>
+    <strong> <%= Price.human_attribute_name(:max_volume) %> </strong>
+    <%= price.max_volume %> cm³ ||
   </p>
 
   <p>
-    <strong> Minimum Weight </strong>
-    <%= price.min_weight %>
+    <strong> <%= Price.human_attribute_name(:min_weight) %> </strong>
+    <%= price.min_weight %> g ||
   </p>
 
   <p>
-    <strong> Maximum Weight </strong>
-    <%= price.max_weight %>
+    <strong> <%= Price.human_attribute_name(:max_weight) %> </strong>
+    <%= price.max_weight %> g ||
   </p>
 
   <p>
-    <strong> Km Value </strong>
-    <%= price.km_value %>
+    <strong> <%= Price.human_attribute_name(:km_value) %> </strong>
+    R$<%= price.km_value / 100 %>
   </p>
 
 
