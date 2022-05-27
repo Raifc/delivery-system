@@ -14,27 +14,27 @@ describe 'User creates prices' do
   it 'should create a new price' do
     visit company_path(user.company)
 
-    click_on 'Prices'
-    click_on 'New Price'
+    click_on 'Preços'
+    click_on 'Novo preço'
     expect(current_path).to eq '/companies/1/prices/new'
-    fill_in 'Min volume', with: '10'
-    fill_in 'Max volume', with: '30'
-    fill_in 'Min weight', with: '3'
-    fill_in 'Max weight', with: '10'
-    fill_in 'Km value', with: '3'
-    click_on 'Submit'
+    fill_in 'Volume mínimo', with: '10'
+    fill_in 'Volume máximo', with: '30'
+    fill_in 'Peso mínimo', with: '3'
+    fill_in 'Peso máximo', with: '10'
+    fill_in 'Valor por km', with: '3'
+    click_on 'Criar Preço'
 
     expect(current_path).to eq '/companies/1/prices'
     within 'table' do
-      expect(page).to have_content 'Min Volume'
+      expect(page).to have_content 'Volume mínimo'
       expect(page).to have_content '10.0'
-      expect(page).to have_content 'Max Volume'
+      expect(page).to have_content 'Volume máximo'
       expect(page).to have_content '30.0'
-      expect(page).to have_content 'Min Weight'
+      expect(page).to have_content 'Peso mínimo'
       expect(page).to have_content '3.0'
-      expect(page).to have_content 'Max Weight'
+      expect(page).to have_content 'Peso máximo'
       expect(page).to have_content '10.0'
-      expect(page).to have_content 'Value for km'
+      expect(page).to have_content 'Valor por km'
       expect(page).to have_content '3.0'
     end
   end
@@ -42,18 +42,18 @@ describe 'User creates prices' do
   it 'should not create a new price with empty km value' do
     visit company_path(user.company)
 
-    click_on 'Prices'
-    click_on 'New Price'
+    click_on 'Preços'
+    click_on 'Novo preço'
     expect(current_path).to eq '/companies/1/prices/new'
-    fill_in 'Min volume', with: '10'
-    fill_in 'Max volume', with: '30'
-    fill_in 'Min weight', with: '3'
-    fill_in 'Max weight', with: '10'
-    fill_in 'Km value', with: ''
-    click_on 'Submit'
+    fill_in 'Volume mínimo', with: '10'
+    fill_in 'Volume máximo', with: '30'
+    fill_in 'Peso mínimo', with: '3'
+    fill_in 'Peso máximo', with: '10'
+    fill_in 'Valor por km', with: ''
+    click_on 'Criar Preço'
 
-    expect(page).to have_content 'Price not created'
-    expect(page).to have_content "Km value can't be blank"
+    expect(page).to have_content "Falha ao criar preço"
+    expect(page).to have_content "Valor por km não pode ficar em branco"
   end
 
 end

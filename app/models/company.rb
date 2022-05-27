@@ -11,5 +11,5 @@ class Company < ApplicationRecord
   validates :corporate_name, :registration_number, uniqueness: true
   accepts_nested_attributes_for :address
 
-  enum status: { Inactive: 0, Active: 1 }
+  enum status: { Inativa: 0, Ativa: 1 }
 end

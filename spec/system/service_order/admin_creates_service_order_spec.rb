@@ -16,19 +16,19 @@ describe 'admin creates a new service order' do
     Product.create!(code: 'SKAUV15', height: 3, width: 55, depth: 12, weight: 24)
 
     visit('companies')
-    click_on 'Show this company'
-    click_on 'Service Orders'
-    click_on 'New Service Order'
+    click_on 'Ver'
+    click_on 'Ordens de Serviço'
+    click_on 'Nova ordem de serviço'
     fill_in 'Endereço de origem', with: 'Rua 25 de março, 100'
-    fill_in 'Cidade de Origem', with: 'São Paulo'
-    fill_in 'Estado de Origem', with: 'SP'
-    fill_in 'Endereço de Destino', with: 'Rua goiás, 10'
-    fill_in 'Cidade de Destino', with: 'Uberlândia'
-    fill_in 'Estado de Destino', with: 'MG'
-    select 'SKAUV15', from: 'Product Code'
-    click_on 'Submit'
+    fill_in 'Cidade de origem', with: 'São Paulo'
+    fill_in 'Estado de origem', with: 'SP'
+    fill_in 'Endereço de destino', with: 'Rua goiás, 10'
+    fill_in 'Cidade de destino', with: 'Uberlândia'
+    fill_in 'Estado de destino', with: 'MG'
+    select 'SKAUV15', from: 'Código do produto'
+    click_on 'Criar Ordem de serviço'
 
-    expect(page).to have_content 'Service Order successfully created'
+    expect(page).to have_content 'Ordem de serviço criada com sucesso!'
     expect(current_path).to eq '/companies/1/service_orders'
   end
 

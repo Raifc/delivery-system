@@ -4,7 +4,7 @@ describe 'Admin creates new Company' do
   it 'without login' do
     visit new_company_path
     expect(current_path).to eq new_admin_session_path
-    expect(page).to have_content 'You need to sign in or sign up before continuing.'
+    expect(page).to have_content 'Para continuar, faça login ou registre-se.'
   end
 
   it 'should create a new company' do
@@ -12,23 +12,24 @@ describe 'Admin creates new Company' do
     login_as admin, scope: :admin
 
     visit('companies')
-    click_on 'New Company'
+    click_on 'Nova Transportadora'
     expect(current_path).to eq '/companies/new'
-    fill_in 'Corporate name', with: 'Rodonaves'
-    fill_in 'Trading name', with: 'Ronaves transports'
-    fill_in 'Registration number', with: '123334556000123'
-    fill_in 'Full address', with: 'Floriano Peixoto, 1000'
-    fill_in 'City', with: 'Rio de Janeiro'
-    fill_in 'State', with: 'RJ'
-    fill_in 'Email domain', with: 'rodonaves.com.br'
-    select 'Active', from: 'Status'
-    click_on 'Submit'
+    fill_in 'Razão Social', with: 'RDV Transportes'
+    fill_in 'Nome Fantasia', with: 'Rodonaves'
+    fill_in 'Domínio de E-mail', with: 'rodonaves.com.br'
+    fill_in 'CNPJ', with: '123334556000123'
+    fill_in 'Endereço completo', with: 'Floriano Peixoto, 1000'
+    fill_in 'Cidade', with: 'Rio de Janeiro'
+    fill_in 'Estado', with: 'RJ'
+    select 'Ativa', from: 'Status'
+    click_on 'Criar Transportadora'
 
-    expect(page).to have_content 'Company successfully created'
-    expect(page).to have_content 'Corporate Name Rodonaves'
-    expect(page).to have_content 'Trading Name Ronaves transports'
-    expect(page).to have_content 'Registration Number 123334556000123'
-    expect(page).to have_content 'Status Active'
+    expect(current_path).to eq '/companies/1'
+    expect(page).to have_content 'Transportadora criada com sucesso!'
+    expect(page).to have_content 'CNPJ - 123334556000123'
+    expect(page).to have_content 'Razão Social: RDV Transportes'
+    expect(page).to have_content 'CNPJ - 123334556000123'
+    expect(page).to have_content 'Status Ativa'
 
   end
 
@@ -37,20 +38,20 @@ describe 'Admin creates new Company' do
     login_as admin, scope: :admin
 
     visit('companies')
-    click_on 'New Company'
+    click_on 'Nova Transportadora'
     expect(current_path).to eq '/companies/new'
-    fill_in 'Corporate name', with: ''
-    fill_in 'Trading name', with: 'Ronaves transports'
-    fill_in 'Registration number', with: '123334556000123'
-    fill_in 'Full address', with: 'Floriano Peixoto, 1000'
-    fill_in 'City', with: 'Rio de Janeiro'
-    fill_in 'State', with: 'RJ'
-    fill_in 'Email domain', with: 'rodonaves.com.br'
-    select 'Active', from: 'Status'
-    click_on 'Submit'
+    fill_in 'Razão Social', with: ''
+    fill_in 'Nome Fantasia', with: 'Hogwarts Express'
+    fill_in 'Domínio de E-mail', with: 'hogwarts.com'
+    fill_in 'CNPJ', with: '58456228000196'
+    fill_in 'Endereço completo', with: 'Nobody Knows, 1'
+    fill_in 'Cidade', with: 'London'
+    fill_in 'Estado', with: 'ln'
+    select 'Ativa', from: 'Status'
+    click_on 'Criar Transportadora'
 
-    expect(page).to have_content 'Company not created'
-    expect(page).to have_content "Corporate name can't be blank"
+    expect(page).to have_content "Falha ao criar transportadora"
+    expect(page).to have_content "Razão Social não pode ficar em branco"
 
   end
 
@@ -62,20 +63,20 @@ describe 'Admin creates new Company' do
     login_as admin, scope: :admin
 
     visit('companies')
-    click_on 'New Company'
+    click_on 'Nova Transportadora'
     expect(current_path).to eq '/companies/new'
-    fill_in 'Corporate name', with: 'Rodonaves'
-    fill_in 'Trading name', with: 'Ronaves transports'
-    fill_in 'Registration number', with: '1234567'
-    fill_in 'Full address', with: 'Floriano Peixoto, 1000'
-    fill_in 'City', with: 'Rio de Janeiro'
-    fill_in 'State', with: 'RJ'
-    fill_in 'Email domain', with: 'rodonaves.com.br'
-    select 'Active', from: 'Status'
-    click_on 'Submit'
+    fill_in 'Razão Social', with: 'London Transports'
+    fill_in 'Nome Fantasia', with: 'Hogwarts Express'
+    fill_in 'Domínio de E-mail', with: 'hogwarts.com'
+    fill_in 'CNPJ', with: '1234567'
+    fill_in 'Endereço completo', with: 'Nobody Knows, 1'
+    fill_in 'Cidade', with: 'London'
+    fill_in 'Estado', with: 'ln'
+    select 'Ativa', from: 'Status'
+    click_on 'Criar Transportadora'
 
-    expect(page).to have_content 'Company not created'
-    expect(page).to have_content 'Registration number has already been taken'
+    expect(page).to have_content 'Falha ao criar transportadora'
+    expect(page).to have_content 'CNPJ já está em uso'
 
   end
 
@@ -85,22 +86,22 @@ describe 'Admin creates new Company' do
     login_as admin, scope: :admin
 
     visit('companies')
-    click_on 'New Company'
+    click_on 'Nova Transportadora'
     expect(current_path).to eq '/companies/new'
-    fill_in 'Corporate name', with: 'Rodonaves'
-    fill_in 'Trading name', with: 'Ronaves transports'
-    fill_in 'Registration number', with: '1234567'
-    fill_in 'Full address', with: ''
-    fill_in 'City', with: ''
-    fill_in 'State', with: ''
-    fill_in 'Email domain', with: 'rodonaves.com.br'
-    select 'Active', from: 'Status'
-    click_on 'Submit'
+    fill_in 'Razão Social', with: '24557895000125'
+    fill_in 'Nome Fantasia', with: 'Hogwarts Express'
+    fill_in 'Domínio de E-mail', with: 'hogwarts.com'
+    fill_in 'CNPJ', with: '123456'
+    fill_in 'Endereço completo', with: ''
+    fill_in 'Cidade', with: ''
+    fill_in 'Estado', with: ''
+    select 'Ativa', from: 'Status'
+    click_on 'Criar Transportadora'
 
-    expect(page).to have_content 'Company not created'
-    expect(page).to have_content "full address can't be blank"
-    expect(page).to have_content "city can't be blank"
-    expect(page).to have_content "state can't be blank"
+    expect(page).to have_content "Falha ao criar transportadora"
+    expect(page).to have_content "Endereço completo não pode ficar em branco"
+    expect(page).to have_content "Cidade não pode ficar em branco"
+    expect(page).to have_content "Estado não pode ficar em branco"
   end
 
   it 'should not create a company with empty email domain' do
@@ -109,21 +110,20 @@ describe 'Admin creates new Company' do
     login_as admin, scope: :admin
 
     visit('companies')
-    click_on 'New Company'
+    click_on 'Nova Transportadora'
     expect(current_path).to eq '/companies/new'
-    fill_in 'Corporate name', with: 'Rodonaves'
-    fill_in 'Trading name', with: 'Ronaves transports'
-    fill_in 'Registration number', with: '123334556000123'
-    fill_in 'Full address', with: 'Floriano Peixoto, 1000'
-    fill_in 'City', with: 'Rio de Janeiro'
-    fill_in 'State', with: 'RJ'
-    fill_in 'Email domain', with: ''
-    select 'Active', from: 'Status'
-    click_on 'Submit'
+    fill_in 'Razão Social', with: 'RDV Transportes'
+    fill_in 'Nome Fantasia', with: 'Rodonaves'
+    fill_in 'Domínio de E-mail', with: ''
+    fill_in 'CNPJ', with: '123334556000123'
+    fill_in 'Endereço completo', with: 'Floriano Peixoto, 1000'
+    fill_in 'Cidade', with: 'Rio de Janeiro'
+    fill_in 'Estado', with: 'RJ'
+    select 'Ativa', from: 'Status'
+    click_on 'Criar Transportadora'
 
-
-    expect(page).to have_content 'Company not created'
-    expect(page).to have_content "Email domain is invalid"
+    expect(page).to have_content "Falha ao criar transportadora"
+    expect(page).to have_content "Domínio de E-mail não é válido"
   end
 
 end

@@ -15,22 +15,23 @@ describe 'User creates delivery times' do
   it 'should create a new delivery time' do
     visit company_path(user.company)
 
-    click_on 'Delivery Times'
-    click_on 'New Delivery Time'
+    click_on 'Tempo de entrega'
+    click_on 'Novo Tempo de entrega'
     expect(current_path).to eq '/companies/1/delivery_times/new'
-    fill_in 'Min distance', with: '30'
-    fill_in 'Max distance', with: '100'
-    fill_in 'Business days', with: '3'
-    click_on 'Submit'
+    fill_in 'Distância mínima', with: '30'
+    fill_in 'Distância máxima', with: '100'
+    fill_in 'Dias úteis', with: '3'
+    click_on 'Criar Tempo de Entrega'
 
     expect(current_path).to eq '/companies/1/delivery_times'
-    expect(page).to have_content 'Delivery Time successfully created'
+    expect(page).to have_content 'Tempo de entrega criado!'
+
     within 'table' do
-      expect(page).to have_content 'Min Distance'
+      expect(page).to have_content 'Distância mínima'
       expect(page).to have_content '30'
-      expect(page).to have_content 'Max Distance'
+      expect(page).to have_content 'Distância máxima'
       expect(page).to have_content '100'
-      expect(page).to have_content 'Delivery Time - Business Days'
+      expect(page).to have_content 'Dias úteis'
       expect(page).to have_content '3'
     end
   end
@@ -38,16 +39,16 @@ describe 'User creates delivery times' do
   it 'should not create a new delivery time with empty business days' do
     visit company_path(user.company)
 
-    click_on 'Delivery Time'
-    click_on 'New Delivery Time'
+    click_on 'Tempo de entrega'
+    click_on 'Novo Tempo de entrega'
     expect(current_path).to eq '/companies/1/delivery_times/new'
-    fill_in 'Min distance', with: '30'
-    fill_in 'Max distance', with: '100'
-    fill_in 'Business days', with: ''
-    click_on 'Submit'
+    fill_in 'Distância mínima', with: '30'
+    fill_in 'Distância máxima', with: '100'
+    fill_in 'Dias úteis', with: ''
+    click_on 'Criar Tempo de Entrega'
 
-    expect(page).to have_content 'Delivery Time not created'
-    expect(page).to have_content "Business days can't be blank"
+    expect(page).to have_content 'Falha ao criar novo tempo de entrega'
+    expect(page).to have_content "Dias úteis não pode ficar em branco"
   end
 
 end

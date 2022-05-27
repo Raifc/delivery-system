@@ -14,27 +14,28 @@ describe 'User creates vehicles' do
   it 'should create a new vehicle' do
 
     visit company_path(user.company)
-    click_on 'Vehicles'
-    click_on 'New Vehicle'
+    click_on 'Veículos'
+    click_on 'Novo veículo'
     expect(current_path).to eq '/companies/1/vehicles/new'
-    fill_in 'License plate', with: 'ABC1234'
-    fill_in 'Brand', with: 'Ford'
-    fill_in 'Model', with: 'F4000'
-    fill_in 'Year', with: '2009'
-    fill_in 'Load capacity', with: '3000'
-    click_on 'Submit'
-    expect(page).to have_content 'Vehicle successfully created'
+    fill_in 'Placa', with: 'ABC1234'
+    fill_in 'Fabricante', with: 'Ford'
+    fill_in 'Modelo', with: 'F4000'
+    fill_in 'Ano', with: '2009'
+    fill_in 'Capacidade de carga', with: '3000'
+    click_on 'Criar Veículo'
+
+    expect(page).to have_content 'Veículo criado com sucesso!'
     within 'table' do
       expect(current_path).to eq '/companies/1/vehicles'
-      expect(page).to have_content 'License Plate'
+      expect(page).to have_content 'Placa'
       expect(page).to have_content 'ABC1234'
-      expect(page).to have_content 'Brand'
+      expect(page).to have_content 'Fabricante'
       expect(page).to have_content 'Ford'
-      expect(page).to have_content 'Model'
+      expect(page).to have_content 'Modelo'
       expect(page).to have_content 'F4000'
-      expect(page).to have_content 'Year'
+      expect(page).to have_content 'Ano'
       expect(page).to have_content '2009'
-      expect(page).to have_content 'Load Capacity'
+      expect(page).to have_content 'Capacidade de carga'
       expect(page).to have_content '3000'
     end
   end
@@ -42,37 +43,38 @@ describe 'User creates vehicles' do
   it 'should not create a new vehicle with empty license plate' do
 
     visit company_path(user.company)
-    click_on 'Vehicles'
-    click_on 'New Vehicle'
+    click_on 'Veículos'
+    click_on 'Novo veículo'
     expect(current_path).to eq '/companies/1/vehicles/new'
-    fill_in 'License plate', with: ''
-    fill_in 'Brand', with: 'Ford'
-    fill_in 'Model', with: 'F4000'
-    fill_in 'Year', with: '2009'
-    fill_in 'Load capacity', with: '3000'
-    click_on 'Submit'
+    fill_in 'Placa', with: ''
+    fill_in 'Fabricante', with: 'Ford'
+    fill_in 'Modelo', with: 'F4000'
+    fill_in 'Ano', with: '2009'
+    fill_in 'Capacidade de carga', with: '3000'
+    click_on 'Criar Veículo'
 
-    expect(page).to have_content 'Vehicle not created'
-    expect(page).to have_content "License plate can't be blank"
+    expect(page).to have_content "Falha ao criar veículo!"
+    expect(page).to have_content "Placa não pode ficar em branco"
   end
 
   it 'should not create a new vehicle with duplicated license plate' do
     Vehicle.create!(license_plate: 'EJK2098', brand: 'Volkswagen', model: 'Cargo', year: '2022', load_capacity: '2000', company: company)
 
     visit company_path(user.company)
-    click_on 'Vehicles'
-    click_on 'New Vehicle'
+    click_on 'Veículos'
+    click_on 'Novo veículo'
+
     expect(current_path).to eq '/companies/1/vehicles/new'
 
-    fill_in 'License plate', with: 'EJK2098'
-    fill_in 'Brand', with: 'Ford'
-    fill_in 'Model', with: 'F4000'
-    fill_in 'Year', with: '2009'
-    fill_in 'Load capacity', with: '3000'
-    click_on 'Submit'
+    fill_in 'Placa', with: 'EJK2098'
+    fill_in 'Fabricante', with: 'Ford'
+    fill_in 'Modelo', with: 'F4000'
+    fill_in 'Ano', with: '2009'
+    fill_in 'Capacidade de carga', with: '3000'
+    click_on 'Criar Veículo'
 
-    expect(page).to have_content 'Vehicle not created'
-    expect(page).to have_content 'License plate has already been taken'
+    expect(page).to have_content 'Falha ao criar veículo!'
+    expect(page).to have_content 'Placa já está em uso'
   end
 
 end

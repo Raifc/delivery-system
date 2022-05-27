@@ -15,31 +15,31 @@ describe 'User edits prices - ' do
     Price.create!(min_volume: 1, max_volume: 3, min_weight: 1, max_weight: 10, km_value: 1, company: company)
     visit company_path(user.company)
 
-    click_on 'Prices'
-    click_on 'Show this price'
-    click_on 'Edit this price'
+    click_on 'Preços'
+    click_on 'Ver'
+    click_on 'Editar'
     expect(current_path).to eq '/companies/1/prices/1/edit'
-    fill_in 'Min volume', with: '10'
-    fill_in 'Max volume', with: '30'
-    fill_in 'Min weight', with: '3'
-    fill_in 'Max weight', with: '10'
-    fill_in 'Km value', with: '3'
-    click_on 'Submit'
+    fill_in 'Volume mínimo', with: '10'
+    fill_in 'Volume máximo', with: '30'
+    fill_in 'Peso mínimo', with: '3'
+    fill_in 'Peso máximo', with: '10'
+    fill_in 'Valor por km', with: '3'
+    click_on 'Atualizar Preço'
 
     expect(current_path).to eq '/companies/1/prices'
-    expect(page).to have_content 'Price successfully updated'
+    expect(page).to have_content 'Preço atualizado com sucesso'
 
     within 'table' do
-      expect(page).to have_content 'Min Volume'
-      expect(page).to have_content '10.0'
-      expect(page).to have_content 'Max Volume'
-      expect(page).to have_content '30.0'
-      expect(page).to have_content 'Min Weight'
-      expect(page).to have_content '3.0'
-      expect(page).to have_content 'Max Weight'
-      expect(page).to have_content '10.0'
-      expect(page).to have_content 'Value for km'
-      expect(page).to have_content '3.0'
+      expect(page).to have_content 'Volume mínimo'
+      expect(page).to have_content '10.0cm³'
+      expect(page).to have_content 'Volume máximo'
+      expect(page).to have_content '30.0cm³'
+      expect(page).to have_content 'Peso mínimo'
+      expect(page).to have_content '3.0g'
+      expect(page).to have_content 'Peso máximo'
+      expect(page).to have_content '10.0g'
+      expect(page).to have_content 'Valor por km'
+      expect(page).to have_content 'R$0.03'
     end
   end
 
@@ -47,20 +47,20 @@ describe 'User edits prices - ' do
     Price.create!(min_volume: 1, max_volume: 3, min_weight: 1, max_weight: 10, km_value: 1, company: company)
 
     visit company_path(user.company)
-    click_on 'Prices'
-    click_on 'Show this price'
-    click_on 'Edit this price'
+    click_on 'Preços'
+    click_on 'Ver'
+    click_on 'Editar'
     expect(current_path).to eq '/companies/1/prices/1/edit'
 
-    fill_in 'Min volume', with: '10'
-    fill_in 'Max volume', with: '30'
-    fill_in 'Min weight', with: '3'
-    fill_in 'Max weight', with: ''
-    fill_in 'Km value', with: '10'
-    click_on 'Submit'
+    fill_in 'Volume mínimo', with: '10'
+    fill_in 'Volume máximo', with: '30'
+    fill_in 'Peso mínimo', with: '3'
+    fill_in 'Peso máximo', with: ''
+    fill_in 'Valor por km', with: '3'
+    click_on 'Atualizar Preço'
 
-    expect(page).to have_content 'Price not updated'
-    expect(page).to have_content "Max weight can't be blank"
+    expect(page).to have_content 'Falha ao atualizar preço'
+    expect(page).to have_content "Peso máximo não pode ficar em branco"
   end
 
 end

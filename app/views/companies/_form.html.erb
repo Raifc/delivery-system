@@ -27,19 +27,19 @@
 
     <%= f.fields_for :address do |address_form| %>
       <div class="row">
-        <p><%= @company.address.errors.full_messages_for(:corporate_name).to_sentence if @company.address.errors %></p>
+        <p><%= @company.address.errors.full_messages_for(:full_address).to_sentence if @company.address.errors %></p>
         <%= address_form.label :full_address %>
         <%= address_form.text_field :full_address %>
       </div>
 
       <div class="row">
-        <p><%= @company.address.errors.full_messages_for(:corporate_name).to_sentence if @company.address.errors %></p>
+        <p><%= @company.address.errors.full_messages_for(:city).to_sentence if @company.address.errors %></p>
         <%= address_form.label :city %>
         <%= address_form.text_field :city %>
       </div>
 
       <div class="row">
-        <p><%= @company.address.errors.full_messages_for(:corporate_name).to_sentence if @company.address.errors %></p>
+        <p><%= @company.address.errors.full_messages_for(:state).to_sentence if @company.address.errors %></p>
         <%= address_form.label :state %>
         <%= address_form.text_field :state %>
       </div>

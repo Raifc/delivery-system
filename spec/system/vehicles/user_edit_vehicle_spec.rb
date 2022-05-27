@@ -14,32 +14,33 @@ describe 'User edits a vehicle - ' do
     Vehicle.create!(license_plate: 'EJK2098', brand: 'Volkswagen', model: 'Cargo', year: '2022', load_capacity: '2000', company: company)
 
     visit company_path(user.company)
-    click_on 'Vehicles'
-    click_on 'Show this vehicle'
-    click_on 'Edit this vehicle'
+    click_on 'Veículos'
+    click_on 'Ver'
+    click_on 'Editar veículo'
     expect(current_path).to eq '/companies/1/vehicles/1/edit'
 
-    fill_in 'License plate', with: 'APB2202'
-    fill_in 'Brand', with: 'Dodge'
-    fill_in 'Model', with: 'Ram'
-    fill_in 'Year', with: '2020'
-    fill_in 'Load capacity', with: '4000'
-    click_on 'Submit'
+    fill_in 'Placa', with: 'APB2202'
+    fill_in 'Fabricante', with: 'Dodge'
+    fill_in 'Modelo', with: 'Ram'
+    fill_in 'Ano', with: '2020'
+    fill_in 'Capacidade de carga', with: '4000'
+    click_on 'Atualizar Veículo'
 
     expect(current_path).to eq '/companies/1/vehicles'
 
-    expect(page).to have_content 'Vehicle successfully updated'
+    expect(page).to have_content 'Veículo atualizado com sucesso!'
+
     within 'table' do
       expect(current_path).to eq '/companies/1/vehicles'
-      expect(page).to have_content 'License Plate'
+      expect(page).to have_content 'Placa'
       expect(page).to have_content 'APB2202'
-      expect(page).to have_content 'Brand'
+      expect(page).to have_content 'Fabricante'
       expect(page).to have_content 'Dodge'
-      expect(page).to have_content 'Model'
+      expect(page).to have_content 'Modelo'
       expect(page).to have_content 'Ram'
-      expect(page).to have_content 'Year'
+      expect(page).to have_content 'Ano'
       expect(page).to have_content '2020'
-      expect(page).to have_content 'Load Capacity'
+      expect(page).to have_content 'Capacidade de carga'
       expect(page).to have_content '4000'
     end
   end
@@ -48,20 +49,20 @@ describe 'User edits a vehicle - ' do
     Vehicle.create!(license_plate: 'EJK2098', brand: 'Volkswagen', model: 'Cargo', year: '2022', load_capacity: '2000', company: company)
 
     visit company_path(user.company)
-    click_on 'Vehicles'
-    click_on 'Show this vehicle'
-    click_on 'Edit this vehicle'
+    click_on 'Veículos'
+    click_on 'Ver'
+    click_on 'Editar veículo'
     expect(current_path).to eq '/companies/1/vehicles/1/edit'
 
-    fill_in 'License plate', with: ''
-    fill_in 'Brand', with: 'Dodge'
-    fill_in 'Model', with: 'Ram'
-    fill_in 'Year', with: '2020'
-    fill_in 'Load capacity', with: '4000'
-    click_on 'Submit'
+    fill_in 'Placa', with: ''
+    fill_in 'Fabricante', with: 'Dodge'
+    fill_in 'Modelo', with: 'Ram'
+    fill_in 'Ano', with: '2020'
+    fill_in 'Capacidade de carga', with: '4000'
+    click_on 'Atualizar Veículo'
 
-    expect(page).to have_content 'Vehicle not updated'
-    expect(page).to have_content "License plate can't be blank"
+    expect(page).to have_content "Falha ao atualizar veículo!"
+    expect(page).to have_content "Placa não pode ficar em branco"
   end
 
 end
