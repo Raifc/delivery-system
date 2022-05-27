@@ -32,6 +32,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "capybara"
   gem "rspec-rails"
+  gem 'simplecov', require: false
 end
 
 group :development do
