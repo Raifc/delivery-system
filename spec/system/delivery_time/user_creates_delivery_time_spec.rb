@@ -78,7 +78,7 @@ describe 'User creates delivery times' do
     click_on 'Criar Tempo de Entrega'
 
     expect(page).to have_content 'Falha ao criar novo tempo de entrega'
-    expect(page).to have_content "Distância mínima deve ser positiva"
+    expect(page).to have_content "Distância mínima deve ser maior que 0"
   end
 
   it 'should not create a new delivery time with negative business days' do
@@ -93,7 +93,7 @@ describe 'User creates delivery times' do
     click_on 'Criar Tempo de Entrega'
 
     expect(page).to have_content 'Falha ao criar novo tempo de entrega'
-    expect(page).to have_content "Dias úteis deve ser positivo"
+    expect(page).to have_content "Dias úteis deve ser maior que 0"
   end
 
 end

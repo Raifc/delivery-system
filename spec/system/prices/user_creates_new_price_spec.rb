@@ -105,7 +105,7 @@ describe 'User creates prices' do
     click_on 'Criar Preço'
 
     expect(page).to have_content "Falha ao criar preço"
-    expect(page).to have_content "Volume máximo deve ser positivo"
+    expect(page).to have_content "Volume máximo deve ser maior que 0"
   end
 
   it 'should not create a new price with negative min weight' do
@@ -122,7 +122,7 @@ describe 'User creates prices' do
     click_on 'Criar Preço'
 
     expect(page).to have_content "Falha ao criar preço"
-    expect(page).to have_content "Peso mínimo deve ser positivo"
+    expect(page).to have_content "Peso mínimo deve ser maior que 0"
   end
 
 end
