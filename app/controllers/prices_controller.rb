@@ -5,6 +5,11 @@ class PricesController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
     @prices = @company.prices.all
+
+    @prices.each do |price|
+      price.km_value = price.km_value / 100
+    end
+
     redirect_to root_path if current_user.company_id != @company.id
   end
 

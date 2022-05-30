@@ -25,7 +25,7 @@
           <td> <%= price.max_volume %>cm³</td>
           <td> <%= price.min_weight %>g</td>
           <td> <%= price.max_weight %>g</td>
-          <td> R$<%= price.km_value / 100 %> </td>
+          <td> R$<%= price.km_value %> </td>
           <td> <%= link_to "Ver", company_price_path(@company, price) %> </td>
         </tr>
       <% end %>
