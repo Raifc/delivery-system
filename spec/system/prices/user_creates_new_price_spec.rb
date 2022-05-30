@@ -91,4 +91,38 @@ describe 'User creates prices' do
     expect(page).to have_content "Peso máximo deve ser maior que o peso mínimo"
   end
 
+  it 'should not create a new price with negative max volume' do
+    visit company_path(user.company)
+
+    click_on 'Preços'
+    click_on 'Novo preço'
+    expect(current_path).to eq '/companies/1/prices/new'
+    fill_in 'Volume mínimo', with: '10'
+    fill_in 'Volume máximo', with: '-1'
+    fill_in 'Peso mínimo', with: '900'
+    fill_in 'Peso máximo', with: '200'
+    fill_in 'Valor por km', with: '120'
+    click_on 'Criar Preço'
+
+    expect(page).to have_content "Falha ao criar preço"
+    expect(page).to have_content "Volume máximo deve ser positivo"
+  end
+
+  it 'should not create a new price with negative min weight' do
+    visit company_path(user.company)
+
+    click_on 'Preços'
+    click_on 'Novo preço'
+    expect(current_path).to eq '/companies/1/prices/new'
+    fill_in 'Volume mínimo', with: '10'
+    fill_in 'Volume máximo', with: '20'
+    fill_in 'Peso mínimo', with: '-1'
+    fill_in 'Peso máximo', with: '200'
+    fill_in 'Valor por km', with: '120'
+    click_on 'Criar Preço'
+
+    expect(page).to have_content "Falha ao criar preço"
+    expect(page).to have_content "Peso mínimo deve ser positivo"
+  end
+
 end

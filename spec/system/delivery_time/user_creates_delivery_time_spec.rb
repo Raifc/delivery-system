@@ -66,4 +66,34 @@ describe 'User creates delivery times' do
     expect(page).to have_content "Distância máxima deve ser maior que a distância mínima"
   end
 
+  it 'should not create a new delivery time with negative min distance' do
+    visit company_path(user.company)
+
+    click_on 'Tempo de entrega'
+    click_on 'Novo Tempo de entrega'
+    expect(current_path).to eq '/companies/1/delivery_times/new'
+    fill_in 'Distância mínima', with: '-1'
+    fill_in 'Distância máxima', with: '100'
+    fill_in 'Dias úteis', with: '5'
+    click_on 'Criar Tempo de Entrega'
+
+    expect(page).to have_content 'Falha ao criar novo tempo de entrega'
+    expect(page).to have_content "Distância mínima deve ser positiva"
+  end
+
+  it 'should not create a new delivery time with negative business days' do
+    visit company_path(user.company)
+
+    click_on 'Tempo de entrega'
+    click_on 'Novo Tempo de entrega'
+    expect(current_path).to eq '/companies/1/delivery_times/new'
+    fill_in 'Distância mínima', with: '1'
+    fill_in 'Distância máxima', with: '100'
+    fill_in 'Dias úteis', with: '-2'
+    click_on 'Criar Tempo de Entrega'
+
+    expect(page).to have_content 'Falha ao criar novo tempo de entrega'
+    expect(page).to have_content "Dias úteis deve ser positivo"
+  end
+
 end
