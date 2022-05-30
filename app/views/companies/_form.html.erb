@@ -1,58 +1,58 @@
-<div class="d-flex justify-content-center">
-<div class="form w-50 p-3">
-  <%= form_with model: @company do |f| %>
+<div class="d-flex justify-content-center text-center">
+  <div class="form w-50 p-3">
+    <%= form_with model: @company do |f| %>
 
-    <div class="row">
-      <p><%= @company.errors.full_messages_for(:corporate_name).to_sentence if @company.errors %></p>
-      <%= f.label :corporate_name %>
-      <%= f.text_field :corporate_name %>
-    </div>
-
-    <div class="row">
-      <p><%= @company.errors.full_messages_for(:trading_name).to_sentence if @company.errors %></p>
-      <%= f.label :trading_name %>
-      <%= f.text_field :trading_name %>
-    </div>
-
-    <div class="row">
-      <p><%= @company.errors.full_messages_for(:email_domain).to_sentence if @company.errors %></p>
-      <%= f.label :email_domain %>
-      <%= f.text_field :email_domain %>
-    </div>
-
-    <div class="row">
-      <p><%= @company.errors.full_messages_for(:registration_number).to_sentence if @company.errors %></p>
-      <%= f.label :registration_number %>
-      <%= f.text_field :registration_number %>
-    </div>
-
-    <%= f.fields_for :address do |address_form| %>
       <div class="row">
-        <p><%= @company.address.errors.full_messages_for(:full_address).to_sentence if @company.address.errors %></p>
-        <%= address_form.label :full_address %>
-        <%= address_form.text_field :full_address %>
+        <p><%= @company.errors.full_messages_for(:corporate_name).to_sentence if @company.errors %></p>
+        <%= f.label :corporate_name %>
+        <%= f.text_field :corporate_name %>
       </div>
 
       <div class="row">
-        <p><%= @company.address.errors.full_messages_for(:city).to_sentence if @company.address.errors %></p>
-        <%= address_form.label :city %>
-        <%= address_form.text_field :city %>
+        <p><%= @company.errors.full_messages_for(:trading_name).to_sentence if @company.errors %></p>
+        <%= f.label :trading_name %>
+        <%= f.text_field :trading_name %>
       </div>
 
       <div class="row">
-        <p><%= @company.address.errors.full_messages_for(:state).to_sentence if @company.address.errors %></p>
-        <%= address_form.label :state %>
-        <%= address_form.text_field :state %>
+        <p><%= @company.errors.full_messages_for(:email_domain).to_sentence if @company.errors %></p>
+        <%= f.label :email_domain %>
+        <%= f.text_field :email_domain %>
+      </div>
+
+      <div class="row">
+        <p><%= @company.errors.full_messages_for(:registration_number).to_sentence if @company.errors %></p>
+        <%= f.label :registration_number %>
+        <%= f.text_field :registration_number %>
+      </div>
+
+      <%= f.fields_for :address do |address_form| %>
+        <div class="row">
+          <p><%= @company.address.errors.full_messages_for(:full_address).to_sentence if @company.address.errors %></p>
+          <%= address_form.label :full_address %>
+          <%= address_form.text_field :full_address %>
+        </div>
+
+        <div class="row">
+          <p><%= @company.address.errors.full_messages_for(:city).to_sentence if @company.address.errors %></p>
+          <%= address_form.label :city %>
+          <%= address_form.text_field :city %>
+        </div>
+
+        <div class="row">
+          <p><%= @company.address.errors.full_messages_for(:state).to_sentence if @company.address.errors %></p>
+          <%= address_form.label :state %>
+          <%= address_form.text_field :state %>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <p><%= @company.errors.full_messages_for(:status).to_sentence if @company.errors %></p>
+        <%= f.label :status %>
+        <%= f.select(:status, Company.statuses.keys) %>
+      </div>
+
+      <%= f.submit %>
       </div>
     <% end %>
-
-    <div class="row">
-      <p><%= @company.errors.full_messages_for(:status).to_sentence if @company.errors %></p>
-      <%= f.label :status %>
-      <%= f.select(:status, Company.statuses.keys) %>
     </div>
-
-    <%= f.submit %>
-    </div>
-  <% end %>
-  </div>

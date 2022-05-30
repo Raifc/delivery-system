@@ -1,4 +1,4 @@
-<h1 class="text-center display-4 bg-dark text-white">  <%= Company.model_name.human(:count => Company.count) %> </h1>
+<h1 class="text-center display-5 bg-dark text-white">  <%= Company.model_name.human(:count => Company.count) %> </h1>
 <div class="container">
 
   <% if @companies.empty? %>
@@ -39,8 +39,10 @@
 
 <br>
 <br>
-<h3 class="text-center"> Consulta de preços </h3>
-<div class="d-flex justify-content-center">
+
+<h3 class="text-center bg-dark text-white "> Consulta de preços </h3>
+
+<div class="d-flex justify-content-center bg-light text-center">
   <div class="form w-50 p-3">
 
     <%= form_with url: price_queries_path, method: :get do |f| %>

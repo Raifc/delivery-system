@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
   <%= stylesheet_link_tag "application" %>
 </head>
 
 <body>
-<h1 class="text-center">Delivery System </h1>
-<p class = "text-center" style="font-size: x-small;"> Don't believe the hype. Just code. </p>
+<h1 class="text-center display-3">Delivery System </h1>
+<p class="text-center" style="font-size: x-small;"> Don't believe the hype. Just code. </p>
 
 <br>
 <br>
@@ -24,7 +23,7 @@
   </p>
 
   <div class="d-flex justify-content-center">
-    <%= button_to 'Sair', destroy_admin_session_path, method: :delete %>
+    <%= button_to 'Sair', destroy_admin_session_path, method: :delete, :class => "btn btn-danger navbar-btn" %>
   </div>
 
 <% elsif user_signed_in? %>
@@ -35,7 +34,7 @@
   </p>
 
   <div class="d-flex justify-content-center">
-    <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
+    <%= button_to 'Sair', destroy_user_session_path, method: :delete, :class => "btn btn-danger navbar-btn" %>
   </div>
 
 <% end %>

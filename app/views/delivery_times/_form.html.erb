@@ -1,28 +1,28 @@
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center text-center">
 
-  <%= form_with model: [:company, @delivery_time] do |f| %>
-    <div class="form w-50 p-3">
+<%= form_with model: [:company, @delivery_time] do |f| %>
 
-      <div class="row">
-        <p><%= @delivery_time.errors.full_messages_for(:min_distance).to_sentence if @delivery_time.errors %></p>
-        <%= f.label :min_distance %>
-        <%= f.text_field :min_distance %>
-      </div>
-
-      <div class="row">
-        <p><%= @delivery_time.errors.full_messages_for(:max_distance).to_sentence if @delivery_time.errors %></p>
-        <%= f.label :max_distance %>
-        <%= f.text_field :max_distance %>
-      </div>
-
-      <div class="row">
-        <p><%= @delivery_time.errors.full_messages_for(:business_days).to_sentence if @delivery_time.errors %></p>
-        <%= f.label :business_days %>
-        <%= f.text_field :business_days %>
-      </div>
-
+    <div class="row">
+      <p><%= @delivery_time.errors.full_messages_for(:min_distance).to_sentence if @delivery_time.errors %></p>
+      <%= f.label :min_distance %>
+      <%= f.text_field :min_distance %>
     </div>
+
+    <div class="row">
+      <p><%= @delivery_time.errors.full_messages_for(:max_distance).to_sentence if @delivery_time.errors %></p>
+      <%= f.label :max_distance %>
+      <%= f.text_field :max_distance %>
+    </div>
+
+    <div class="row">
+      <p><%= @delivery_time.errors.full_messages_for(:business_days).to_sentence if @delivery_time.errors %></p>
+      <%= f.label :business_days %>
+      <%= f.text_field :business_days %>
+    </div>
+
+
     <%= f.submit %>
 
   <% end %>
+
 </div>
