@@ -1,16 +1,30 @@
-Delivery System
+# Sistema de transportadoras
+Aplicação desenvolvida para gerenciar transportadoras e suas funcionalidades. 
+Funcionalidades:
+- Busca de atualizações de rota;
+- Cadastro de transportadoras e seus respectivos preços, prazos de entrega e veículos;
+- Consulta de preços e prazos de acordo com o volume e peso do pacote a ser transportado; 
+- Criação e gerenciamento de ordens de serviço
 
-Delivery System é um projeto desenvolido para gerenciamento de transportadoras.
+## Requisitos e versões
+- [Rails 7.0.3]
+- [Ruby 3.0.0]
+- [rspec-rails 5.1.2]
+- [capybara 3.37.1]
 
 
-Para executar esse projeto você deve ter um computador, preferencialmente com Linux, com a linguagem de programação Ruby na versão 3.0.0.
+## Executando a aplicação
+- Com todos os requisitos satisfeitos:
+- Clone o repositório através do git clone. 
+- Abra o diretório em seu terminal.
+- Em seu terminal, rode `bundle install`.
+- Em seu terminal, rode `rails db:seed`.
+- Em seu terminal, rode `rails server`, isto irá iniciar a aplicação.
+- Em seu navegador, acesse: `localhost:3000`.
+### Fazendo Login
+- Acesse o sistema como administrador utilizando admin@sistemadefrete.com.br como endereço de email e 123456 como senha.
+- Acesse o sistema como usuário utilizando user@transportes.com.br como endereço de email e 123456 como senha.
 
-Abra o diretório do projeto no console. Você deve instalar as dependências definidas no arquivo Gemfile com utilizando bundle install.
-
-Com todas dependências instaladas, execute rails server e em seu navegador digite localhost:3000.
-
-
-Versões
-Foram utilizadas as seguintes versões neste sistema
-* Ruby 3.0.0
-* Rails 7.0.3
+## Executando testes
+- Após rodar o comando `bundle install`:
+- Com o repositório aberto em seu terminal, rode `rspec`

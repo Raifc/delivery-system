@@ -10,6 +10,7 @@ describe 'User edits a vehicle - ' do
   before(:each) do
     login_as user, scope: :user
   end
+
   it 'should edit a vehicle successfully' do
     Vehicle.create!(license_plate: 'EJK2098', brand: 'Volkswagen', model: 'Cargo', year: '2022', load_capacity: '2000', company: company)
 

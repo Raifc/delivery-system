@@ -1,6 +1,6 @@
 <h1>Resultados para: <%= @code %></h1>
 
-<% if @service_order.present? %>
+<% if @service_order.present? && @service_order.route_updates.present? %>
   <h3> Cidade de origem: <%= @origin_address.city %> | Cidade de destino: <%= @destination_address.city %> </h3>
   <table class="table">
     <thead>

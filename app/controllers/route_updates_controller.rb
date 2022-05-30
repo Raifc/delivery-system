@@ -6,12 +6,14 @@ class RouteUpdatesController < ApplicationController
     @company = Company.find(params[:company_id])
     @service_order = ServiceOrder.find(params[:service_order_id])
     @route_updates = @service_order.route_updates.all
+    check_user
   end
 
   def new
     @company = Company.find(params[:company_id])
     @service_order = ServiceOrder.find(params[:service_order_id])
     @route_update = @service_order.route_updates.new
+    check_user
   end
 
   def create
@@ -27,7 +29,10 @@ class RouteUpdatesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @company = Company.find(params[:company_id])
+    check_user
+  end
 
   private
 
@@ -37,6 +42,10 @@ class RouteUpdatesController < ApplicationController
 
   def route_update_params
     params.require(:route_update).permit(:service_order_id, :company_id, :city, :date, :time)
+  end
+
+  def check_user
+    redirect_to root_path if current_user.company_id != @company.id
   end
 
 end

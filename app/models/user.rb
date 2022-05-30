@@ -15,6 +15,6 @@ class User < ApplicationRecord
   end
 
   def company_is_valid
-    errors.add :email, 'No companies with this email address!' unless company
+    errors.add :email, 'Não existem transportadoras com o domínio de email informado!' unless company
   end
 end

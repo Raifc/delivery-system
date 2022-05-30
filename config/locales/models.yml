@@ -6,10 +6,14 @@ pt-BR:
         one: "Transportadora"
         other: "Transportadoras"
       delivery_time: 'Tempo de Entrega'
-      price: 'Preço'
+      price:
+        one: "Preço"
+        other: "Preços"
       product: 'Produto'
       route_update: 'Atualização de rota'
-      service_order: 'Ordem de serviço'
+      service_order:
+        one: 'Ordem de serviço'
+        other: 'Ordens de serviço'
       vehicle:
         one: "Veículo"
         other: "Veículos"

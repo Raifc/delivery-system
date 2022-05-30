@@ -1,18 +1,22 @@
-<%= form_with model: [:company, :service_order, @route_update] do |f| %>
-  <div class="form w-50 p-3">
+<div class="d-flex justify-content-center">
 
-    <div class="row">
-      <p><%= @route_update.errors.full_messages_for(:city).to_sentence if @route_update.errors %></p>
-      <%= f.label :city %>
-      <%= f.text_field :city %>
+  <%= form_with model: [:company, :service_order, @route_update] do |f| %>
+    <div class="form w-50 p-3">
+
+      <div class="row">
+        <p><%= @route_update.errors.full_messages_for(:city).to_sentence if @route_update.errors %></p>
+        <%= f.label :city %>
+        <%= f.text_field :city %>
+      </div>
+
+      <div class="row">
+        <p><%= @route_update.errors.full_messages_for(:time).to_sentence if @route_update.errors %></p>
+        <%= f.label :time %>
+        <%= f.datetime_field :time %>
+      </div>
+
+      <%= f.submit %>
     </div>
+  <% end %>
 
-    <div class="row">
-      <p><%= @route_update.errors.full_messages_for(:time).to_sentence if @route_update.errors %></p>
-      <%= f.label :time %>
-      <%= f.datetime_field :time %>
-    </div>
-
-    <%= f.submit 'Submit' %>
-  </div>
-<% end %>
+</div>

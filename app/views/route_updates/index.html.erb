@@ -1,23 +1,35 @@
-<h1 class="text-center"> <%= RouteUpdate.model_name.human %> </h1>
+<h1 class="text-center display-4 bg-dark text-white"> <%= RouteUpdate.model_name.human %> </h1>
+<div class="container">
 
-<table class="table">
-  <thead>
-  <tr>
-    <th> <%= RouteUpdate.human_attribute_name(:city) %> </th>
-    <th> <%= RouteUpdate.human_attribute_name(:time) %> </th>
-  </tr>
-  <tbody>
-  <% @route_updates.each do |update| %>
-    <tr>
-      <td> <%= update.city %> </td>
-      <td> <%= update.time %> </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+  <div class="d-flex justify-content-center">
+    <% if @route_updates.empty? %>
+      <p> Nenhuma atualização ainda! </p>
+    <% end %>
+  </div>
 
-<% if @route_updates.empty? %>
-  <p> Nenhuma atualização ainda! </p>
-<% end %>
 
-<%= link_to "Nova atualização de rota", new_company_service_order_route_update_path %>
+  <div class="col">
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+      <tr>
+        <th> <%= RouteUpdate.human_attribute_name(:city) %> </th>
+        <th> <%= RouteUpdate.human_attribute_name(:time) %> </th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @route_updates.each do |update| %>
+        <tr>
+          <td> <%= update.city %> </td>
+          <td> <%= update.time %> </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="d-flex justify-content-center">
+  <p> <%= link_to "Nova atualização de rota", new_company_service_order_route_update_path %> || </p>
+  <p> <%= link_to "Voltar", company_path(@company) %> </p>
+</div>

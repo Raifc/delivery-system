@@ -1,3 +1,5 @@
+<h2 class="text-center"> Boas Vindas! </h2>
+
 <nav class="d-flex justify-content-center">
   <div>
     <% unless admin_signed_in? || user_signed_in? %>
@@ -9,7 +11,7 @@
 
 <body>
 <br>
-<h2 class = "text-center">Rastreie seu pedido!</h2>
+<h2 class="text-center">Rastreie seu pedido!</h2>
 <div class="d-flex justify-content-center">
   <div class="form">
     <%= form_with url: search_service_orders_path, method: :get do |f| %>

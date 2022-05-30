@@ -1,4 +1,4 @@
-<h1 class="text-center"> <%= ServiceOrder.model_name.human %> : <%= @service_order.code %> </h1>
+<h1 class="text-center display-4 bg-dark text-white"> <%= ServiceOrder.model_name.human %> : <%= @service_order.code %> </h1>
 
 <table class="table">
   <thead>
@@ -42,6 +42,7 @@
 <div class="d-flex justify-content-center">
   <% if user_signed_in? %>
     <p> <%= link_to "Nova atualização de rota", new_company_service_order_route_update_path(@service_order.company_id, @service_order.id) %> || </p>
+    <p> <%= link_to "Atualizações de rota", company_service_order_route_updates_path(@service_order.company_id, @service_order.id) %> || </p>
   <% end %>
 
   <p> <%= link_to "Voltar", company_service_orders_path %> </p>

@@ -5,18 +5,17 @@
   <tr>
     <th>Transportadora</th>
     <th>Preço para envio</th>
-    <th>Tempo para entrega </th>
+    <th>Tempo para entrega</th>
   </tr>
   </thead>
   <tbody>
-  <% @result.each do |result| %>
-  <tr>
-    <td><%= result[0] %></td>
-    <td>R$<%= result[1] / 100 %></td>
-    <td><%= result[2] %> Dias úteis</td>
-  </tr>
+
+  <% @results.each do |result| %>
+    <tr>
+      <td><%= result[:company_name] %></td>
+      <td>R$<%= result[:price] %></td>
+      <td><%= result[:delivery_time] %> Dias úteis</td>
+     </tr>
   <% end %>
   </tbody>
 </table>
-
-

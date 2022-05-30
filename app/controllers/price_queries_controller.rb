@@ -9,14 +9,15 @@ class PriceQueriesController < ApplicationController
     weight = params.fetch(:weight).to_i
     distance = params.fetch(:distance).to_i
     volume = height * width * depth
-    @result = [] #transformar result em hash
+    @results = []
     @companies = Company.all.where("status = 1")
 
     @companies.each do |company|
-      partial_result = []
+      company_hash = {}
       price = company.prices.find_by("min_volume <= ? AND max_volume >= ? AND min_weight <= ? AND max_weight >= ?", volume, volume, weight, weight)
-      delivery_time = company.delivery_times.find_by("min_distance <= ? AND max_distance >= ?", distance, distance)
       next unless price.present?
+
+      delivery_time = company.delivery_times.find_by("min_distance <= ? AND max_distance >= ?", distance, distance)
       rate = price.km_value
       final_price = distance * rate
 
@@ -26,12 +27,13 @@ class PriceQueriesController < ApplicationController
                            'Not Given'
                          end
 
-      partial_result << company.trading_name
-      partial_result << final_price
-      partial_result << days_to_delivery
+      company_hash[:company_name] = company.trading_name
+      company_hash[:price] = final_price / 100
+      company_hash[:delivery_time] = days_to_delivery
 
-      @result << partial_result
+      @results << company_hash
     end
+
   end
 
   private

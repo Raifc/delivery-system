@@ -6,7 +6,10 @@ RSpec.describe Address, type: :model do
     it 'false when full address name is empty' do
       address = Address.new(full_address: '', city: 'New York', state: 'New York')
 
-      expect(address).not_to be_valid
+      address.valid?
+      result = address.errors.include?(:full_address)
+
+      expect(result).to be true
     end
 
     it 'should create a new address' do

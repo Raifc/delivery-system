@@ -1,21 +1,23 @@
+<div class="d-flex justify-content-center">
+
 <%= form_with model: [:company, @service_order] do |f| %>
   <div class="form w-50 p-3">
 
     <%= f.fields_for :origin_address do |origin_address_form| %>
       <div class="row">
-        <p><%= @service_order.errors.full_messages_for(:full_address).to_sentence if @service_order.errors %></p>
+        <p><%= @origin_address.errors.full_messages_for(:full_address).to_sentence if @origin_address.errors %></p>
         <%= origin_address_form.label :full_address, ServiceOrder.human_attribute_name("origin_address.origin_address") %>
         <%= origin_address_form.text_field :full_address %>
       </div>
 
       <div class="row">
-        <p><%= @service_order.errors.full_messages_for(:city).to_sentence if @service_order.errors %></p>
+        <p><%= @origin_address.errors.full_messages_for(:city).to_sentence if @origin_address.errors %></p>
         <%= origin_address_form.label :city, ServiceOrder.human_attribute_name("origin_address.origin_city") %>
         <%= origin_address_form.text_field :city %>
       </div>
 
       <div class="row">
-        <p><%= @service_order.errors.full_messages_for(:state).to_sentence if @service_order.errors %></p>
+        <p><%= @origin_address.errors.full_messages_for(:state).to_sentence if @origin_address.errors %></p>
         <%= origin_address_form.label :state, ServiceOrder.human_attribute_name("origin_address.origin_state") %>
         <%= origin_address_form.text_field :state %>
       </div>
@@ -23,16 +25,19 @@
 
     <%= f.fields_for :destination_address do |destination_address_form| %>
       <div class="row">
+        <p><%= @destination_address.errors.full_messages_for(:full_address).to_sentence if @destination_address.errors %></p>
         <%= destination_address_form.label :full_address, ServiceOrder.human_attribute_name("destination_address.destination_address") %>
         <%= destination_address_form.text_field :full_address %>
       </div>
 
       <div class="row">
+        <p><%= @destination_address.errors.full_messages_for(:city).to_sentence if @destination_address.errors %></p>
         <%= destination_address_form.label :city, ServiceOrder.human_attribute_name("destination_address.destination_city") %>
         <%= destination_address_form.text_field :city %>
       </div>
 
       <div class="row">
+        <p><%= @destination_address.errors.full_messages_for(:state).to_sentence if @destination_address.errors %></p>
         <%= destination_address_form.label :state, ServiceOrder.human_attribute_name("destination_address.destination_state") %>
         <%= destination_address_form.text_field :state %>
       </div>
@@ -47,4 +52,4 @@
   <%= f.submit %>
 
 <% end %>
-
+</div>

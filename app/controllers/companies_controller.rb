@@ -22,7 +22,9 @@ class CompaniesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    check_user if user_signed_in?
+  end
 
   def edit; end
 
@@ -44,6 +46,10 @@ class CompaniesController < ApplicationController
   def company_params
     params.require(:company).permit(:corporate_name, :registration_number, :trading_name, :status, :email_domain,
                                     address_attributes: %i[id full_address city state])
+  end
+
+  def check_user
+    redirect_to root_path if current_user.company_id != @company.id
   end
 
 end

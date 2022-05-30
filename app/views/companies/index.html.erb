@@ -1,35 +1,41 @@
-<h1 class="text-center"> <%= Company.model_name.human %> </h1>
+<h1 class="text-center display-4 bg-dark text-white">  <%= Company.model_name.human(:count => Company.count) %> </h1>
+<div class="container">
 
-<table class="table">
-  <thead>
-  <tr>
-    <th> <%= Company.human_attribute_name(:corporate_name) %> </th>
-    <th> <%= Company.human_attribute_name(:trading_name) %> </th>
-    <th> <%= Company.human_attribute_name(:registration_number) %> </th>
-    <th> <%= Company.human_attribute_name(:status) %> </th>
-    <th> Ação</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @companies.each do |company| %>
-    <tr>
-      <td> <%= company.corporate_name %> </td>
-      <td> <%= company.trading_name %> </td>
-      <td> <%= company.registration_number %> </td>
-      <td> <%= company.status %> </td>
-      <td> <%= link_to "Ver", company %> </td>
-    </tr>
+  <% if @companies.empty? %>
+    <p> Nenhuma transportadora cadastrada! </p>
   <% end %>
-  </tbody>
-</table>
 
-<% if @companies.empty? %>
-  <p> Nenhuma transportadora cadastrada! </p>
-<% end %>
+  <div class="col">
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+      <tr>
+        <th scope="row"> <%= Company.human_attribute_name(:corporate_name) %> </th>
+        <th scope="row"> <%= Company.human_attribute_name(:trading_name) %> </th>
+        <th scope="row"> <%= Company.human_attribute_name(:registration_number) %> </th>
+        <th scope="row"> <%= Company.human_attribute_name(:status) %> </th>
+        <th scope="row"> Ação</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @companies.each do |company| %>
+        <tr>
+          <td> <%= company.corporate_name %> </td>
+          <td> <%= company.trading_name %> </td>
+          <td> <%= company.registration_number %> </td>
+          <td> <%= company.status %> </td>
+          <td> <%= link_to "Ver", company %> </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
 
 <p class="text-center">
   <%= link_to "Nova Transportadora", new_company_path %> |
-  <%= link_to "Novo Produto", new_product_path %> </p>
+  <%= link_to "Produtos", products_path %> </p>
 
 <br>
 <br>

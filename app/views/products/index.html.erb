@@ -1,18 +1,44 @@
-<h1 class="text-center"> <%= Product.model_name.human %> </h1>
+<h1 class="text-center display-4 bg-dark text-white"> <%= Product.model_name.human %> </h1>
+<div class="container">
 
-<div class="d-flex justify-content-center">
-  <% @products.each do |product| %>
-    <%= render product %> ||
-    <p>
-      <%= link_to "Ver", product %>
-    </p>
+  <% if @products.empty? %>
+    <p> Nenhum produto cadastrado! </p>
   <% end %>
+
+  <div class="col">
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+      <tr>
+        <th> <%= Product.human_attribute_name(:height) %> </th>
+        <th> <%= Product.human_attribute_name(:width) %> </th>
+        <th> <%= Product.human_attribute_name(:depth) %> </th>
+        <th> <%= Product.human_attribute_name(:weight) %> </th>
+        <th> <%= Product.human_attribute_name(:code) %> </th>
+        <th> <%= Product.human_attribute_name(:volume) %> </th>
+        <th> Ação</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.height %></td>
+          <td><%= product.width %></td>
+          <td><%= product.depth %></td>
+          <td><%= product.weight %></td>
+          <td><%= product.code %></td>
+          <td><%= product.volume %></td>
+
+          <td><%= link_to "Ver", product %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<% if @products.empty? %>
-  <p> Nenhum produto cadastrado! </p>
-<% end %>
 
 <div class="d-flex justify-content-center">
-<%= link_to "Novo Produto", new_product_path %>
+  <%= link_to "Novo Produto", new_product_path %> || </p>
+  <p> <%= link_to "Voltar", companies_path %> </p>
 </div>

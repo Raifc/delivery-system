@@ -5,11 +5,13 @@ class VehiclesController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
     @vehicles = @company.vehicles.all
+    check_user
   end
 
   def new
     @company = Company.find(params[:company_id])
     @vehicle = @company.vehicles.new #@vehicle = Vehicle.new
+    check_user
   end
 
   def create
@@ -25,9 +27,15 @@ class VehiclesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @company = Company.find(params[:company_id])
+    check_user
+  end
 
-  def edit; end
+  def edit
+    @company = Company.find(params[:company_id])
+    check_user
+  end
 
   def update
     if @vehicle.update(vehicle_params)
@@ -38,10 +46,7 @@ class VehiclesController < ApplicationController
     end
   end
 
-  def destroy
-    @vehicle.destroy
-    redirect_to root_path, notice: 'Veículo excluído com sucesso!'
-  end
+  def destroy;  end
 
   private
 
@@ -53,6 +58,10 @@ class VehiclesController < ApplicationController
 
   def vehicle_params
     params.require(:vehicle).permit(:license_plate, :brand, :model, :year, :load_capacity, :company_id)
+  end
+
+  def check_user
+    redirect_to root_path if current_user.company_id != @company.id
   end
 
 end

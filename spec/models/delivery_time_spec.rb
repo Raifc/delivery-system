@@ -15,7 +15,10 @@ RSpec.describe DeliveryTime, type: :model do
       address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
       delivery_time = DeliveryTime.new(min_distance: '100', max_distance: '200', business_days: '3')
 
-      expect(delivery_time).not_to be_valid
+      delivery_time.valid?
+      result = delivery_time.errors.include?(:company)
+
+      expect(result).to be true
     end
 
     it 'false when minimum distance is empty' do
@@ -23,7 +26,10 @@ RSpec.describe DeliveryTime, type: :model do
       company = Company.new(corporate_name: 'Beta', trading_name: 'Alfa', registration_number: '1234567', address: address, email_domain: 'alfa.com')
       delivery_time = DeliveryTime.new(min_distance: '', max_distance: '200', business_days: '3', company: company)
 
-      expect(delivery_time).not_to be_valid
+      delivery_time.valid?
+      result = delivery_time.errors.include?(:min_distance)
+
+      expect(result).to be true
     end
 
   end

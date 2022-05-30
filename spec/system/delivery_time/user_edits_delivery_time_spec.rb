@@ -37,7 +37,7 @@ describe 'User edits delivery time - ' do
     end
   end
 
-  it 'should update delivery time with empty maximum distance' do
+  it 'should not update delivery time with empty maximum distance' do
     DeliveryTime.create!(min_distance: '30', max_distance: '50', business_days: '4', company: company)
 
     visit company_path(user.company)

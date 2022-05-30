@@ -5,12 +5,13 @@ class PricesController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
     @prices = @company.prices.all
-
+    redirect_to root_path if current_user.company_id != @company.id
   end
 
   def new
     @company = Company.find(params[:company_id])
     @price = Price.new
+    check_user
   end
 
   def create
@@ -35,9 +36,15 @@ class PricesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @company = Company.find(params[:company_id])
+    check_user
+  end
 
-  def edit; end
+  def edit
+    @company = Company.find(params[:company_id])
+    check_user
+  end
 
   private
 
@@ -47,6 +54,10 @@ class PricesController < ApplicationController
 
   def price_params
     params.require(:price).permit(:min_volume, :max_volume, :min_weight, :max_weight, :km_value, :company_id)
+  end
+
+  def check_user
+    redirect_to root_path if current_user.company_id != @company.id
   end
 
 end

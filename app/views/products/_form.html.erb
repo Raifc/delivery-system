@@ -1,37 +1,40 @@
-<div class="form w-50 p-3">
-  <%= form_with model: @product do |f| %>
+<div class="d-flex justify-content-center">
 
-    <div class="row">
-      <p><%= @product.errors.full_messages_for(:code).to_sentence if @product.errors %></p>
-      <%= f.label :code %>
-      <%= f.text_field :code %>
-    </div>
+  <div class="form w-50 p-3">
+    <%= form_with model: @product do |f| %>
 
-    <div class="row">
-      <p><%= @product.errors.full_messages_for(:height).to_sentence if @product.errors %></p>
-      <%= f.label :height %>
-      <%= f.text_field :height %>
-    </div>
+      <div class="row">
+        <p><%= @product.errors.full_messages_for(:code).to_sentence if @product.errors %></p>
+        <%= f.label :code %>
+        <%= f.text_field :code %>
+      </div>
 
-    <div class="row">
-      <p><%= @product.errors.full_messages_for(:width).to_sentence if @product.errors %></p>
-      <%= f.label :width %>
-      <%= f.text_field :width %>
-    </div>
+      <div class="row">
+        <p><%= @product.errors.full_messages_for(:height).to_sentence if @product.errors %></p>
+        <%= f.label :height %>
+        <%= f.text_field :height %>
+      </div>
 
-    <div class="row">
-      <p><%= @product.errors.full_messages_for(:depth).to_sentence if @product.errors %></p>
-      <%= f.label :depth %>
-      <%= f.text_field :depth %>
-    </div>
+      <div class="row">
+        <p><%= @product.errors.full_messages_for(:width).to_sentence if @product.errors %></p>
+        <%= f.label :width %>
+        <%= f.text_field :width %>
+      </div>
 
-    <div class="row">
-      <p><%= @product.errors.full_messages_for(:weight).to_sentence if @product.errors %></p>
-      <%= f.label :weight %>
-      <%= f.text_field :weight %>
-    </div>
+      <div class="row">
+        <p><%= @product.errors.full_messages_for(:depth).to_sentence if @product.errors %></p>
+        <%= f.label :depth %>
+        <%= f.text_field :depth %>
+      </div>
 
-    <%= f.submit %>
+      <div class="row">
+        <p><%= @product.errors.full_messages_for(:weight).to_sentence if @product.errors %></p>
+        <%= f.label :weight %>
+        <%= f.text_field :weight %>
+      </div>
 
-  <% end %>
+      <%= f.submit %>
+
+    <% end %>
+  </div>
 </div>

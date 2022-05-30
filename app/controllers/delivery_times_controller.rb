@@ -5,11 +5,13 @@ class DeliveryTimesController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
     @delivery_times = @company.delivery_times.all
+    check_user
   end
 
   def new
     @company = Company.find(params[:company_id])
     @delivery_time = @company.delivery_times.new #@delivery_time = DeliveryTime.new
+    check_user
   end
 
   def create
@@ -34,9 +36,15 @@ class DeliveryTimesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @company = Company.find(params[:company_id])
+    check_user
+  end
 
-  def edit; end
+  def edit
+    @company = Company.find(params[:company_id])
+    check_user
+  end
 
   private
 
@@ -46,6 +54,10 @@ class DeliveryTimesController < ApplicationController
 
   def delivery_time_params
     params.require(:delivery_time).permit(:company_id, :min_distance, :max_distance, :business_days)
+  end
+
+  def check_user
+    redirect_to root_path if current_user.company_id != @company.id
   end
 
 end

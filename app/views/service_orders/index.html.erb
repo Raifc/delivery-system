@@ -1,32 +1,42 @@
-<h1 class="text-center"> <%= ServiceOrder.model_name.human %> </h1>
+<h1 class="text-center display-4 bg-dark text-white">  <%= ServiceOrder.model_name.human(:count => ServiceOrder.count) %> </h1>
+<div class="container">
 
-<table class="table">
-  <thead>
-  <tr>
-    <th> <%= ServiceOrder.human_attribute_name(:code) %> </th>
-    <th><%= ServiceOrder.human_attribute_name(:status) %> </th>
-    <th>Ação</th>
-  </tr>
-  </thead>
+  <div class="d-flex justify-content-center">
+    <% if @service_orders.empty? %>
+      <p>Nenhuma ordem de serviço!</p>
+    <% end %>
+  </div>
 
-  <tbody>
-  <% @service_orders.each do |service_order| %>
-    <tr>
-      <td><%= service_order.code %></td>
-      <td><%= service_order.status %></td>
-      <td><%= link_to "Ver", company_service_order_path(@company, service_order) %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+  <div class="col">
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+      <tr>
+        <th> <%= ServiceOrder.human_attribute_name(:code) %> </th>
+        <th> <%= ServiceOrder.human_attribute_name(:status) %> </th>
+        <th> <%= Product.model_name.human %> </th>
+        <th>Ação</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @service_orders.each do |service_order| %>
+        <tr>
+          <td><%= service_order.code %></td>
+          <td><%= service_order.status %></td>
+          <td><%= service_order.product.code %></td>
+          <td><%= link_to "Ver", company_service_order_path(@company, service_order) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <div class="d-flex justify-content-center">
-  <% if @service_orders.empty? %>
-    <p>Nenhuma ordem de serviço!</p>
-  <% end %>
-
   <% if admin_signed_in? %>
-    <%= link_to "Nova ordem de serviço", new_company_service_order_path %> ||
+    <% if @company.status == 'Ativa' %>
+      <%= link_to "Nova ordem de serviço", new_company_service_order_path %> ||
+    <% end %>
   <% end %>
   <%= link_to "Voltar", company_path(@company) %>
 </div>

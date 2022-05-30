@@ -6,12 +6,15 @@ class ServiceOrdersController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
     @service_orders = @company.service_orders.all
+    check_user if user_signed_in?
   end
 
   def new
     @company = Company.find(params[:company_id])
     @products = Product.all
     @service_order = @company.service_orders.new
+    @origin_address = Address.new
+    @destination_address = Address.new
   end
 
   def create
@@ -21,31 +24,39 @@ class ServiceOrdersController < ApplicationController
     destination_address_parameters = service_order_params.fetch(:destination_address)
 
     @service_order = ServiceOrder.new(service_order_parameters)
-    @origin_address = Address.create!(origin_address_parameters)
-    @destination_address = Address.create!(destination_address_parameters)
-    @service_order.origin_address_id = @origin_address.id
-    @service_order.destination_address_id = @destination_address.id
+    @origin_address = Address.new(origin_address_parameters)
+    @destination_address = Address.new(destination_address_parameters)
     @service_order.company = @company
 
-    if @service_order.save
+    @origin_address.save!
+    @destination_address.save!
+    @service_order.origin_address_id = @origin_address.id
+    @service_order.destination_address_id = @destination_address.id
+
+    if @service_order.save!
       redirect_to company_service_orders_path(@service_order.company_id), notice: 'Ordem de serviço criada com sucesso!'
-    else
-      flash.now[:notice] = 'Falha ao criar ordem de serviço'
-      render 'new'
     end
+
+  rescue ActiveRecord::RecordInvalid => e
+    flash.now[:notice] = 'Falha ao criar ordem de serviço'
+    @products = Product.all
+    render 'new'
 
   end
 
   def show
+    @company = Company.find(params[:company_id])
     @service_order = ServiceOrder.find(params[:id])
     @origin_address = Address.find_by(id: @service_order.origin_address_id)
     @destination_address = Address.find_by(id: @service_order.destination_address_id)
     @vehicle = Vehicle.find_by(id: @service_order.vehicle_id)
+    check_user if user_signed_in?
   end
 
   def edit
     @company = Company.find(params[:company_id])
     @vehicles = @company.vehicles.all
+    check_user if user_signed_in?
   end
 
   def search
@@ -81,6 +92,10 @@ class ServiceOrdersController < ApplicationController
     params.require(:service_order).permit(:company_id, :code, :status, :product_id, :vehicle_id,
                                           origin_address: %i[id full_address city state addressable_type],
                                           destination_address: %i[id full_address city state addressable_type])
+  end
+
+  def check_user
+    redirect_to root_path if current_user.company_id != @company.id
   end
 
 end

@@ -56,4 +56,39 @@ describe 'User creates prices' do
     expect(page).to have_content "Valor por km não pode ficar em branco"
   end
 
+
+  it 'should not create a new price with min volume bigger than max volume' do
+    visit company_path(user.company)
+
+    click_on 'Preços'
+    click_on 'Novo preço'
+    expect(current_path).to eq '/companies/1/prices/new'
+    fill_in 'Volume mínimo', with: '100'
+    fill_in 'Volume máximo', with: '5'
+    fill_in 'Peso mínimo', with: '3'
+    fill_in 'Peso máximo', with: '10'
+    fill_in 'Valor por km', with: '120'
+    click_on 'Criar Preço'
+
+    expect(page).to have_content "Falha ao criar preço"
+    expect(page).to have_content "Volume máximo deve ser maior que o volume mínimo"
+  end
+
+  it 'should not create a new price with min weight bigger than max weight' do
+    visit company_path(user.company)
+
+    click_on 'Preços'
+    click_on 'Novo preço'
+    expect(current_path).to eq '/companies/1/prices/new'
+    fill_in 'Volume mínimo', with: '10'
+    fill_in 'Volume máximo', with: '100'
+    fill_in 'Peso mínimo', with: '900'
+    fill_in 'Peso máximo', with: '200'
+    fill_in 'Valor por km', with: '120'
+    click_on 'Criar Preço'
+
+    expect(page).to have_content "Falha ao criar preço"
+    expect(page).to have_content "Peso máximo deve ser maior que o peso mínimo"
+  end
+
 end

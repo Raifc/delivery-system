@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe 'Admin edit a Company' do
+  let!(:company) {
+    @address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
+    Company.create!(corporate_name: 'M Transports', trading_name: 'Monster Transports', registration_number: '1234567',
+                    address: @address, email_domain: 'monster.com', status: 'Ativa')
+  }
+
   it 'without login' do
     visit new_company_path
     expect(current_path).to eq new_admin_session_path
@@ -8,10 +14,6 @@ describe 'Admin edit a Company' do
   end
 
   it 'successfully' do
-    address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
-    Company.create!(corporate_name: 'M Transports', trading_name: 'Monster Transports', registration_number: '1234567',
-                    address: address, email_domain: 'monster.com', status: 'Ativa')
-
     admin = Admin.create!(email: 'admin@sistemadefrete.com.br', password: '123456')
     login_as admin, scope: :admin
 
@@ -37,10 +39,6 @@ describe 'Admin edit a Company' do
   end
 
   it 'should not update without registration number' do
-    address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
-    Company.create!(corporate_name: 'M Transports', trading_name: 'Monster Transports', registration_number: '1234567',
-                    address: address, email_domain: 'monster.com', status: 'Ativa')
-
     admin = Admin.create!(email: 'admin@sistemadefrete.com.br', password: '123456')
     login_as admin, scope: :admin
 
@@ -64,10 +62,6 @@ describe 'Admin edit a Company' do
   end
 
   it 'should not update without corporate name' do
-    address = Address.new(full_address: '100, 1st street', city: 'New York', state: 'New York')
-    Company.create!(corporate_name: 'M Transports', trading_name: 'Monster Transports', registration_number: '1234567',
-                    address: address, email_domain: 'monster.com', status: 'Ativa')
-
     admin = Admin.create!(email: 'admin@sistemadefrete.com.br', password: '123456')
     login_as admin, scope: :admin
 
