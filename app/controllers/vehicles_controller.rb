@@ -46,7 +46,7 @@ class VehiclesController < ApplicationController
     end
   end
 
-  def destroy;  end
+  def destroy; end
 
   private
 

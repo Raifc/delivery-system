@@ -1,5 +1,5 @@
 class EmailDomainsController < ApplicationController
-  before_action :set_email_domain, only: [:show, :edit, :update, :destroy]
+  before_action :set_email_domain, only: %i[show edit update destroy]
 
   def index; end
 
