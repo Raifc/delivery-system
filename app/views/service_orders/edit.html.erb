@@ -6,9 +6,9 @@
     <% end %>
   </ul>
 <% end %>
-
+<div class="d-flex justify-content-center text-center">
 <%= form_with model: [:company, @service_order] do |f| %>
-  <div class="form w-50 p-3">
+  <div class="form">
     <div class="row">
       <%= f.label :status %>
       <%= f.select(:status, ServiceOrder.statuses.keys) %>
@@ -16,10 +16,11 @@
 
     <div class="row">
       <%= f.label :vehicle_id, Vehicle.model_name.human %>
-      <%= f.collection_select :vehicle_id, @vehicles, :id, :license_plate %> <%#PRECISA DE MELHORA URGENTE - TERMINAR i18n E MELHORAR %>
+      <%= f.collection_select :vehicle_id, @vehicles, :id, :license_plate %>
     </div>
 
-    <%= f.submit 'Atualizar' %>
+    <%= f.submit %>
   </div>
+    </div>
 <% end %>
-<p> <%= link_to "Voltar", company_service_orders_path %> </p>
+<p class="text-center"> <%= link_to "Voltar", company_service_orders_path %> </p>

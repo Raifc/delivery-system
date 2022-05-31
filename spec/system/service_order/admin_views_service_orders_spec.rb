@@ -18,14 +18,14 @@ describe 'admin views a new service order' do
     Address.create!(full_address: 'Av Getulio Vargas', city: 'Uberlandia', state: 'MG')
     Product.create!(code: 'SKAUV15', height: 3, width: 55, depth: 12, weight: 24)
     service_order = ServiceOrder.create!(company_id: 1, origin_address_id: 2, destination_address_id: 3, product_id: 1)
-    codigo = service_order.code
+    code = service_order.code
 
     visit '/companies/1/service_orders'
     click_on 'Ver'
 
     within 'table' do
       expect(page).to have_content 'Código'
-      expect(page).to have_content "#{codigo}"
+      expect(page).to have_content code.to_s
       expect(page).to have_content 'Status'
       expect(page).to have_content 'Pendente'
       expect(page).to have_content 'Endereço de origem'
