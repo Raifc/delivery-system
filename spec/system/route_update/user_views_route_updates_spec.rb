@@ -41,6 +41,16 @@ describe 'User views route updates' do
     end
   end
 
+  it 'should not see other companies route updates' do
+    Company.create!(corporate_name: 'Monter', trading_name: 'Monster transports',
+                    registration_number: '123456789', address: @address, email_domain: 'monster.com')
+
+    visit '/companies/2/service_orders/1/route_updates'
+
+    expect(current_path).to eq root_path
+    expect(page).to have_content('Acesso não permitido')
+  end
+
   it 'should return to companies page' do
     visit company_path(user.company)
 

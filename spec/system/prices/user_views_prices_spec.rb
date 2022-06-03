@@ -31,6 +31,16 @@ describe 'User views prices - ' do
     end
   end
 
+  it 'should not see other companies prices' do
+    Company.create!(corporate_name: 'Monter', trading_name: 'Monster transports',
+                    registration_number: '123456789', address: @address, email_domain: 'monster.com')
+
+    visit '/companies/2/prices'
+
+    expect(current_path).to eq root_path
+    expect(page).to have_content('Acesso não permitido')
+  end
+
   it 'should return to company page' do
     visit company_path(user.company)
     click_on 'Preços'

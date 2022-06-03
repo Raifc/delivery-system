@@ -31,5 +31,15 @@ describe 'User views companies' do
     expect(page).to have_link('Ordens de Serviço')
   end
 
+  it 'should not be able to access other company info' do
+    Company.create!(corporate_name: 'Monter', trading_name: 'Monster transports',
+                    registration_number: '123456789', address: @address, email_domain: 'monster.com')
+
+    visit '/companies/2'
+    expect(current_path).to eq root_path
+    expect(page).to have_content('Acesso não permitido')
+
+  end
+
 end
 

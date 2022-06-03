@@ -27,6 +27,18 @@ describe 'User views delivery time - ' do
     end
   end
 
+  it 'should not see other companies delivery times' do
+    DeliveryTime.create!(min_distance: '30', max_distance: '50', business_days: '4', company: company)
+    Company.create!(corporate_name: 'Monter', trading_name: 'Monster transports',
+                    registration_number: '123456789', address: @address, email_domain: 'monster.com')
+
+    visit '/companies/2/delivery_times'
+
+    expect(current_path).to eq root_path
+    expect(page).to have_content('Acesso não permitido')
+
+  end
+
   it 'and returns to company page' do
     DeliveryTime.create!(min_distance: '30', max_distance: '50', business_days: '4', company: company)
     visit company_path(user.company)
