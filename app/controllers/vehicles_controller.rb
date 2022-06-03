@@ -1,21 +1,18 @@
 class VehiclesController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_vehicle, only: %i[show edit update destroy]
+  before_action :set_company
+  before_action :authenticate_user!
+  before_action :check_user
 
   def index
-    @company = Company.find(params[:company_id])
     @vehicles = @company.vehicles.all
-    check_user
   end
 
   def new
-    @company = Company.find(params[:company_id])
-    @vehicle = @company.vehicles.new #@vehicle = Vehicle.new
-    check_user
+    @vehicle = @company.vehicles.new
   end
 
   def create
-    @company = Company.find(params[:company_id])
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.company = @company
 
@@ -27,15 +24,9 @@ class VehiclesController < ApplicationController
     end
   end
 
-  def show
-    @company = Company.find(params[:company_id])
-    check_user
-  end
+  def show; end
 
-  def edit
-    @company = Company.find(params[:company_id])
-    check_user
-  end
+  def edit; end
 
   def update
     if @vehicle.update(vehicle_params)
@@ -52,8 +43,10 @@ class VehiclesController < ApplicationController
 
   def set_vehicle
     @vehicle = Vehicle.find(params[:id])
-    #@company = Company.find(params[:company_id])
-    #@vehicle = @company.vehicles.find(params[:id])
+  end
+
+  def set_company
+    @company = Company.find(params[:company_id])
   end
 
   def vehicle_params

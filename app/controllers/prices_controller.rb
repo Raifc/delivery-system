@@ -1,9 +1,10 @@
 class PricesController < ApplicationController
-  before_action :set_price, only: %i[show edit update destroy]
+  before_action :set_price, only: %i[show edit update]
+  before_action :set_company, only: %i[index new show edit create]
   before_action :authenticate_user!
+  before_action :check_user, only: %i[index new show edit create]
 
   def index
-    @company = Company.find(params[:company_id])
     @prices = @company.prices.all
 
     @prices.each do |price|
@@ -14,9 +15,7 @@ class PricesController < ApplicationController
   end
 
   def new
-    @company = Company.find(params[:company_id])
     @price = Price.new
-    check_user
   end
 
   def create
@@ -41,17 +40,15 @@ class PricesController < ApplicationController
     end
   end
 
-  def show
-    @company = Company.find(params[:company_id])
-    check_user
-  end
+  def show; end
 
-  def edit
-    @company = Company.find(params[:company_id])
-    check_user
-  end
+  def edit; end
 
   private
+
+  def set_company
+    @company = Company.find(params[:company_id])
+  end
 
   def set_price
     @price = Price.find(params[:id])
@@ -62,7 +59,7 @@ class PricesController < ApplicationController
   end
 
   def check_user
-    redirect_to root_path if current_user.company_id != @company.id
+    redirect_to root_path, notice: 'Acesso não permitido' if current_user.company_id != @company.id
   end
 
 end

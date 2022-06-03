@@ -1,23 +1,19 @@
 class RouteUpdatesController < ApplicationController
   before_action :set_route_update, only: [:show]
+  before_action :set_company, only: %i[index show new create]
+  before_action :set_service_order, only: %i[index show new create]
   before_action :authenticate_user!
+  before_action :check_user, only: %i[index show new create]
 
   def index
-    @company = Company.find(params[:company_id])
-    @service_order = ServiceOrder.find(params[:service_order_id])
     @route_updates = @service_order.route_updates.all
-    check_user
   end
 
   def new
-    @company = Company.find(params[:company_id])
-    @service_order = ServiceOrder.find(params[:service_order_id])
     @route_update = @service_order.route_updates.new
-    check_user
   end
 
   def create
-    @service_order = ServiceOrder.find(params[:service_order_id])
     @route_update = RouteUpdate.new(route_update_params)
     @route_update.service_order = @service_order
 
@@ -29,12 +25,17 @@ class RouteUpdatesController < ApplicationController
     end
   end
 
-  def show
-    @company = Company.find(params[:company_id])
-    check_user
-  end
+  def show; end
 
   private
+
+  def set_service_order
+    @service_order = ServiceOrder.find(params[:service_order_id])
+  end
+
+  def set_company
+    @company = Company.find(params[:company_id])
+  end
 
   def set_route_update
     @route_update = RouteUpdate.find(params[:id])
@@ -45,7 +46,7 @@ class RouteUpdatesController < ApplicationController
   end
 
   def check_user
-    redirect_to root_path if current_user.company_id != @company.id
+    redirect_to root_path, notice: 'Acesso não permitido' if current_user.company_id != @company.id
   end
 
 end

@@ -1,21 +1,18 @@
 class DeliveryTimesController < ApplicationController
-  before_action :set_delivery_time, only: %i[show edit update destroy]
+  before_action :set_delivery_time, only: %i[show edit update]
+  before_action :set_company, only: %i[index new create edit show]
   before_action :authenticate_user!
+  before_action :check_user, only: %i[index new create edit show]
 
   def index
-    @company = Company.find(params[:company_id])
     @delivery_times = @company.delivery_times.all
-    check_user
   end
 
   def new
-    @company = Company.find(params[:company_id])
-    @delivery_time = @company.delivery_times.new #@delivery_time = DeliveryTime.new
-    check_user
+    @delivery_time = @company.delivery_times.new
   end
 
   def create
-    @company = Company.find(params[:company_id])
     @delivery_time = DeliveryTime.new(delivery_time_params)
     @delivery_time.company = @company
 
@@ -36,17 +33,15 @@ class DeliveryTimesController < ApplicationController
     end
   end
 
-  def show
-    @company = Company.find(params[:company_id])
-    check_user
-  end
+  def show; end
 
-  def edit
-    @company = Company.find(params[:company_id])
-    check_user
-  end
+  def edit; end
 
   private
+
+  def set_company
+    @company = Company.find(params[:company_id])
+  end
 
   def set_delivery_time
     @delivery_time = DeliveryTime.find(params[:id])
@@ -57,7 +52,7 @@ class DeliveryTimesController < ApplicationController
   end
 
   def check_user
-    redirect_to root_path if current_user.company_id != @company.id
+    redirect_to root_path, notice: 'Acesso não permitido' if current_user.company_id != @company.id
   end
 
 end

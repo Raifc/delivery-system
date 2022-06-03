@@ -1,16 +1,15 @@
 class ServiceOrdersController < ApplicationController
   before_action :set_service_order, only: %i[edit update]
+  before_action :set_company, only: %i[index new create show edit]
   before_action :authenticate_admin!, only: [:new]
   before_action :authenticate_user_or_admin, only: %i[show edit update index]
 
   def index
-    @company = Company.find(params[:company_id])
     @service_orders = @company.service_orders.all
     check_user if user_signed_in?
   end
 
   def new
-    @company = Company.find(params[:company_id])
     @products = Product.all
     @service_order = @company.service_orders.new
     @origin_address = Address.new
@@ -18,7 +17,6 @@ class ServiceOrdersController < ApplicationController
   end
 
   def create
-    @company = Company.find(params[:company_id])
     service_order_parameters = service_order_params
     origin_address_parameters = service_order_params.fetch(:origin_address)
     destination_address_parameters = service_order_params.fetch(:destination_address)
@@ -45,7 +43,6 @@ class ServiceOrdersController < ApplicationController
   end
 
   def show
-    @company = Company.find(params[:company_id])
     @service_order = ServiceOrder.find(params[:id])
     @origin_address = Address.find_by(id: @service_order.origin_address_id)
     @destination_address = Address.find_by(id: @service_order.destination_address_id)
@@ -54,7 +51,6 @@ class ServiceOrdersController < ApplicationController
   end
 
   def edit
-    @company = Company.find(params[:company_id])
     @vehicles = @company.vehicles.all
     check_user if user_signed_in?
   end
@@ -95,7 +91,11 @@ class ServiceOrdersController < ApplicationController
   end
 
   def check_user
-    redirect_to root_path if current_user.company_id != @company.id
+    redirect_to root_path, notice:'Acesso não permitido' if current_user.company_id != @company.id
+  end
+
+  def set_company
+    @company = Company.find(params[:company_id])
   end
 
 end
