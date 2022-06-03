@@ -33,10 +33,6 @@ class RouteUpdatesController < ApplicationController
     @service_order = ServiceOrder.find(params[:service_order_id])
   end
 
-  def set_company
-    @company = Company.find(params[:company_id])
-  end
-
   def set_route_update
     @route_update = RouteUpdate.find(params[:id])
   end

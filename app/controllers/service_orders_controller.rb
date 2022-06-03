@@ -94,8 +94,4 @@ class ServiceOrdersController < ApplicationController
     redirect_to root_path, notice:'Acesso não permitido' if current_user.company_id != @company.id
   end
 
-  def set_company
-    @company = Company.find(params[:company_id])
-  end
-
 end

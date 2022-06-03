@@ -45,10 +45,6 @@ class VehiclesController < ApplicationController
     @vehicle = Vehicle.find(params[:id])
   end
 
-  def set_company
-    @company = Company.find(params[:company_id])
-  end
-
   def vehicle_params
     params.require(:vehicle).permit(:license_plate, :brand, :model, :year, :load_capacity, :company_id)
   end

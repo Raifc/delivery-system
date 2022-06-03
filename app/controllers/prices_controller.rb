@@ -46,10 +46,6 @@ class PricesController < ApplicationController
 
   private
 
-  def set_company
-    @company = Company.find(params[:company_id])
-  end
-
   def set_price
     @price = Price.find(params[:id])
   end
