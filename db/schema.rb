@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_26_035740) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_03_054802) do
   create_table "addresses", force: :cascade do |t|
     t.string "full_address"
     t.string "city"
@@ -86,6 +86,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_035740) do
     t.index ["service_order_id"], name: "index_route_updates_on_service_order_id"
   end
 
+  create_table "service_order_products", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "service_order_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_service_order_products_on_product_id"
+    t.index ["service_order_id"], name: "index_service_order_products_on_service_order_id"
+  end
+
   create_table "service_orders", force: :cascade do |t|
     t.integer "company_id", null: false
     t.integer "status", default: 0
@@ -129,6 +139,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_035740) do
   add_foreign_key "delivery_times", "companies"
   add_foreign_key "prices", "companies"
   add_foreign_key "route_updates", "service_orders"
+  add_foreign_key "service_order_products", "products"
+  add_foreign_key "service_order_products", "service_orders"
   add_foreign_key "service_orders", "companies"
   add_foreign_key "service_orders", "products"
   add_foreign_key "vehicles", "companies"

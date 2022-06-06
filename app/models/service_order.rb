@@ -1,6 +1,7 @@
 class ServiceOrder < ApplicationRecord
   attr_accessor :destination_address, :origin_address
 
+  #has_many :service_order_products
   validates :product_id, :origin_address_id, :destination_address_id, presence: true
   belongs_to :product
   belongs_to :company
