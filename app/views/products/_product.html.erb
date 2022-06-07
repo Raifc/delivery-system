@@ -1,34 +1,27 @@
-<div class="d-flex justify-content-center p-3 mb-2 bg-light text-dark">
+<div class="container mt-5">
+  <div class="col">
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+      <tr>
+        <th scope="row"> <%= Product.human_attribute_name(:code) %></th>
+        <th scope="row"> <%= Product.human_attribute_name(:height) %>  </th>
+        <th scope="row"> <%= Product.human_attribute_name(:width) %></th>
+        <th scope="row"> <%= Product.human_attribute_name(:depth) %></th>
+        <th scope="row"> <%= Product.human_attribute_name(:weight) %></th>
+        <th scope="row"> <%= Product.human_attribute_name(:volume) %></th>
+      </tr>
+      </thead>
 
-
-<p>
-    <strong><%= Product.human_attribute_name(:code) %>: </strong>
-    <%= product.code %> ||
-  </p>
-
-  <p>
-    <strong><%= Product.human_attribute_name(:height) %>: </strong>
-    <%= product.height %> cm ||
-  </p>
-
-  <p>
-    <strong><%= Product.human_attribute_name(:width) %>: </strong>
-    <%= product.width %> cm ||
-  </p>
-
-  <p>
-    <strong><%= Product.human_attribute_name(:depth) %>: </strong>
-    <%= product.depth %> cm ||
-  </p>
-
-  <p>
-    <strong><%= Product.human_attribute_name(:weight) %>: </strong>
-    <%= product.weight %> g ||
-  </p>
-
-  <p>
-    <strong><%= Product.human_attribute_name(:volume) %>: </strong>
-    <%= product.volume %> cm³
-  </p>
-
+      <tbody>
+      <tr>
+        <td>  <%= product.code %> </td>
+        <td> <%= product.height %> cm</td>
+        <td> <%= product.width %> cm</td>
+        <td> <%= product.depth %> cm</td>
+        <td> <%= product.weight %> g</td>
+        <td> <%= product.volume %> cm³</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

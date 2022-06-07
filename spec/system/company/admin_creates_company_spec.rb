@@ -26,10 +26,17 @@ describe 'Admin creates new Company' do
 
     expect(current_path).to eq '/companies/1'
     expect(page).to have_content 'Transportadora criada com sucesso!'
-    expect(page).to have_content 'CNPJ - 123334556000123'
-    expect(page).to have_content 'Razão Social: RDV Transportes'
-    expect(page).to have_content 'CNPJ - 123334556000123'
-    expect(page).to have_content 'Status Ativa'
+
+    within 'table' do
+      expect(page).to have_content 'Razão Social'
+      expect(page).to have_content 'RDV Transportes'
+      expect(page).to have_content 'Nome Fantasia'
+      expect(page).to have_content 'Rodonaves'
+      expect(page).to have_content 'CNPJ'
+      expect(page).to have_content '123334556000123'
+      expect(page).to have_content 'Status'
+      expect(page).to have_content 'Ativa'
+    end
 
   end
 

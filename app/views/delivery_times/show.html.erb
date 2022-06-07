@@ -3,6 +3,5 @@
 <%= render @delivery_time %>
 
 <div class="d-flex justify-content-center">
-  <%= link_to "Editar", edit_company_delivery_time_path(@delivery_time.company_id, @delivery_time.id) %> ||
-  <%= link_to "Voltar", company_delivery_times_path %>
+  <%= link_to "Editar", edit_company_delivery_time_path(@delivery_time.company_id, @delivery_time.id), :class => "btn btn-primary mt-3" %>
 </div>

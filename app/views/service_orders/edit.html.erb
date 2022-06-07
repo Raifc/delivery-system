@@ -6,6 +6,7 @@
     <% end %>
   </ul>
 <% end %>
+
 <div class="d-flex justify-content-center text-center">
 <%= form_with model: [:company, @service_order] do |f| %>
   <div class="form">
@@ -19,8 +20,7 @@
       <%= f.collection_select :vehicle_id, @vehicles, :id, :license_plate %>
     </div>
 
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-primary mt-3"%>
   </div>
     </div>
 <% end %>
-<p class="text-center"> <%= link_to "Voltar", company_service_orders_path %> </p>

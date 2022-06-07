@@ -2,52 +2,52 @@
   <%= ServiceOrder.model_name.human %> : <%= @service_order.code %>
 </h1>
 
-<table class="table">
-  <thead>
-  <tr>
-    <th><%= ServiceOrder.human_attribute_name(:code) %> </th>
-    <th><%= ServiceOrder.human_attribute_name(:status) %></th>
-    <th><%= ServiceOrder.human_attribute_name("origin_address.origin_address") %> </th>
-    <th><%= ServiceOrder.human_attribute_name("origin_address.origin_city") %> </th>
-    <th><%= ServiceOrder.human_attribute_name("destination_address.destination_address") %> </th>
-    <th><%= ServiceOrder.human_attribute_name("destination_address.destination_city") %> </th>
-    <th><%= Vehicle.model_name.human %></th>
+<div class="container mt-5">
+  <div class="col">
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+      <tr>
+        <th><%= ServiceOrder.human_attribute_name(:code) %> </th>
+        <th><%= ServiceOrder.human_attribute_name(:status) %></th>
+        <th><%= ServiceOrder.human_attribute_name("origin_address.origin_address") %> </th>
+        <th><%= ServiceOrder.human_attribute_name("origin_address.origin_city") %> </th>
+        <th><%= ServiceOrder.human_attribute_name("destination_address.destination_address") %> </th>
+        <th><%= ServiceOrder.human_attribute_name("destination_address.destination_city") %> </th>
+        <th><%= Vehicle.model_name.human %></th>
 
-    <% if user_signed_in? %>
-      <th>Ação</th>
-    <% end %>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td><%= @service_order.code %></td>
-    <td><%= @service_order.status %></td>
-    <td><%= @origin_address.full_address %></td>
-    <td><%= @origin_address.city %></td>
-    <td><%= @destination_address.full_address %></td>
-    <td><%= @destination_address.city %></td>
+        <% if user_signed_in? %>
+          <th>Ação</th>
+        <% end %>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @service_order.code %></td>
+        <td><%= @service_order.status %></td>
+        <td><%= @origin_address.full_address %></td>
+        <td><%= @origin_address.city %></td>
+        <td><%= @destination_address.full_address %></td>
+        <td><%= @destination_address.city %></td>
 
-    <% if @vehicle.present? %>
-      <td> <%= @vehicle.model %> | <%= @vehicle.license_plate %> </td>
-    <% else %>
-      <td>Nenhum veículo associado!</td>
-    <% end %>
+        <% if @vehicle.present? %>
+          <td> <%= @vehicle.model %> | <%= @vehicle.license_plate %> </td>
+        <% else %>
+          <td>Nenhum veículo associado!</td>
+        <% end %>
 
-    <% if user_signed_in? %>
-      <td> <%= link_to 'Revisar', edit_company_service_order_path %></td>
-    <% end %>
-  </tr>
+        <% if user_signed_in? %>
+          <td> <%= link_to 'Revisar', edit_company_service_order_path %></td>
+        <% end %>
+      </tr>
 
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <div class="d-flex justify-content-center">
   <% if user_signed_in? %>
-    <p> <%= link_to "Nova atualização de rota", new_company_service_order_route_update_path(@service_order.company_id, @service_order.id) %>
-      || </p>
-    <p> <%= link_to "Atualizações de rota", company_service_order_route_updates_path(@service_order.company_id, @service_order.id) %>
-      || </p>
+    <%= link_to "Atualizações de rota", company_service_order_route_updates_path(@service_order.company_id, @service_order.id), :class => "btn btn-primary mt-3 mx-2" %>
   <% end %>
-
-  <p> <%= link_to "Voltar", company_service_orders_path %> </p>
+  <%= link_to "Voltar", company_service_orders_path(@service_order.company_id), :class => "btn btn-primary mt-3" %>
 </div>

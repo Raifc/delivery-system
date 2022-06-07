@@ -20,12 +20,19 @@ describe 'Admin edits a product' do
     fill_in 'Peso', with: '500'
     click_on 'Atualizar Produto'
 
-    expect(page).to have_content 'Produto atualizado com sucesso'
-    expect(page).to have_content 'Código: SKU201324'
-    expect(page).to have_content 'Altura: 2.0 cm'
-    expect(page).to have_content 'Largura: 5.0 cm'
-    expect(page).to have_content 'Profundidade: 8.0 cm'
-    expect(page).to have_content 'Peso: 500.0 g'
+    expect(page).to have_content 'Produto atualizado com sucesso!'
+    within 'table' do
+      expect(page).to have_content 'Código'
+      expect(page).to have_content 'SKU201324'
+      expect(page).to have_content 'Altura'
+      expect(page).to have_content '2.0 cm'
+      expect(page).to have_content 'Largura'
+      expect(page).to have_content '5.0 cm'
+      expect(page).to have_content 'Profundidade'
+      expect(page).to have_content '8.0 cm'
+      expect(page).to have_content 'Peso'
+      expect(page).to have_content '500.0 g'
+    end
 
   end
 

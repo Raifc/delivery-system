@@ -16,7 +16,8 @@ describe 'admin searches for price' do
 
   it 'should see price results' do
 
-    visit('companies')
+    visit root_path
+    click_on 'Consulta de Preços'
     fill_in 'Altura do pacote (cm)', with: '7'
     fill_in 'Largura do pacote (cm)', with: '7'
     fill_in 'Profundidade do pacote (cm)', with: '7'
@@ -38,7 +39,8 @@ describe 'admin searches for price' do
 
   it 'and there are no prices registered' do
 
-    visit('companies')
+    visit root_path
+    click_on 'Consulta de Preços'
     fill_in 'Altura do pacote (cm)', with: '7'
     fill_in 'Largura do pacote (cm)', with: '7'
     fill_in 'Profundidade do pacote (cm)', with: '7'

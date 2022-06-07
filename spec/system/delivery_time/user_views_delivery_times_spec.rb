@@ -43,7 +43,7 @@ describe 'User views delivery time - ' do
     DeliveryTime.create!(min_distance: '30', max_distance: '50', business_days: '4', company: company)
     visit company_path(user.company)
     click_on 'Tempo de entrega'
-    click_on 'Voltar'
+    click_on 'Início'
 
     expect(current_path).to eq '/companies/1'
   end

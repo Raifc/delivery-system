@@ -45,7 +45,7 @@ describe 'User views prices - ' do
     visit company_path(user.company)
     click_on 'Preços'
     expect(current_path).to eq '/companies/1/prices'
-    click_on 'Voltar'
+    click_on 'Início'
     expect(current_path).to eq '/companies/1'
 
   end

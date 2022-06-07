@@ -1,9 +1,8 @@
-<h1 class="text-center display-4 bg-dark text-white"> <%= Product.model_name.human %> - <%= @product.code %></h1>
+<h2 class="text-center display-4 bg-dark text-white"> <%= Product.model_name.human %> - <%= @product.code %></h2>
 
 <%= render @product %>
 
 <div class="d-flex justify-content-center">
-  <%= link_to "Editar", edit_product_path(@product) %> ||
-  <%= link_to "Voltar", products_path %>
+  <%= link_to "Editar", edit_product_path(@product), :class => "btn btn-primary mt-3" %>
 </div>
 

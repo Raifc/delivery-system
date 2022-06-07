@@ -1,4 +1,7 @@
-<h1 class="text-center display-4 bg-dark text-white"> <%= Product.model_name.human %> </h1>
+<div class="container">
+  <h2 class="text-center display-4 bg-dark text-white"> <%= Product.model_name.human %>  </h2>
+</div>
+
 <div class="container">
 
   <% if @products.empty? %>
@@ -39,6 +42,5 @@
 
 
 <div class="d-flex justify-content-center">
-  <%= link_to "Novo Produto", new_product_path %> || </p>
-  <p> <%= link_to "Voltar", companies_path %> </p>
+  <%= link_to "Novo Produto", new_product_path, :class => "btn btn-primary" %>
 </div>

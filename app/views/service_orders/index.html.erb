@@ -1,4 +1,7 @@
-<h1 class="text-center display-4 bg-dark text-white">  <%= ServiceOrder.model_name.human(:count => ServiceOrder.count) %> </h1>
+<div class="container">
+  <h2 class="text-center display-4 bg-dark text-white">  <%= ServiceOrder.model_name.human(:count => ServiceOrder.count) %>  </h2>
+</div>
+
 <div class="container">
 
   <div class="d-flex justify-content-center">
@@ -35,8 +38,7 @@
 <div class="d-flex justify-content-center">
   <% if admin_signed_in? %>
     <% if @company.status == 'Ativa' %>
-      <%= link_to "Nova ordem de serviço", new_company_service_order_path %> ||
+      <%= link_to "Nova ordem de serviço", new_company_service_order_path, :class => "btn btn-primary mt-3 mx-2" %>
     <% end %>
   <% end %>
-  <%= link_to "Voltar", company_path(@company) %>
 </div>

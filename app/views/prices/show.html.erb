@@ -7,6 +7,5 @@
 <%= render @price %>
 
 <div class="d-flex justify-content-center">
-  <%= link_to "Editar", edit_company_price_path(@price) %> ||
-  <%= link_to "Voltar", company_prices_path %>
-</div>
+  <%= link_to "Editar", edit_company_price_path(@price), :class => "btn btn-primary mt-3 mx-2" %>
+ </div>

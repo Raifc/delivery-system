@@ -1,4 +1,6 @@
-<h1 class="text-center display-4 bg-dark text-white"> <%= Vehicle.model_name.human(:count => Vehicle.count) %> </h1>
+<div class="container">
+  <h2 class="text-center display-4 bg-dark text-white">  <%= Vehicle.model_name.human(:count => Vehicle.count) %> </h2>
+</div>
 
 <div class="container">
   <% if @vehicles.empty? %>
@@ -37,6 +39,5 @@
 
 
 <div class="d-flex justify-content-center">
-  <%= link_to "Novo veículo", new_company_vehicle_path %> ||
-  <p> <%= link_to "Voltar", company_path(@company) %> </p>
+  <%= link_to "Novo veículo", new_company_vehicle_path, :class => "btn btn-primary mt-3" %>
 </div>

@@ -1,4 +1,7 @@
-<h1 class="text-center display-4 bg-dark text-white"> <%= RouteUpdate.model_name.human %> </h1>
+<div class="container">
+  <h2 class="text-center display-4 bg-dark text-white"> <%= RouteUpdate.model_name.human %>  </h2>
+</div>
+
 <div class="container">
 
   <div class="d-flex justify-content-center">
@@ -30,6 +33,5 @@
 
 
 <div class="d-flex justify-content-center">
-  <p> <%= link_to "Nova atualização de rota", new_company_service_order_route_update_path %> || </p>
-  <p> <%= link_to "Voltar", company_path(@company) %> </p>
+  <%= link_to "Nova atualização de rota", new_company_service_order_route_update_path, :class => "btn btn-primary mt-3" %>
 </div>

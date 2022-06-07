@@ -24,8 +24,17 @@
           <li class="nav-item">
             <%= link_to 'Início', root_path, :class => "nav-link active border-end " %>
           </li>
+
           <li class="nav-item">
-            <%= link_to 'Transportadoras', companies_path, :class => "nav-link active" %>
+            <%= link_to 'Transportadoras', companies_path, :class => "nav-link active border-end" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Produtos", products_path, :class => "nav-link active border-end" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Consulta de Preços", price_queries_index_path, :class => "nav-link active" %>
           </li>
         </ul>
 
@@ -33,6 +42,7 @@
           <li class="nav-link active text-white mt-2">
             <strong>Admin</strong>: <%= current_admin.email %>
           </li>
+
           <li class="nav-link active text-white">
             <%= button_to 'Sair', destroy_admin_session_path, method: :delete, :class => "btn btn-danger navbar-btn" %>
           </li>
@@ -45,17 +55,32 @@
 
         <ul class="navbar-nav me-auto my-2 my-lg-0 px-5 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
           <li class="nav-item">
-            <%= link_to 'Início', root_path, :class => "nav-link active border-end" %>
+            <%= link_to 'Início', company_path(current_user.company_id), :class => "nav-link active border-end" %>
           </li>
+
           <li class="nav-item">
-            <%= link_to 'Minha transportadora', company_path(current_user.company_id), :class => "nav-link active" %>
+            <%= link_to "Veículos", company_vehicles_path(current_user.company_id), :class => "nav-link active border-end" %>
           </li>
+
+          <li class="nav-item">
+            <%= link_to "Preços", company_prices_path(current_user.company_id), :class => "nav-link active border-end" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Tempo de entrega", company_delivery_times_path(current_user.company_id), :class => "nav-link active border-end" %>
+          </li>
+
+          <li class="nav-item">
+          <%= link_to "Ordens de Serviço", company_service_orders_path(current_user.company_id), :class => "nav-link active" %>
+          </li>
+
         </ul>
 
         <ul class="nav justify-content-end px-3">
           <li class="nav-link active text-white mt-2">
             <%= current_user.email %>
           </li>
+
           <li class="nav-link active text-white">
             <%= button_to 'Sair', destroy_user_session_path, method: :delete, :class => "btn btn-danger navbar-btn" %>
           </li>

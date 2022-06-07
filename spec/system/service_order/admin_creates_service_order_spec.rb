@@ -97,12 +97,4 @@ describe 'admin creates a new service order' do
     expect(current_path).to eq '/companies/1/service_orders'
   end
 
-  it 'and returns to companies' do
-    visit('companies')
-    click_on 'Ver'
-    click_on 'Ordens de Serviço'
-    click_on 'Voltar'
-    expect(current_path).to eq '/companies/1'
-  end
-
 end

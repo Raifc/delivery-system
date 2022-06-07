@@ -48,10 +48,4 @@ describe 'admin views a new service order' do
     expect(page).to have_content 'Nenhuma ordem de serviço!'
   end
 
-  it 'and returns to companies' do
-    visit '/companies/1/service_orders'
-    click_on 'Voltar'
-    expect(current_path).to eq '/companies/1'
-  end
-
 end

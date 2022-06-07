@@ -1,29 +1,25 @@
-<div class="d-flex justify-content-center p-3 mb-2 bg-light text-dark">
+<div class="container mt-5">
+  <div class="col">
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+      <tr>
+        <th scope="row"> <%= Price.human_attribute_name(:min_volume) %> </th>
+        <th scope="row"> <%= Price.human_attribute_name(:max_volume) %> </th>
+        <th scope="row"> <%= Price.human_attribute_name(:min_weight) %> </th>
+        <th scope="row"> <%= Price.human_attribute_name(:max_weight) %> </th>
+        <th scope="row"> <%= Price.human_attribute_name(:km_value) %> </th>
+      </tr>
+      </thead>
 
-  <p>
-    <strong> <%= Price.human_attribute_name(:min_volume) %> </strong>
-    <%= price.min_volume %> cm³ ||
-  </p>
-
-  <p>
-    <strong> <%= Price.human_attribute_name(:max_volume) %> </strong>
-    <%= price.max_volume %> cm³ ||
-  </p>
-
-  <p>
-    <strong> <%= Price.human_attribute_name(:min_weight) %> </strong>
-    <%= price.min_weight %> g ||
-  </p>
-
-  <p>
-    <strong> <%= Price.human_attribute_name(:max_weight) %> </strong>
-    <%= price.max_weight %> g ||
-  </p>
-
-  <p>
-    <strong> <%= Price.human_attribute_name(:km_value) %> </strong>
-    R$<%= price.km_value / 100 %>
-  </p>
-
-
+      <tbody>
+      <tr>
+        <td><%= price.min_volume %> cm³</td>
+        <td><%= price.max_volume %> cm³</td>
+        <td> <%= price.min_weight %> g</td>
+        <td> <%= price.max_weight %> g</td>
+        <td>R$<%= price.km_value / 100 %></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -1,4 +1,7 @@
-<h1 class="text-center display-4 bg-dark text-white">  <%= Price.model_name.human(:count => Price.count) %> </h1>
+<div class="container">
+  <h2 class="text-center display-4 bg-dark text-white">  <%= Price.model_name.human(:count => Price.count) %>  </h2>
+</div>
+
 <div class="container">
 
   <% if @prices.empty? %>
@@ -37,6 +40,5 @@
 
 
 <div class="d-flex justify-content-center">
-  <%= link_to "Novo preço", new_company_price_path %> || </p>
-  <p> <%= link_to "Voltar", company_path(@company) %> </p>
+  <%= link_to "Novo preço", new_company_price_path, :class => "btn btn-primary mt-3" %>
 </div>

@@ -18,5 +18,7 @@ Rails.application.routes.draw do
 
   resources :addresses, only: %i[index show new create edit update]
   resources :products
+
+  get 'price_queries_index', to: 'price_queries#index'
   get 'price_queries', to: 'price_queries#calculate_prices'
 end

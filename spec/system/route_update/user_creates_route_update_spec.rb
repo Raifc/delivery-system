@@ -22,6 +22,7 @@ describe 'User creates route updates' do
     click_on 'Ordens de Serviço'
     expect(current_path).to eq '/companies/1/service_orders'
     click_on 'Ver'
+    click_on 'Atualizações de rota'
     click_on 'Nova atualização de rota'
     fill_in 'Cidade', with: 'Curitiba'
     fill_in 'Data e Hora', with: @time.to_s
@@ -36,6 +37,7 @@ describe 'User creates route updates' do
     click_on 'Ordens de Serviço'
     expect(current_path).to eq '/companies/1/service_orders'
     click_on 'Ver'
+    click_on 'Atualizações de rota'
     click_on 'Nova atualização de rota'
     fill_in 'Cidade', with: ''
     fill_in 'Data e Hora', with: @time.to_s
@@ -51,6 +53,7 @@ describe 'User creates route updates' do
     click_on 'Ordens de Serviço'
     expect(current_path).to eq '/companies/1/service_orders'
     click_on 'Ver'
+    click_on 'Atualizações de rota'
     click_on 'Nova atualização de rota'
     fill_in 'Cidade', with: 'London'
     fill_in 'Data e Hora', with: ''
@@ -66,6 +69,7 @@ describe 'User creates route updates' do
     click_on 'Ordens de Serviço'
     expect(current_path).to eq '/companies/1/service_orders'
     click_on 'Ver'
+    click_on 'Atualizações de rota'
     click_on 'Nova atualização de rota'
     fill_in 'Cidade', with: 'London'
     fill_in 'Data e Hora', with: Time.current.beginning_of_day

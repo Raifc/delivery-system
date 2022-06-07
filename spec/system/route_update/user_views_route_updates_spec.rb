@@ -57,7 +57,7 @@ describe 'User views route updates' do
     click_on 'Ordens de Serviço'
     click_on 'Ver'
     click_on 'Atualizações de rota'
-    click_on 'Voltar'
+    click_on 'Início'
 
     expect(current_path).to eq '/companies/1'
 

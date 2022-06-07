@@ -1,4 +1,7 @@
-<h1 class="text-center display-4 bg-dark text-white">  <%= DeliveryTime.model_name.human %> </h1>
+<div class="container">
+  <h2 class="text-center display-4 bg-dark text-white">  <%= DeliveryTime.model_name.human %> </h2>
+</div>
+
 <div class="container">
 
   <% if @delivery_times.empty? %>
@@ -34,6 +37,5 @@
 
 
 <div class="d-flex justify-content-center">
-  <p> <%= link_to "Novo Tempo de entrega", new_company_delivery_time_path %> || </p>
-  <p> <%= link_to "Voltar", company_path(@company) %> </p>
+  <%= link_to "Novo Tempo de entrega", new_company_delivery_time_path, :class => "btn btn-primary mt-3" %>
 </div>

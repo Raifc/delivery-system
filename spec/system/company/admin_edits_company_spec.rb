@@ -31,10 +31,16 @@ describe 'Admin edit a Company' do
     select 'Ativa', from: 'Status'
     click_on 'Atualizar Transportadora'
 
-    expect(page).to have_content 'Transportadora atualizada com sucesso!'
-    expect(page).to have_content 'Razão Social: Rodonaves'
-    expect(page).to have_content 'Nome Fantasia - Ronaves transports'
-    expect(page).to have_content 'CNPJ - 123334556000123'
+    within 'table' do
+      expect(page).to have_content 'Razão Social'
+      expect(page).to have_content 'Rodonaves'
+      expect(page).to have_content 'Nome Fantasia'
+      expect(page).to have_content 'Ronaves transports'
+      expect(page).to have_content 'CNPJ'
+      expect(page).to have_content '123334556000123'
+      expect(page).to have_content 'Status'
+      expect(page).to have_content 'Ativa'
+    end
 
   end
 

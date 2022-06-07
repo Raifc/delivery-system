@@ -15,11 +15,17 @@ describe 'User Login' do
   it 'and is associated with its company' do
     visit company_path(user.company)
 
-    expect(page).to have_content 'Transportadora Alfa'
-    expect(page).to have_content 'Razão Social: Beta'
-    expect(page).to have_content ' Nome Fantasia - Alfa'
-    expect(page).to have_content 'CNPJ - 1234567'
-    expect(page).to have_content 'Status Ativa'
+    within 'table' do
+      expect(page).to have_content 'Razão Social'
+      expect(page).to have_content 'Beta'
+      expect(page).to have_content 'Nome Fantasia'
+      expect(page).to have_content 'Alfa'
+      expect(page).to have_content 'CNPJ'
+      expect(page).to have_content '1234567'
+      expect(page).to have_content 'Status'
+      expect(page).to have_content 'Ativa'
+    end
+
   end
 
   it 'and sees related links' do

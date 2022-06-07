@@ -35,7 +35,7 @@ describe 'User views vehicles' do
   it 'and returns to company page' do
     visit company_path(user.company)
     click_on 'Veículos'
-    click_on 'Voltar'
+    click_on 'Início'
     expect(current_path).to eq '/companies/1'
   end
 
