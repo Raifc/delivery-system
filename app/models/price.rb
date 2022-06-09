@@ -1,5 +1,6 @@
 class Price < ApplicationRecord
   belongs_to :company
+  validates :min_volume, :max_volume, :min_weight, :max_weight, :km_value, numericality: true
   validates :min_volume, :max_volume, :min_weight, :max_weight, :km_value, comparison: { greater_than: 0 }, presence: true
   before_validation :volume_validation
   before_validation :weight_validation

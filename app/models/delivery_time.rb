@@ -1,5 +1,6 @@
 class DeliveryTime < ApplicationRecord
   belongs_to :company
+  validates :min_distance, :max_distance, :business_days, numericality: true
   validates :min_distance, :max_distance, :business_days, comparison: { greater_than: 0 }, presence: true
   before_validation :distance_validation
   before_validation :distance_range_exists
